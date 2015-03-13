@@ -147,7 +147,7 @@ public class BaseDatos {
         {
             this.transaccion.Commit();
         }
-    }x
+    }
 
     public void Cancelar() {
         throw new UnsupportedOperationException("Not yet implemented");
