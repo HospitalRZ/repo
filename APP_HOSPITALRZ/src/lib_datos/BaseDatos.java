@@ -153,7 +153,7 @@ public class BaseDatos {
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
-     public void cerrar() {
+    public void cerrar() {
          try
         {
             conexion.close();
