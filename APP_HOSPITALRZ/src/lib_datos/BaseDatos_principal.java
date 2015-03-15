@@ -139,8 +139,10 @@ public class BaseDatos_principal {
  {
      Connection con = null;  
         CallableStatement stmt = null;  
+        CallableStatement stmt1 = null;  
         ArrayList<dprincipal> Dprincipales = null;  
         ResultSet rs = null; 
+        ResultSet rs1 = null; 
         try {  
             con = new NpgSqlConnection().getConection();  
             stmt = con.prepareCall("{call hrz.principal_select(?)}");
@@ -161,18 +163,18 @@ public class BaseDatos_principal {
                Principal.setIdentidad(Entidad);
                Principal.setObservacion(rs.getString("observacion"));
                Principal.setIdestado(rs.getInt("idestado"));
-               stmt = con.prepareCall("{call hrz.dprincipal_select(?)}");
-               stmt.setInt(1, Principal.getId());
-               rs = stmt.executeQuery(); 
-               while (rs.next()) 
+               stmt1 = con.prepareCall("{call hrz.dprincipal_select(?)}");
+               stmt1.setInt(1, Principal.getId());
+               rs1 = stmt1.executeQuery(); 
+               while (rs1.next()) 
                {
                    dprincipal Dprincipal = new dprincipal();
-                   Dprincipal.setId(rs.getInt("id"));
+                   Dprincipal.setId(rs1.getInt("id"));
                    Dprincipal.setIdprincipal(Principal);
                    dieta Dieta = new dieta();
-                   Dieta.setId(rs.getInt("iddieta"));
+                   Dieta.setId(rs1.getInt("iddieta"));
                    Dprincipal.setIddieta(Dieta);
-                   Dprincipal.setActivado(rs.getBoolean("activado"));
+                   Dprincipal.setActivado(rs1.getBoolean("activado"));
                    Dprincipales.add(Dprincipal);
                    
                }
