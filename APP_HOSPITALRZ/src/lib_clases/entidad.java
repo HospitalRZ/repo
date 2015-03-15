@@ -9,7 +9,7 @@ package lib_clases;
  *
  * @author LUIS
  */
-public class entidad {
+public class entidad extends estandar{
     String identificacion;
     String descripcion;
     tentidad idtentidad;

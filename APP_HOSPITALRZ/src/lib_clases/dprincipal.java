@@ -12,7 +12,17 @@ package lib_clases;
 public class dprincipal extends estandar{
     principal idprincipal;
     dieta iddieta;
+    boolean activado;
+    
+    public boolean getActivado() {
+        return activado;
+    }
 
+    public void setActivado(boolean activado) {
+        this.activado = activado;
+    }
+
+    
     public principal getIdprincipal() {
         return idprincipal;
     }
@@ -28,5 +38,6 @@ public class dprincipal extends estandar{
     public void setIddieta(dieta iddieta) {
         this.iddieta = iddieta;
     }
+    
     
 }
