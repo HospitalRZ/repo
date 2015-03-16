@@ -5,6 +5,19 @@
  */
 package lib_presentacion;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import javax.net.ssl.SSLEngineResult;
+import javax.swing.JOptionPane;
+import lib_clases.departamento;
+import lib_clases.dieta;
+import lib_clases.dprincipal;
+import lib_clases.entidad;
+import lib_clases.principal;
+import lib_clases.tentidad;
+import lib_gestion.gestion;
+
 /**
  *
  * @author LUIS
@@ -16,7 +29,33 @@ public class frm_proceso extends javax.swing.JFrame {
      */
     public frm_proceso() {
         initComponents();
+        gestionM = new gestion();
+        dprinci = new ArrayList<dprincipal>();
+        gentidad = new entidad();
+        gprincipal = new principal();
     }
+    public frm_proceso(int iddepartamento){
+        initComponents();
+        gestionM = new gestion();
+        dprinci = new ArrayList<dprincipal>();
+        gentidad = new entidad();
+        gprincipal = new principal();
+        gtentida= new tentidad();
+        gtentida.setId(1);
+        gentidad.setIdtentidad(gtentida);
+        departamento dep = new departamento();
+        dep.setId(iddepartamento);
+        gprincipal.setIddertamento(dep);
+        gentidad.setId(0);
+        gprincipal.setId(0);
+        gprincipal.setIdestado(0);
+    }
+    tentidad gtentida ;
+    gestion gestionM;
+    ArrayList<dprincipal> dprinci;
+    entidad gentidad;
+    principal gprincipal;
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,12 +70,12 @@ public class frm_proceso extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        lbx1 = new javax.swing.JList();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList();
+        lbx2 = new javax.swing.JList();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jList3 = new javax.swing.JList();
-        jCalendar1 = new com.toedter.calendar.JCalendar();
+        lbx3 = new javax.swing.JList();
+        dtfecha = new com.toedter.calendar.JCalendar();
         jPanel2 = new javax.swing.JPanel();
         jSplitPane2 = new javax.swing.JSplitPane();
         jPanel3 = new javax.swing.JPanel();
@@ -44,51 +83,50 @@ public class frm_proceso extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
-        jTextField3 = new javax.swing.JTextField();
+        txtApelliNom = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtidentificacion = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jPanel6 = new javax.swing.JPanel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
-        jCheckBox5 = new javax.swing.JCheckBox();
-        jCheckBox6 = new javax.swing.JCheckBox();
-        jCheckBox7 = new javax.swing.JCheckBox();
-        jCheckBox8 = new javax.swing.JCheckBox();
-        jCheckBox9 = new javax.swing.JCheckBox();
+        cbxLatanciaMaterna = new javax.swing.JCheckBox();
+        cbxNPO = new javax.swing.JCheckBox();
+        cbxAcompaniante = new javax.swing.JCheckBox();
+        cbxHiposodica = new javax.swing.JCheckBox();
+        cbxHipograsa = new javax.swing.JCheckBox();
+        cbxPedi68 = new javax.swing.JCheckBox();
+        cbxPedi911 = new javax.swing.JCheckBox();
+        cbxPedi1223 = new javax.swing.JCheckBox();
+        cbxPedi26 = new javax.swing.JCheckBox();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtObservacion = new javax.swing.JTextArea();
         jPanel7 = new javax.swing.JPanel();
-        jCheckBox10 = new javax.swing.JCheckBox();
-        jCheckBox11 = new javax.swing.JCheckBox();
-        jCheckBox12 = new javax.swing.JCheckBox();
-        jCheckBox13 = new javax.swing.JCheckBox();
-        jCheckBox14 = new javax.swing.JCheckBox();
-        jCheckBox15 = new javax.swing.JCheckBox();
+        cbxPedi711 = new javax.swing.JCheckBox();
+        cbxLiquiAca = new javax.swing.JCheckBox();
+        cbxLiquiEst = new javax.swing.JCheckBox();
+        cbxLiquiAmp = new javax.swing.JCheckBox();
+        cbxBlaGast = new javax.swing.JCheckBox();
+        cbxBlaInt = new javax.swing.JCheckBox();
         jPanel9 = new javax.swing.JPanel();
-        jCheckBox19 = new javax.swing.JCheckBox();
-        jCheckBox20 = new javax.swing.JCheckBox();
-        jCheckBox21 = new javax.swing.JCheckBox();
-        jCheckBox22 = new javax.swing.JCheckBox();
-        jCheckBox23 = new javax.swing.JCheckBox();
+        cbxBlaMec = new javax.swing.JCheckBox();
+        cbxTurGas = new javax.swing.JCheckBox();
+        cbxIle1 = new javax.swing.JCheckBox();
+        cbxIle2 = new javax.swing.JCheckBox();
+        cbxIle3 = new javax.swing.JCheckBox();
         jPanel10 = new javax.swing.JPanel();
-        jCheckBox24 = new javax.swing.JCheckBox();
-        jCheckBox25 = new javax.swing.JCheckBox();
-        jCheckBox26 = new javax.swing.JCheckBox();
-        jCheckBox27 = new javax.swing.JCheckBox();
-        jCheckBox28 = new javax.swing.JCheckBox();
-        jCheckBox29 = new javax.swing.JCheckBox();
-        jCheckBox30 = new javax.swing.JCheckBox();
-        jCheckBox31 = new javax.swing.JCheckBox();
-        jCheckBox32 = new javax.swing.JCheckBox();
-        jCheckBox33 = new javax.swing.JCheckBox();
+        cbxHipe2 = new javax.swing.JCheckBox();
+        cbxHipeHipe = new javax.swing.JCheckBox();
+        cbxHipoCal = new javax.swing.JCheckBox();
+        cbxHipoProEst = new javax.swing.JCheckBox();
+        cbxHipo1 = new javax.swing.JCheckBox();
+        cbxHiperp = new javax.swing.JCheckBox();
+        cbxHipoc = new javax.swing.JCheckBox();
+        cbxHipoHipo = new javax.swing.JCheckBox();
+        cbxHipoHipe = new javax.swing.JCheckBox();
+        cbxSinGlu = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -98,42 +136,43 @@ public class frm_proceso extends javax.swing.JFrame {
 
         jLabel4.setText("FECHA:");
 
-        jList1.setModel(new javax.swing.AbstractListModel() {
+        lbx1.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane2.setViewportView(jList1);
+        jScrollPane2.setViewportView(lbx1);
 
-        jList2.setModel(new javax.swing.AbstractListModel() {
+        lbx2.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane3.setViewportView(jList2);
+        jScrollPane3.setViewportView(lbx2);
 
-        jList3.setModel(new javax.swing.AbstractListModel() {
+        lbx3.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane4.setViewportView(jList3);
+        jScrollPane4.setViewportView(lbx3);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(dtfecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCalendar1, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel4)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                     .addComponent(jScrollPane2)
-                    .addComponent(jScrollPane3)
                     .addComponent(jScrollPane4))
-                .addContainerGap())
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,12 +180,12 @@ public class frm_proceso extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addComponent(dtfecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                .addGap(13, 13, 13)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -169,7 +208,7 @@ public class frm_proceso extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(160, Short.MAX_VALUE)
+                .addContainerGap(235, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -185,7 +224,7 @@ public class frm_proceso extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel1.getAccessibleContext().setAccessibleName("TABLA DE REGISTROS");
@@ -196,6 +235,20 @@ public class frm_proceso extends javax.swing.JFrame {
 
         jLabel7.setText("APELLIDOS Y NOMBRES:");
 
+        txtidentificacion.setName("txtcedula"); // NOI18N
+        txtidentificacion.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                txtidentificacionInputMethodTextChanged(evt);
+            }
+        });
+        txtidentificacion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtidentificacionKeyPressed(evt);
+            }
+        });
+
         jLabel6.setText("CÉDULA:");
 
         jButton1.setBackground(new java.awt.Color(51, 51, 255));
@@ -205,6 +258,11 @@ public class frm_proceso extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(51, 51, 255));
         jButton2.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jButton2.setText("GUARDAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("FECHA NACIMIENTO:");
 
@@ -213,20 +271,18 @@ public class frm_proceso extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(28, 28, 28)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtApelliNom, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtidentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel8)))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -239,15 +295,15 @@ public class frm_proceso extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtidentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel6))
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
                         .addComponent(jLabel8)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGap(18, 20, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(txtApelliNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -257,23 +313,23 @@ public class frm_proceso extends javax.swing.JFrame {
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "BASAL", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri", 1, 12))); // NOI18N
 
-        jCheckBox1.setText("Lactancia Materna");
+        cbxLatanciaMaterna.setText("Lactancia Materna");
 
-        jCheckBox2.setText("NPO");
+        cbxNPO.setText("NPO");
 
-        jCheckBox3.setText("Acompañante");
+        cbxAcompaniante.setText("Acompañante");
 
-        jCheckBox4.setText("Hiposodica");
+        cbxHiposodica.setText("Hiposodica");
 
-        jCheckBox5.setText("Hipograsa ");
+        cbxHipograsa.setText("Hipograsa ");
 
-        jCheckBox6.setText("Pediatría 6 a 8 meses");
+        cbxPedi68.setText("Pediatría 6 a 8 meses");
 
-        jCheckBox7.setText("Pediatría 9 a 11 meses");
+        cbxPedi911.setText("Pediatría 9 a 11 meses");
 
-        jCheckBox8.setText("Pediatría 12 a 23 meses");
+        cbxPedi1223.setText("Pediatría 12 a 23 meses");
 
-        jCheckBox9.setText("Pediatría 2 a 6 años");
+        cbxPedi26.setText("Pediatría 2 a 6 años");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -282,17 +338,17 @@ public class frm_proceso extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox2)
-                    .addComponent(jCheckBox3)
-                    .addComponent(jCheckBox4)
-                    .addComponent(jCheckBox5)
-                    .addComponent(jCheckBox1))
+                    .addComponent(cbxNPO)
+                    .addComponent(cbxAcompaniante)
+                    .addComponent(cbxHiposodica)
+                    .addComponent(cbxHipograsa)
+                    .addComponent(cbxLatanciaMaterna))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox7)
-                    .addComponent(jCheckBox6)
-                    .addComponent(jCheckBox8)
-                    .addComponent(jCheckBox9))
+                    .addComponent(cbxPedi911)
+                    .addComponent(cbxPedi68)
+                    .addComponent(cbxPedi1223)
+                    .addComponent(cbxPedi26))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -300,29 +356,29 @@ public class frm_proceso extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox1)
-                    .addComponent(jCheckBox6))
+                    .addComponent(cbxLatanciaMaterna)
+                    .addComponent(cbxPedi68))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox2)
-                    .addComponent(jCheckBox7))
+                    .addComponent(cbxNPO)
+                    .addComponent(cbxPedi911))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox3)
-                    .addComponent(jCheckBox8))
+                    .addComponent(cbxAcompaniante)
+                    .addComponent(cbxPedi1223))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox4)
-                    .addComponent(jCheckBox9))
+                    .addComponent(cbxHiposodica)
+                    .addComponent(cbxPedi26))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 2, Short.MAX_VALUE)
-                .addComponent(jCheckBox5))
+                .addComponent(cbxHipograsa))
         );
 
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "OBSERVACIÓN", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri", 1, 14))); // NOI18N
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtObservacion.setColumns(20);
+        txtObservacion.setRows(5);
+        jScrollPane1.setViewportView(txtObservacion);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -340,17 +396,17 @@ public class frm_proceso extends javax.swing.JFrame {
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TRANSCICIÓN\t\t\t ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri", 1, 12))); // NOI18N
 
-        jCheckBox10.setText("Pediatría 7 a 11 años");
+        cbxPedi711.setText("Pediatría 7 a 11 años");
 
-        jCheckBox11.setText("Líquida acalórica ");
+        cbxLiquiAca.setText("Líquida acalórica ");
 
-        jCheckBox12.setText("Líquida Estricta");
+        cbxLiquiEst.setText("Líquida Estricta");
 
-        jCheckBox13.setText("Líquida Amplia");
+        cbxLiquiAmp.setText("Líquida Amplia");
 
-        jCheckBox14.setText("Blanda Gástrica");
+        cbxBlaGast.setText("Blanda Gástrica");
 
-        jCheckBox15.setText("Blanda Intestinal");
+        cbxBlaInt.setText("Blanda Intestinal");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -359,14 +415,14 @@ public class frm_proceso extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox11)
-                    .addComponent(jCheckBox12)
-                    .addComponent(jCheckBox10))
+                    .addComponent(cbxLiquiAca)
+                    .addComponent(cbxLiquiEst)
+                    .addComponent(cbxPedi711))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox15)
-                    .addComponent(jCheckBox13)
-                    .addComponent(jCheckBox14))
+                    .addComponent(cbxBlaInt)
+                    .addComponent(cbxLiquiAmp)
+                    .addComponent(cbxBlaGast))
                 .addGap(64, 64, 64))
         );
         jPanel7Layout.setVerticalGroup(
@@ -374,31 +430,31 @@ public class frm_proceso extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox10)
-                    .addComponent(jCheckBox13))
+                    .addComponent(cbxPedi711)
+                    .addComponent(cbxLiquiAmp))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox11)
-                    .addComponent(jCheckBox14))
+                    .addComponent(cbxLiquiAca)
+                    .addComponent(cbxBlaGast))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox12)
-                    .addComponent(jCheckBox15))
+                    .addComponent(cbxLiquiEst)
+                    .addComponent(cbxBlaInt))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TEXTURA MODIFICADA", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri", 1, 12))); // NOI18N
 
-        jCheckBox19.setText("Blanda mecánica Geriátrica");
+        cbxBlaMec.setText("Blanda mecánica Geriátrica");
 
-        jCheckBox20.setText("Turmix: SNG y Gastrotomía ");
+        cbxTurGas.setText("Turmix: SNG y Gastrotomía ");
 
-        jCheckBox21.setText("Ileostomía fase 1");
-        jCheckBox21.setActionCommand("");
+        cbxIle1.setText("Ileostomía fase 1");
+        cbxIle1.setActionCommand("");
 
-        jCheckBox22.setText("Ileostomía fase 2 ");
+        cbxIle2.setText("Ileostomía fase 2 ");
 
-        jCheckBox23.setText("Ileostomía fase 3");
+        cbxIle3.setText("Ileostomía fase 3");
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -409,15 +465,15 @@ public class frm_proceso extends javax.swing.JFrame {
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox21)
-                            .addComponent(jCheckBox22))
+                            .addComponent(cbxIle1)
+                            .addComponent(cbxIle2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox20)
-                            .addComponent(jCheckBox19))
+                            .addComponent(cbxTurGas)
+                            .addComponent(cbxBlaMec))
                         .addGap(18, 18, 18))
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(jCheckBox23)
+                        .addComponent(cbxIle3)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel9Layout.setVerticalGroup(
@@ -425,38 +481,38 @@ public class frm_proceso extends javax.swing.JFrame {
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox19)
-                    .addComponent(jCheckBox21))
+                    .addComponent(cbxBlaMec)
+                    .addComponent(cbxIle1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox20)
-                    .addComponent(jCheckBox22))
+                    .addComponent(cbxTurGas)
+                    .addComponent(cbxIle2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox23))
+                .addComponent(cbxIle3))
         );
 
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TERAPÉUTICAS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri", 1, 12))); // NOI18N
 
-        jCheckBox24.setText("Hipercalorica");
+        cbxHipe2.setText("Hipercalorica");
 
-        jCheckBox25.setText("HIPERCALORICA-HIPERPROTEICA");
+        cbxHipeHipe.setText("HIPERCALORICA-HIPERPROTEICA");
 
-        jCheckBox26.setText("Hipo caloríca ");
-        jCheckBox26.setActionCommand("");
+        cbxHipoCal.setText("Hipo caloríca ");
+        cbxHipoCal.setActionCommand("");
 
-        jCheckBox27.setText("Hipo Proteica estricta ");
+        cbxHipoProEst.setText("Hipo Proteica estricta ");
 
-        jCheckBox28.setText("Hipoproteica");
+        cbxHipo1.setText("Hipoproteica");
 
-        jCheckBox29.setText("Hiperproteica");
+        cbxHiperp.setText("Hiperproteica");
 
-        jCheckBox30.setText("Hipohidrocarbonada");
+        cbxHipoc.setText("Hipohidrocarbonada");
 
-        jCheckBox31.setText("Hipohidrocarbonada hipoproteica");
+        cbxHipoHipo.setText("Hipohidrocarbonada hipoproteica");
 
-        jCheckBox32.setText("Hipohidrocarbonada Hiperproteica");
+        cbxHipoHipe.setText("Hipohidrocarbonada Hiperproteica");
 
-        jCheckBox33.setText("Sin gluten");
+        cbxSinGlu.setText("Sin gluten");
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -466,29 +522,29 @@ public class frm_proceso extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addComponent(jCheckBox26)
+                        .addComponent(cbxHipoCal)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jCheckBox29)
+                        .addComponent(cbxHiperp)
                         .addGap(48, 48, 48))
                     .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addComponent(jCheckBox27)
+                        .addComponent(cbxHipoProEst)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jCheckBox30)
+                        .addComponent(cbxHipoc)
                         .addGap(16, 16, 16))
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel10Layout.createSequentialGroup()
                                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jCheckBox31)
-                                    .addComponent(jCheckBox32))
+                                    .addComponent(cbxHipoHipo)
+                                    .addComponent(cbxHipoHipe))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jCheckBox28)
-                                    .addComponent(jCheckBox24)))
+                                    .addComponent(cbxHipo1)
+                                    .addComponent(cbxHipe2)))
                             .addGroup(jPanel10Layout.createSequentialGroup()
-                                .addComponent(jCheckBox25)
+                                .addComponent(cbxHipeHipe)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jCheckBox33)))
+                                .addComponent(cbxSinGlu)))
                         .addContainerGap(15, Short.MAX_VALUE))))
         );
         jPanel10Layout.setVerticalGroup(
@@ -496,24 +552,24 @@ public class frm_proceso extends javax.swing.JFrame {
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox26)
-                    .addComponent(jCheckBox29))
+                    .addComponent(cbxHipoCal)
+                    .addComponent(cbxHiperp))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox27)
-                    .addComponent(jCheckBox30))
+                    .addComponent(cbxHipoProEst)
+                    .addComponent(cbxHipoc))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox28)
-                    .addComponent(jCheckBox31))
+                    .addComponent(cbxHipo1)
+                    .addComponent(cbxHipoHipo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox24)
-                    .addComponent(jCheckBox32))
+                    .addComponent(cbxHipe2)
+                    .addComponent(cbxHipoHipe))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox25)
-                    .addComponent(jCheckBox33)))
+                    .addComponent(cbxHipeHipe)
+                    .addComponent(cbxSinGlu)))
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -526,7 +582,6 @@ public class frm_proceso extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -535,7 +590,8 @@ public class frm_proceso extends javax.swing.JFrame {
                         .addGap(6, 6, 6)
                         .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -554,9 +610,8 @@ public class frm_proceso extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(15, 15, 15)
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jSplitPane2.setRightComponent(jPanel4);
@@ -565,7 +620,7 @@ public class frm_proceso extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane2)
+            .addComponent(jSplitPane2, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -578,10 +633,7 @@ public class frm_proceso extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSplitPane1)
-                .addContainerGap())
+            .addComponent(jSplitPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -590,6 +642,117 @@ public class frm_proceso extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        try{
+        asignarInterfasAGestion();
+        gestionM.Insertar(gentidad, gprincipal, dprinci);
+        }
+        catch(SQLException ex)
+        {
+            JOptionPane.showConfirmDialog(null,ex);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txtidentificacionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtidentificacionKeyPressed
+        // TODO add your handling code here:
+        try {
+            if (evt.getKeyCode() == 10) {
+                
+                gentidad = gestionM.listapersona(txtidentificacion.getText());
+                if (gentidad!=null) {
+                    txtApelliNom.setText(gentidad.getDescripcion());
+                    txtidentificacion.setText(gentidad.getIdentificacion());
+                    
+                }   
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showInputDialog(ex);
+        }
+    }//GEN-LAST:event_txtidentificacionKeyPressed
+
+    private void Nuevo()
+    {
+        dprinci = new ArrayList<dprincipal>();
+        gentidad = new entidad();
+        gentidad.setId(0);
+        gprincipal = new principal();
+        gprincipal.setId(0);
+        gprincipal.setIdestado(0);
+        gtentida= new tentidad();
+        gtentida.setId(1);
+        gentidad.setIdtentidad(gtentida);
+    }
+    private void txtidentificacionInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtidentificacionInputMethodTextChanged
+        // TODO add your handling code here:
+        JOptionPane.showInputDialog(evt.getText());
+    }//GEN-LAST:event_txtidentificacionInputMethodTextChanged
+    private dprincipal aniadir(Integer id, boolean cbx, Integer estado) {
+        dprincipal dprin = new dprincipal();
+        dieta die = new dieta();
+        die.setId(id);
+        dprin.setIddieta(die);
+        dprin.setActivado(cbx);
+        dprin.setIdestado(estado);
+        return dprin;
+    }
+
+    private void asignarInterfasAGestion() {
+
+        if (gentidad.getId()==0) {
+        gentidad.setIdentificacion(txtidentificacion.getText());
+        gentidad.setDescripcion(this.txtApelliNom.getText());
+        }
+        gprincipal.setFecha(dtfecha.getDate());
+        //gprincipal.setIdhorario();
+        Calendar cald =  Calendar.getInstance();
+        if (cald.get(Calendar.HOUR_OF_DAY)<8) {
+          gprincipal.setIdhorario(1);  
+        }
+        if (cald.get(Calendar.HOUR_OF_DAY)<12) {
+          gprincipal.setIdhorario(2);    
+        }
+        if (cald.get(Calendar.HOUR_OF_DAY)<18) {
+          gprincipal.setIdhorario(3);      
+        }
+        gprincipal.setNum_cama("1");
+        gprincipal.setObservacion(this.txtObservacion.getText());
+        dprinci.add(aniadir(1, this.cbxLatanciaMaterna.isSelected(), 0));
+        dprinci.add(aniadir(2, this.cbxNPO.isSelected(), 0));
+        dprinci.add(aniadir(3, this.cbxAcompaniante.isSelected(), 0));
+        dprinci.add(aniadir(4, this.cbxHiposodica.isSelected(), 0));
+        dprinci.add(aniadir(5, this.cbxHipograsa.isSelected(), 0));
+        dprinci.add(aniadir(6, this.cbxPedi68.isSelected(), 0));
+        dprinci.add(aniadir(7, this.cbxPedi911.isSelected(), 0));
+        dprinci.add(aniadir(8, this.cbxPedi1223.isSelected(), 0));
+        dprinci.add(aniadir(9, this.cbxPedi26.isSelected(), 0));
+        dprinci.add(aniadir(10, this.cbxPedi711.isSelected(), 0));
+        dprinci.add(aniadir(11, this.cbxLiquiAca.isSelected(), 0));
+        dprinci.add(aniadir(12, this.cbxLiquiEst.isSelected(), 0));
+        dprinci.add(aniadir(13, this.cbxLiquiAmp.isSelected(), 0));
+        dprinci.add(aniadir(14, this.cbxBlaGast.isSelected(), 0));
+        dprinci.add(aniadir(15, this.cbxBlaInt.isSelected(), 0));
+        dprinci.add(aniadir(16, this.cbxHipoCal.isSelected(), 0));
+        dprinci.add(aniadir(17, this.cbxHipoProEst.isSelected(), 0));
+        dprinci.add(aniadir(18, this.cbxHipoHipo.isSelected(), 0));
+        dprinci.add(aniadir(19, this.cbxHipoHipe.isSelected(), 0));
+        dprinci.add(aniadir(20, this.cbxHipeHipe.isSelected(), 0));
+        dprinci.add(aniadir(21, this.cbxHiperp.isSelected(), 0));
+        dprinci.add(aniadir(22, this.cbxHipoc.isSelected(), 0));
+        dprinci.add(aniadir(23, this.cbxHipo1.isSelected(), 0));
+        dprinci.add(aniadir(24, this.cbxHipe2.isSelected(), 0));
+        dprinci.add(aniadir(25, this.cbxSinGlu.isSelected(), 0));
+        dprinci.add(aniadir(26, this.cbxIle1.isSelected(), 0));
+        dprinci.add(aniadir(27, this.cbxIle2.isSelected(), 0));
+        dprinci.add(aniadir(28, this.cbxIle3.isSelected(), 0));
+        dprinci.add(aniadir(29, this.cbxBlaMec.isSelected(), 0));
+        dprinci.add(aniadir(30, this.cbxTurGas.isSelected(), 0));
+    }
+
+    private void asignarGestionAInterface() {
+
+    }
 
     /**
      * @param args the command line arguments
@@ -621,55 +784,51 @@ public class frm_proceso extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frm_proceso().setVisible(true);
+                new frm_proceso(1).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox cbxAcompaniante;
+    private javax.swing.JCheckBox cbxBlaGast;
+    private javax.swing.JCheckBox cbxBlaInt;
+    private javax.swing.JCheckBox cbxBlaMec;
+    private javax.swing.JCheckBox cbxHipe2;
+    private javax.swing.JCheckBox cbxHipeHipe;
+    private javax.swing.JCheckBox cbxHiperp;
+    private javax.swing.JCheckBox cbxHipo1;
+    private javax.swing.JCheckBox cbxHipoCal;
+    private javax.swing.JCheckBox cbxHipoHipe;
+    private javax.swing.JCheckBox cbxHipoHipo;
+    private javax.swing.JCheckBox cbxHipoProEst;
+    private javax.swing.JCheckBox cbxHipoc;
+    private javax.swing.JCheckBox cbxHipograsa;
+    private javax.swing.JCheckBox cbxHiposodica;
+    private javax.swing.JCheckBox cbxIle1;
+    private javax.swing.JCheckBox cbxIle2;
+    private javax.swing.JCheckBox cbxIle3;
+    private javax.swing.JCheckBox cbxLatanciaMaterna;
+    private javax.swing.JCheckBox cbxLiquiAca;
+    private javax.swing.JCheckBox cbxLiquiAmp;
+    private javax.swing.JCheckBox cbxLiquiEst;
+    private javax.swing.JCheckBox cbxNPO;
+    private javax.swing.JCheckBox cbxPedi1223;
+    private javax.swing.JCheckBox cbxPedi26;
+    private javax.swing.JCheckBox cbxPedi68;
+    private javax.swing.JCheckBox cbxPedi711;
+    private javax.swing.JCheckBox cbxPedi911;
+    private javax.swing.JCheckBox cbxSinGlu;
+    private javax.swing.JCheckBox cbxTurGas;
+    private com.toedter.calendar.JCalendar dtfecha;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private com.toedter.calendar.JCalendar jCalendar1;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox10;
-    private javax.swing.JCheckBox jCheckBox11;
-    private javax.swing.JCheckBox jCheckBox12;
-    private javax.swing.JCheckBox jCheckBox13;
-    private javax.swing.JCheckBox jCheckBox14;
-    private javax.swing.JCheckBox jCheckBox15;
-    private javax.swing.JCheckBox jCheckBox19;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox20;
-    private javax.swing.JCheckBox jCheckBox21;
-    private javax.swing.JCheckBox jCheckBox22;
-    private javax.swing.JCheckBox jCheckBox23;
-    private javax.swing.JCheckBox jCheckBox24;
-    private javax.swing.JCheckBox jCheckBox25;
-    private javax.swing.JCheckBox jCheckBox26;
-    private javax.swing.JCheckBox jCheckBox27;
-    private javax.swing.JCheckBox jCheckBox28;
-    private javax.swing.JCheckBox jCheckBox29;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox30;
-    private javax.swing.JCheckBox jCheckBox31;
-    private javax.swing.JCheckBox jCheckBox32;
-    private javax.swing.JCheckBox jCheckBox33;
-    private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox5;
-    private javax.swing.JCheckBox jCheckBox6;
-    private javax.swing.JCheckBox jCheckBox7;
-    private javax.swing.JCheckBox jCheckBox8;
-    private javax.swing.JCheckBox jCheckBox9;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JList jList1;
-    private javax.swing.JList jList2;
-    private javax.swing.JList jList3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
@@ -686,8 +845,11 @@ public class frm_proceso extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JSplitPane jSplitPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JList lbx1;
+    private javax.swing.JList lbx2;
+    private javax.swing.JList lbx3;
+    private javax.swing.JTextField txtApelliNom;
+    private javax.swing.JTextArea txtObservacion;
+    private javax.swing.JTextField txtidentificacion;
     // End of variables declaration//GEN-END:variables
 }

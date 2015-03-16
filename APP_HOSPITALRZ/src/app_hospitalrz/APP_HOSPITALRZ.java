@@ -5,6 +5,8 @@
  */
 package app_hospitalrz;
 
+import lib_presentacion.frm_proceso;
+
 /**
  *
  * @author juliovicente
@@ -16,6 +18,8 @@ public class APP_HOSPITALRZ {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        frm_proceso frm = new frm_proceso(1);
+        frm.show();
     }
     
 }

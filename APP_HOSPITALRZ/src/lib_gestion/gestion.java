@@ -12,7 +12,7 @@ public class gestion {
 
     BaseDatos_principal BD = null;
     public gestion() {
-        BaseDatos_principal BD = new BaseDatos_principal();
+         BD = new BaseDatos_principal();
     }
     
     public void Insertar(entidad Entidad, principal Principal, ArrayList<dprincipal> Dprincipal) throws SQLException {  
@@ -23,5 +23,8 @@ public class gestion {
     }  
     public ArrayList<entidad> ListarEntidad() throws SQLException{ return BD.Listar_Entidades();}
     public ArrayList<dprincipal> Listar_principal(int identidad) throws SQLException{ return BD.Listar_principal(identidad);}
- 
+    public entidad listapersona(String iden) throws SQLException
+    {
+        return BD.ListaPersona(iden);
+    }
 }

@@ -24,6 +24,7 @@ public class BaseDatos_principal {
     try 
     {
         con = new NpgSqlConnection().getConection(); 
+        if(Entidad.getId()==0){
         stmt = con.prepareCall("{call hrz.entidad_insert (?,?,?,?)}");  
         stmt.setString(1,Entidad.getIdentificacion());  
         stmt.setString(2,Entidad.getDescripcion());  
@@ -34,8 +35,9 @@ public class BaseDatos_principal {
             {  
                 Entidad.setId(rs.getInt(1));  
             }
+        }
         stmt = con.prepareCall("{call hrz.principal_insert (?,?,?,?,?,?,?)}");  
-        stmt.setDate(1, (Date) Principal.getFecha());  
+        stmt.setDate(1,  new java.sql.Date((Principal.getFecha().getTime())));  
         stmt.setInt(2,Principal.getIddertamento().getId());  
         stmt.setInt(3,Principal.getIdhorario());  
         stmt.setString(4,Principal.getNum_cama());
@@ -53,8 +55,8 @@ public class BaseDatos_principal {
            stmt = con.prepareCall("{call hrz.dprincipal_insert (?,?,?,?)}"); 
             stmt.setInt(1, Principal.getId());
             stmt.setInt(2, Dprincipal.getIddieta().getId());
-            stmt.setInt(3, Dprincipal.getIdestado());
-            stmt.setBoolean(4, Dprincipal.getActivado());
+            stmt.setBoolean(3, Dprincipal.getActivado());
+            stmt.setInt(4, Dprincipal.getIdestado());
             rs = stmt.executeQuery();  
         }
     }
@@ -190,4 +192,35 @@ public class BaseDatos_principal {
         return Dprincipales; 
  
  } 
+ public entidad ListaPersona(String identi) throws SQLException
+ {
+     Connection con = null;  
+        CallableStatement stmt = null;  
+        entidad Entidad = null;  
+        ResultSet rs = null; 
+        try {  
+            con = new NpgSqlConnection().getConection();  
+            stmt = con.prepareCall("{call hrz.entidad_selecti(?)}");  
+            stmt.setString(1, identi);
+            Entidad = new entidad();  
+            rs = stmt.executeQuery();    
+            while (rs.next()) {   
+                Entidad.setId(rs.getInt("id"));
+                Entidad.setDescripcion(rs.getString("descripcion"));
+                Entidad.setIdentificacion(rs.getString("identificacion"));
+                tentidad Tentidad = new tentidad();
+                Tentidad.setId(rs.getInt("idtentidad"));
+                Entidad.setIdtentidad(Tentidad);
+                Entidad.setIdestado(rs.getInt("idestado"));
+            }  
+        }  
+        catch(SQLException ex) {  
+            throw new SQLException(ex);  
+        }  
+        finally {  
+            NpgSqlUtilities.closeConnection(con,stmt,rs);  
+        } 
+        return Entidad;
+ }
+          
 }
