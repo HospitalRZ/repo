@@ -15,7 +15,7 @@ public class gestion {
         BaseDatos_principal BD = new BaseDatos_principal();
     }
     
-    public void Insertar(entidad Entidad, principal Principal, dprincipal Dprincipal) throws SQLException {  
+    public void Insertar(entidad Entidad, principal Principal, ArrayList<dprincipal> Dprincipal) throws SQLException {  
         BD.Insert(Entidad, Principal, Dprincipal);
     }  
     public void Actualizar(entidad Entidad, principal Principal, dprincipal Dprincipal)throws SQLException {  

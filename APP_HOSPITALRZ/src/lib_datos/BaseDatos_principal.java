@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * @author Jeibe-PC
  */
 public class BaseDatos_principal {
- public void Insert(entidad Entidad, principal Principal, dprincipal Dprincipal) throws SQLException 
+ public void Insert(entidad Entidad, principal Principal, ArrayList<dprincipal> Dprincipales ) throws SQLException 
  {
         Connection con = null;  
         CallableStatement stmt = null;  
@@ -47,16 +47,16 @@ public class BaseDatos_principal {
             {  
                 Principal.setId(rs.getInt(1));  
             }
-        stmt = con.prepareCall("{call hrz.dprincipal_insert (?,?,?,?)}"); 
-        stmt.setInt(1, Principal.getId());
-        stmt.setInt(2, Dprincipal.getIddieta().getId());
-        stmt.setInt(3, Dprincipal.getIdestado());
-        stmt.setBoolean(4, Dprincipal.getActivado());
-        rs = stmt.executeQuery();  
-            if (rs.next())  
-            {  
-                Dprincipal.setId(rs.getInt(1));  
-            }
+        
+        for(dprincipal Dprincipal: Dprincipales)
+        {
+           stmt = con.prepareCall("{call hrz.dprincipal_insert (?,?,?,?)}"); 
+            stmt.setInt(1, Principal.getId());
+            stmt.setInt(2, Dprincipal.getIddieta().getId());
+            stmt.setInt(3, Dprincipal.getIdestado());
+            stmt.setBoolean(4, Dprincipal.getActivado());
+            rs = stmt.executeQuery();  
+        }
     }
     catch (SQLException ex) {  
            throw new SQLException(ex);  
@@ -110,7 +110,7 @@ public class BaseDatos_principal {
         ResultSet rs = null; 
         try {  
             con = new NpgSqlConnection().getConection();  
-            stmt = con.prepareCall("{call hrz.entidad_select_all()}");  
+            stmt = con.prepareCall("{call hrz.entidad_select()}");  
             Entidades = new ArrayList<>();  
             rs = stmt.executeQuery();    
             while (rs.next()) {  
