@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="916df988-cc75-4151-8cdd-11b75a2c8b04">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="21"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="FechaDesde" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FechaHasta" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="iddepartamento" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT * FROM crosstab(
+  $$ SELECT principal."ncama" AS ncama, principal."fecha" AS fecha, entidad."descripcion" AS entidad, age(principal."fecha") AS edad, dieta."id" AS iddieta, 1 
+	FROM "hrz"."principal" principal 
+	INNER JOIN "hrz"."dprincipal" dprincipal ON principal."id" = dprincipal."idprincipal" AND principal."idestado" = dprincipal."idestado"
+	INNER JOIN "hrz"."dieta" dieta ON dprincipal."iddieta" = dieta."id" AND dprincipal."idestado" = dieta."idestado"
+	INNER JOIN "hrz"."entidad" entidad ON principal."identidad" = entidad."id" AND principal."idestado" = entidad."idestado"
+	WHERE principal."idestado" = 0 AND dprincipal."activado" = true
+	AND principal."iddepartamento" = 1
+	ORDER BY dieta."id" $$,
+  $$ SELECT m FROM generate_series(1,30) m $$
+) AS (
+  ncama int, fecha  date, entidad character varying, edad character varying, 
+  "LACTANCIA MATERNA" int, "NPO" int, "ACOMPAÑANTE" int, "HIPOSODICA" int, "HIPOGRASA" int, "PEDIATRÍA 6 A 8 MESES" int, "PEDIATRÍA 9 A 11 MESES" int, "PEDIATRÍA 12 A 23 MESES" int, "PEDIATRÍA 2 A 6 AÑOS" int, "PEDIATRÍA 7 A 11 AÑOS" int, 
+  "LÍQUIDA ACALÓRICA" int, "LÍQUIDA ESTRICTA" int, "LÍQUIDA AMPLIA" int, "BLANDA GÁSTRICA" int, "BLANDA INTESTINAL" int, "BLANDA MECÁNICA GERIÁTRICA" int, "TURMIX: SNG Y GASTROTOMÍA" int, "ILEOSTOMÍA FASE 1" int, "ILEOSTOMÍA FASE 2" int, "ILEOSTOMÍA FASE 3" int, 
+  "HIPO CALORÍCA" int, "HIPO PROTEICA ESTRICTA" int, "HIPOPROTEICA" int, "HIPERCALORICA" int, "HIPERCALORICA-HIPERPROTEICA" int, "HIPERPROTEICA" int, "HIPOHIDROCARBONADA" int, "HIPOHIDROCARBONADA HIPOPROTEICA" int, "HIPOHIDROCARBONADA HIPERPROTEICA" int, "SIN GLUTEN" int
+);]]>
+	</queryString>
+	<field name="ncama" class="java.lang.Integer"/>
+	<field name="fecha" class="java.sql.Date"/>
+	<field name="entidad" class="java.lang.String"/>
+	<field name="edad" class="java.lang.String"/>
+	<field name="LACTANCIA MATERNA" class="java.lang.Integer"/>
+	<field name="NPO" class="java.lang.Integer"/>
+	<field name="ACOMPAÑANTE" class="java.lang.Integer"/>
+	<field name="HIPOSODICA" class="java.lang.Integer"/>
+	<field name="HIPOGRASA" class="java.lang.Integer"/>
+	<field name="PEDIATRÍA 6 A 8 MESES" class="java.lang.Integer"/>
+	<field name="PEDIATRÍA 9 A 11 MESES" class="java.lang.Integer"/>
+	<field name="PEDIATRÍA 12 A 23 MESES" class="java.lang.Integer"/>
+	<field name="PEDIATRÍA 2 A 6 AÑOS" class="java.lang.Integer"/>
+	<field name="PEDIATRÍA 7 A 11 AÑOS" class="java.lang.Integer"/>
+	<field name="LÍQUIDA ACALÓRICA" class="java.lang.Integer"/>
+	<field name="LÍQUIDA ESTRICTA" class="java.lang.Integer"/>
+	<field name="LÍQUIDA AMPLIA" class="java.lang.Integer"/>
+	<field name="BLANDA GÁSTRICA" class="java.lang.Integer"/>
+	<field name="BLANDA INTESTINAL" class="java.lang.Integer"/>
+	<field name="BLANDA MECÁNICA GERIÁTRICA" class="java.lang.Integer"/>
+	<field name="TURMIX: SNG Y GASTROTOMÍA" class="java.lang.Integer"/>
+	<field name="ILEOSTOMÍA FASE 1" class="java.lang.Integer"/>
+	<field name="ILEOSTOMÍA FASE 2" class="java.lang.Integer"/>
+	<field name="ILEOSTOMÍA FASE 3" class="java.lang.Integer"/>
+	<field name="HIPO CALORÍCA" class="java.lang.Integer"/>
+	<field name="HIPO PROTEICA ESTRICTA" class="java.lang.Integer"/>
+	<field name="HIPOPROTEICA" class="java.lang.Integer"/>
+	<field name="HIPERCALORICA" class="java.lang.Integer"/>
+	<field name="HIPERCALORICA-HIPERPROTEICA" class="java.lang.Integer"/>
+	<field name="HIPERPROTEICA" class="java.lang.Integer"/>
+	<field name="HIPOHIDROCARBONADA" class="java.lang.Integer"/>
+	<field name="HIPOHIDROCARBONADA HIPOPROTEICA" class="java.lang.Integer"/>
+	<field name="HIPOHIDROCARBONADA HIPERPROTEICA" class="java.lang.Integer"/>
+	<field name="SIN GLUTEN" class="java.lang.Integer"/>
+	<group name="fecha">
+		<groupExpression><![CDATA[$F{fecha}]]></groupExpression>
+		<groupHeader>
+			<band height="27">
+				<frame>
+					<reportElement mode="Opaque" x="0" y="3" width="721" height="24" forecolor="#B89F7D" backcolor="#000000" uuid="a45f8ed6-aac6-48ef-bee5-d9fbc7774f9f"/>
+					<textField isStretchWithOverflow="true">
+						<reportElement style="SubTitle" x="2" y="0" width="695" height="24" forecolor="#FFFFFF" uuid="e20e2302-ea40-417b-865f-88d0cf4e8c27"/>
+						<textElement>
+							<font size="14" isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+					</textField>
+				</frame>
+				<rectangle>
+					<reportElement x="725" y="3" width="77" height="24" backcolor="#666666" uuid="a188e117-5d1a-4495-b782-b76ae4766720"/>
+					<graphicElement>
+						<pen lineWidth="0.0"/>
+					</graphicElement>
+				</rectangle>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="102" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="29" y="2" width="757" height="53" backcolor="#D4A90A" uuid="635697c2-8e84-4c33-9672-68eca097182f"/>
+				<staticText>
+					<reportElement style="Title" x="59" y="3" width="655" height="47" uuid="13a3eab4-f81a-4e38-9c99-1d244eeaad1c"/>
+					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
+					<textElement verticalAlignment="Middle">
+						<font size="28" isBold="false"/>
+					</textElement>
+					<text><![CDATA[HOSPITAL DR. RAFAEL RODRIGUEZ ZAMBRANO]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="70" width="779" height="32" forecolor="#000000" backcolor="#FFFFFF" uuid="fd272e15-4a0d-41a7-918c-2d7f9129439e"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="635" y="12" width="144" height="20" forecolor="#000000" backcolor="#000000" uuid="ab63ac34-2b6b-425a-9260-c503662fdf78"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="SubTitle" x="3" y="0" width="316" height="29" forecolor="#000000" backcolor="#000000" uuid="4540347a-69ef-41df-aec1-1f92d192494f"/>
+					<textElement>
+						<font size="22" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Reporte diario]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="90" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="24" height="90" forecolor="#000000" uuid="2afa2c93-6c60-4b12-a0d1-2ba79a60da75"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° CAMA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="24" y="72" width="163" height="18" forecolor="#000000" uuid="f6fbd7af-1339-4486-91b4-daec59dd106b"/>
+				<textElement verticalAlignment="Middle" rotation="None">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PACIENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="187" y="0" width="24" height="90" forecolor="#000000" uuid="398c5d3c-6c42-4224-8933-a3d26ee58ea0"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EDAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="211" y="0" width="24" height="90" forecolor="#000000" uuid="0fa83a49-9c82-4bdc-9bdf-545f65b356b5"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LACTANCIA MATERNA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="235" y="0" width="13" height="90" forecolor="#000000" uuid="7b9f47f5-146d-4a60-b6a7-573051781102"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NPO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="248" y="0" width="15" height="90" forecolor="#000000" uuid="8295925c-c6c9-4f04-85bb-9b0121182b8c"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ACOMPAÑANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="263" y="0" width="16" height="90" forecolor="#000000" uuid="e6979e30-3e67-4b31-b7d9-cba1fb634128"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HIPOSODICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="279" y="0" width="17" height="90" forecolor="#000000" uuid="fc225135-690b-4e16-bfde-bcc709310eff"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HIPOGRASA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="296" y="0" width="24" height="90" forecolor="#000000" uuid="962354d8-b8be-4747-9e61-90486c7ce29c"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PEDIATRÍA 6 A 8 MESES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="320" y="0" width="24" height="90" forecolor="#000000" uuid="3be2387e-a66b-482d-a245-10e079ff7ba6"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PEDIATRÍA 9 A 11 MESES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="344" y="0" width="24" height="90" forecolor="#000000" uuid="def0fb3a-2182-4d33-8174-149085952db8"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PEDIATRÍA 12 A 23 MESES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="368" y="0" width="23" height="90" forecolor="#000000" uuid="88100f0c-5add-4fb4-bc0b-e35a4a00cd3e"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PEDIATRÍA 2 A 6 AÑOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="391" y="0" width="23" height="90" forecolor="#000000" uuid="bcd950a7-f7ad-40a7-b2d4-aaabd669f3b9"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PEDIATRÍA 7 A 11 AÑOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="414" y="0" width="17" height="90" forecolor="#000000" uuid="2024eff8-ed27-415d-81b8-97d98979879b"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LÍQUIDA ACALÓRICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="431" y="0" width="16" height="90" forecolor="#000000" uuid="f4ad9973-4f28-4464-a3c3-26041fbc37d9"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LÍQUIDA ESTRICTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="447" y="0" width="17" height="90" forecolor="#000000" uuid="13e85889-a09e-4185-87bb-2e217ef6d89f"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LÍQUIDA AMPLIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="464" y="0" width="24" height="90" forecolor="#000000" uuid="5b443155-154c-49e0-adfc-61bc93826b83"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BLANDA GÁSTRICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="488" y="0" width="24" height="90" forecolor="#000000" uuid="25b83624-1338-4a63-ad37-972d5e39c1cc"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BLANDA INTESTINAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="536" y="0" width="24" height="90" forecolor="#000000" uuid="ba5dbac6-523d-4927-a447-051aac60e137"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TURMIX: SNG Y GASTROTOMÍA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="560" y="0" width="12" height="90" forecolor="#000000" uuid="e7ec5bc5-7d9c-495a-bfce-5171edaedc3a"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ILEOSTOMÍA FASE 1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="572" y="0" width="10" height="90" forecolor="#000000" uuid="22a93e67-8623-432c-84c0-3968f7c4a368"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ILEOSTOMÍA FASE 2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="582" y="0" width="14" height="90" forecolor="#000000" uuid="645fc784-4694-4240-9a97-3d7fe632f75c"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ILEOSTOMÍA FASE 3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="596" y="0" width="16" height="90" forecolor="#000000" uuid="27d9988d-a287-41e0-b2cc-896da505a9b3"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HIPO CALORÍCA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="612" y="0" width="24" height="90" forecolor="#000000" uuid="8f8ea898-c76c-432c-a767-c0f06a9eba61"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HIPO PROTEICA ESTRICTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="636" y="0" width="17" height="90" forecolor="#000000" uuid="5a59c464-85d7-4638-9a55-ebf6a01a63ea"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HIPOPROTEICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="653" y="0" width="16" height="90" forecolor="#000000" uuid="4576e2d4-68c6-4535-bf9d-aef0343957c6"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HIPERCALORICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="669" y="0" width="24" height="90" forecolor="#000000" uuid="84a62fe5-2c85-48d4-b305-981333c2f496"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HIPERCALORICA-HIPERPROTEICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="693" y="0" width="14" height="90" forecolor="#000000" uuid="c2fd133f-1280-4e02-9708-34e261902376"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HIPERPROTEICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="707" y="0" width="24" height="90" forecolor="#000000" uuid="3208e65c-0041-4ec3-94c6-7f7757921881"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HIPOHIDROCARBONADA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="731" y="0" width="24" height="90" forecolor="#000000" uuid="2fd1ed8e-77e2-455d-a606-11c12c316f0d"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HIPOHIDROCARBONADA HIPOPROTEICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="755" y="0" width="24" height="90" forecolor="#000000" uuid="1f3e28ee-6b76-4ace-9de5-84997bd2ffd3"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HIPOHIDROCARBONADA HIPERPROTEICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="779" y="0" width="13" height="90" forecolor="#000000" uuid="7abbfcdf-265a-4f3b-915e-2340de9540b6"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SIN GLUTEN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="512" y="0" width="24" height="90" forecolor="#000000" uuid="f17ed662-ca5c-4d44-a6d6-9ec7116ccc35"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BLANDA MECÁNICA GERIÁTRICA]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="797" height="18" uuid="e46b316d-c30d-46bb-adc3-0516cd31249e"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="24" height="18" uuid="bb4c1efa-3855-4272-a9cb-74483022e3c9"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{ncama} == null ? ' ' : $F{ncama} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="24" y="0" width="162" height="18" uuid="610096bc-4a6f-45e1-8162-73c1fc822653"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{entidad}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="186" y="0" width="24" height="18" uuid="5b6160d0-3bb2-4355-b447-6170ff279e71"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{edad}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="210" y="0" width="24" height="18" uuid="1e9b1db5-52e8-4068-a83a-be51b0a985b4"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{LACTANCIA MATERNA} == null ? ' ' : $F{LACTANCIA MATERNA} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="234" y="0" width="13" height="18" uuid="9e20a5a7-612f-42dc-a907-14c5d14df8c0"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{NPO} == null ? ' ' : $F{NPO} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="247" y="0" width="15" height="18" uuid="b6a1546a-f780-4f91-9669-e1d359222967"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{ACOMPAÑANTE} == null ? ' ' : $F{ACOMPAÑANTE} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="262" y="0" width="16" height="18" uuid="6e1ab70f-1535-4595-b8a4-348d5b8e8fd1"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{HIPOSODICA} == null ? ' ' : $F{HIPOSODICA} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="278" y="0" width="17" height="18" uuid="3e5ef73b-3235-4f6c-b928-962ca65dc6f8"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{HIPOGRASA} == null ? ' ' : $F{HIPOGRASA} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="295" y="0" width="24" height="18" uuid="80d7aab6-6378-42fc-900c-cd9cc0344d6a"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{PEDIATRÍA 6 A 8 MESES} == null ? ' ' : $F{PEDIATRÍA 6 A 8 MESES} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="319" y="0" width="24" height="18" uuid="cd1c54d9-2585-46ee-b03c-5f16af192e4a"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{PEDIATRÍA 9 A 11 MESES} == null ? ' ' : $F{PEDIATRÍA 9 A 11 MESES} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="343" y="0" width="24" height="18" uuid="bd5c36ae-c75f-441f-beb7-06bf91e21b54"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{PEDIATRÍA 12 A 23 MESES} == null ? ' ' : $F{PEDIATRÍA 12 A 23 MESES} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="367" y="0" width="23" height="18" uuid="252068d6-304e-4c31-8d26-4757e475be3f"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{PEDIATRÍA 2 A 6 AÑOS} == null ? ' ' : $F{PEDIATRÍA 2 A 6 AÑOS} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="390" y="0" width="23" height="18" uuid="7761f70b-af38-4e18-9739-3b1a810168e4"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{PEDIATRÍA 7 A 11 AÑOS} == null ? ' '  : $F{PEDIATRÍA 7 A 11 AÑOS} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="413" y="0" width="17" height="18" uuid="31f47ef1-f2f8-4a7c-a220-ee27c15ce183"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{LÍQUIDA ACALÓRICA} == null ? ' ' : $F{LÍQUIDA ACALÓRICA} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="430" y="0" width="16" height="18" uuid="c714c85e-dbeb-41fb-b445-451af2b7f309"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{LÍQUIDA ESTRICTA} == null ? ' ' : $F{LÍQUIDA ESTRICTA} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="446" y="0" width="17" height="18" uuid="2bec4d85-00e8-46d0-9acd-c4f9cf943d97"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{LÍQUIDA AMPLIA} == null ? ' ' : $F{LÍQUIDA AMPLIA} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="463" y="0" width="24" height="18" uuid="c5c62b9c-1317-4b72-8fc7-57e81705a16e"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{BLANDA GÁSTRICA} == null ? ' ' : $F{BLANDA GÁSTRICA} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="487" y="0" width="24" height="18" uuid="254b1676-f155-4b86-80cf-fc768522e577"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{BLANDA INTESTINAL} == null ? ' ' : $F{BLANDA INTESTINAL} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="511" y="0" width="24" height="18" uuid="d3f0f73a-a4b0-412d-ae84-c8cf6bed5e3c"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{BLANDA MECÁNICA GERIÁTRICA} == null ? ' ' : $F{BLANDA MECÁNICA GERIÁTRICA} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="535" y="0" width="24" height="18" uuid="ccd9c53f-a70b-4b3e-8518-ff64fa8f4473"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{TURMIX: SNG Y GASTROTOMÍA} == null ? ' ' : $F{TURMIX: SNG Y GASTROTOMÍA} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="560" y="0" width="12" height="18" uuid="3069a048-5ebe-4376-a4b2-2710e6bd9622"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{ILEOSTOMÍA FASE 1} == null ? ' ' : $F{ILEOSTOMÍA FASE 1} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="572" y="0" width="10" height="18" uuid="04f56c04-e359-4972-8975-1c55db313813"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{ILEOSTOMÍA FASE 2} == null ? ' ' : $F{ILEOSTOMÍA FASE 2} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="582" y="0" width="14" height="18" uuid="492e0a61-2b44-4278-b87e-c0be26d7dad0"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{ILEOSTOMÍA FASE 3} == null ? ' ' : $F{ILEOSTOMÍA FASE 3} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="596" y="0" width="16" height="18" uuid="31a613ec-e0a4-4740-9492-61f6ecceee86"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{HIPO CALORÍCA} == null ? ' ' : $F{HIPO CALORÍCA} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="612" y="0" width="24" height="18" uuid="e91f1842-ff04-4a2d-b2c0-afacf3b82a53"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{HIPO PROTEICA ESTRICTA} == null ? ' ' : $F{HIPO PROTEICA ESTRICTA} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="636" y="0" width="17" height="18" uuid="f9676970-7722-445c-aec3-90cbf88b5df0"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{HIPOPROTEICA} == null ? ' ' : $F{HIPOPROTEICA} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="653" y="0" width="16" height="18" uuid="352cd5ba-6ec5-4e28-ac61-e9602049526a"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{HIPERCALORICA} == null ? ' ' : $F{HIPERCALORICA} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="669" y="0" width="24" height="18" uuid="610be559-aa03-4974-8532-d6c16622a48d"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{HIPERCALORICA-HIPERPROTEICA} == null ? ' ' : $F{HIPERCALORICA-HIPERPROTEICA} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="693" y="0" width="14" height="18" uuid="bc84ae79-563b-46e6-9bc9-4e6d7aded57d"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{HIPERPROTEICA} == null ? ' ' : $F{HIPERPROTEICA} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="707" y="0" width="24" height="18" uuid="87f01ea9-db7d-4b58-8aeb-b90f51945be7"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{HIPOHIDROCARBONADA} == null  ? ' ' : $F{HIPOHIDROCARBONADA} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="731" y="0" width="24" height="18" uuid="24241853-bb9f-4588-9681-a0d98780489e"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{HIPOHIDROCARBONADA HIPOPROTEICA} == null ? ' ' : $F{HIPOHIDROCARBONADA HIPOPROTEICA} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="755" y="0" width="24" height="18" uuid="a09da8ad-3bbe-4723-a835-22bb82972a9e"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{HIPOHIDROCARBONADA HIPERPROTEICA} == null ? ' ' : $F{HIPOHIDROCARBONADA HIPERPROTEICA} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="779" y="0" width="13" height="18" uuid="504e72de-e967-4beb-97cb-eb58c30cecbe"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{SIN GLUTEN} == null ? ' ' : $F{SIN GLUTEN} )]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="5a10679c-eb83-4acf-a143-74e6a2251d50"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="25" forecolor="#D0B48E" backcolor="#000000" uuid="b3bb1b7e-c664-406b-943b-798bcd049211"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="757" y="3" width="40" height="20" forecolor="#FFFFFF" uuid="88597b8d-63c1-40a8-81a1-c3d74380a064"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="677" y="3" width="80" height="20" forecolor="#FFFFFF" uuid="805d5aab-6536-4e2a-9929-6e200b63e81f"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="3" width="197" height="20" forecolor="#FFFFFF" uuid="832e994a-4c43-4672-86ce-95ed3b868295"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

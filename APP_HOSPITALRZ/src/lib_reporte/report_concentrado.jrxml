@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a7169bcc-5030-4309-aa68-6facb39e2167">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="196"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM crosstab(
+  $$ 
+	select dp.descripcion as departamento, d.iddieta, SUM(1) from hrz.dprincipal d
+	inner join hrz.principal p ON p.id=d.idprincipal AND p.idestado=d.idestado
+	inner join hrz.departamento dp on dp.id=p.iddepartamento AND dp.idestado=p.idestado
+	where d.idestado=0 and d.activado = true
+	group by dp.descripcion, d.iddieta order by d.iddieta $$,
+  $$ SELECT m FROM generate_series(1,30) m $$
+) AS (
+  departamento character varying, 
+  "LACTANCIA MATERNA" bigint, "NPO" int, "ACOMPAÑANTE" int, "HIPOSODICA" int, "HIPOGRASA" int, "PEDIATRÍA 6 A 8 MESES" int, "PEDIATRÍA 9 A 11 MESES" int, "PEDIATRÍA 12 A 23 MESES" int, "PEDIATRÍA 2 A 6 AÑOS" int, "PEDIATRÍA 7 A 11 AÑOS" int, 
+  "LÍQUIDA ACALÓRICA" int, "LÍQUIDA ESTRICTA" int, "LÍQUIDA AMPLIA" int, "BLANDA GÁSTRICA" int, "BLANDA INTESTINAL" int, "BLANDA MECÁNICA GERIÁTRICA" int, "TURMIX: SNG Y GASTROTOMÍA" int, "ILEOSTOMÍA FASE 1" int, "ILEOSTOMÍA FASE 2" int, "ILEOSTOMÍA FASE 3" int, 
+  "HIPO CALORÍCA" int, "HIPO PROTEICA ESTRICTA" int, "HIPOPROTEICA" int, "HIPERCALORICA" int, "HIPERCALORICA-HIPERPROTEICA" int, "HIPERPROTEICA" int, "HIPOHIDROCARBONADA" int, "HIPOHIDROCARBONADA HIPOPROTEICA" int, "HIPOHIDROCARBONADA HIPERPROTEICA" int, "SIN GLUTEN" int
+);]]>
+	</queryString>
+	<field name="departamento" class="java.lang.String"/>
+	<field name="LACTANCIA MATERNA" class="java.lang.Long"/>
+	<field name="NPO" class="java.lang.Integer"/>
+	<field name="ACOMPAÑANTE" class="java.lang.Integer"/>
+	<field name="HIPOSODICA" class="java.lang.Integer"/>
+	<field name="HIPOGRASA" class="java.lang.Integer"/>
+	<field name="PEDIATRÍA 6 A 8 MESES" class="java.lang.Integer"/>
+	<field name="PEDIATRÍA 9 A 11 MESES" class="java.lang.Integer"/>
+	<field name="PEDIATRÍA 12 A 23 MESES" class="java.lang.Integer"/>
+	<field name="PEDIATRÍA 2 A 6 AÑOS" class="java.lang.Integer"/>
+	<field name="PEDIATRÍA 7 A 11 AÑOS" class="java.lang.Integer"/>
+	<field name="LÍQUIDA ACALÓRICA" class="java.lang.Integer"/>
+	<field name="LÍQUIDA ESTRICTA" class="java.lang.Integer"/>
+	<field name="LÍQUIDA AMPLIA" class="java.lang.Integer"/>
+	<field name="BLANDA GÁSTRICA" class="java.lang.Integer"/>
+	<field name="BLANDA INTESTINAL" class="java.lang.Integer"/>
+	<field name="BLANDA MECÁNICA GERIÁTRICA" class="java.lang.Integer"/>
+	<field name="TURMIX: SNG Y GASTROTOMÍA" class="java.lang.Integer"/>
+	<field name="ILEOSTOMÍA FASE 1" class="java.lang.Integer"/>
+	<field name="ILEOSTOMÍA FASE 2" class="java.lang.Integer"/>
+	<field name="ILEOSTOMÍA FASE 3" class="java.lang.Integer"/>
+	<field name="HIPO CALORÍCA" class="java.lang.Integer"/>
+	<field name="HIPO PROTEICA ESTRICTA" class="java.lang.Integer"/>
+	<field name="HIPOPROTEICA" class="java.lang.Integer"/>
+	<field name="HIPERCALORICA" class="java.lang.Integer"/>
+	<field name="HIPERCALORICA-HIPERPROTEICA" class="java.lang.Integer"/>
+	<field name="HIPERPROTEICA" class="java.lang.Integer"/>
+	<field name="HIPOHIDROCARBONADA" class="java.lang.Integer"/>
+	<field name="HIPOHIDROCARBONADA HIPOPROTEICA" class="java.lang.Integer"/>
+	<field name="HIPOHIDROCARBONADA HIPERPROTEICA" class="java.lang.Integer"/>
+	<field name="SIN GLUTEN" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="102" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="721" height="66" backcolor="#000000" uuid="8c17a339-cc68-4598-b174-e55b5c26013e"/>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="370" height="66" uuid="96e12f1b-4cee-4dee-a74f-0d7005193080"/>
+					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
+					<textElement verticalAlignment="Bottom">
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[Cherry Title]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="SubTitle" x="370" y="37" width="316" height="29" uuid="b49c00e6-b10c-404f-a1c2-bb341a69c41f"/>
+					<textElement textAlignment="Right">
+						<font size="22" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Cherry SubTitle]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="70" width="721" height="32" forecolor="#000000" backcolor="#CC0000" uuid="01a06866-3f32-4a5e-bd92-49d88ca55f9e"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="553" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="89d4537e-037e-4c3c-9514-a80acaa2eccf"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="100" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="0" y="80" width="209" height="20" forecolor="#000000" uuid="113fb15b-bb14-48e0-ad35-92399edb2996"/>
+				<textElement verticalAlignment="Middle" rotation="None">
+					<font fontName="Calibri" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DEPARTAMENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="209" y="0" width="18" height="100" forecolor="#000000" uuid="f2d45c88-0558-44bb-919e-c255b313e91d"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font fontName="Calibri" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LACTANCIA MATERNA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="227" y="0" width="19" height="100" forecolor="#000000" uuid="b8f97d73-7865-4070-84a4-4b14e199629f"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font fontName="Calibri" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NPO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="246" y="0" width="19" height="100" forecolor="#000000" uuid="dbb706ae-21e7-4ace-ad02-795d6160940c"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font fontName="Calibri" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ACOMPAÑANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="265" y="0" width="18" height="100" forecolor="#000000" uuid="178a7120-9967-47fc-9802-1d1859dde5cb"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font fontName="Calibri" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HIPOSODICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="283" y="0" width="18" height="100" forecolor="#000000" uuid="a2a108ff-fc41-42ae-a675-bc7e4791a2ae"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font fontName="Calibri" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HIPOGRASA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="301" y="0" width="19" height="100" forecolor="#000000" uuid="301bbc95-8077-4eea-8b7b-6de5593c5b69"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font fontName="Calibri" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PEDIATRÍA 6 A 8 MESES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="320" y="0" width="19" height="100" forecolor="#000000" uuid="18684e5f-e194-479c-9ca5-78215b44130c"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font fontName="Calibri" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PEDIATRÍA 9 A 11 MESES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="339" y="0" width="21" height="100" forecolor="#000000" uuid="b08a4fbb-0b84-4543-8018-d51e556e2742"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font fontName="Calibri" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PEDIATRÍA 12 A 23 MESES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="360" y="0" width="18" height="100" forecolor="#000000" uuid="d0ee82ba-7eca-4280-9e9e-1ab1748a02e0"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font fontName="Calibri" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PEDIATRÍA 2 A 6 AÑOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="378" y="0" width="25" height="100" forecolor="#000000" uuid="c50e40de-17a6-46ae-a5ae-62a214d133cc"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font fontName="Calibri" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PEDIATRÍA 7 A 11 AÑOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="403" y="0" width="19" height="100" forecolor="#000000" uuid="b307246c-7a77-4937-9397-088d601a0368"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font fontName="Calibri" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LÍQUIDA ACALÓRICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="422" y="0" width="18" height="100" forecolor="#000000" uuid="31eafaf0-7fbf-49e6-97cb-3c827383f9b5"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font fontName="Calibri" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LÍQUIDA ESTRICTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="440" y="0" width="17" height="100" forecolor="#000000" uuid="1d04f832-0f31-4a34-84d6-024b79b3f321"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font fontName="Calibri" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LÍQUIDA AMPLIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="457" y="0" width="19" height="100" forecolor="#000000" uuid="255bd7ca-1d14-40ee-8b54-6b44adc829d2"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font fontName="Calibri" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BLANDA GÁSTRICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="476" y="0" width="19" height="100" forecolor="#000000" uuid="eb66e19d-520c-40e5-8c5e-419ae5e9407f"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font fontName="Calibri" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BLANDA INTESTINAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="495" y="0" width="19" height="100" forecolor="#000000" uuid="e7df675c-6d49-4ab4-b102-516cc4a88dee"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font fontName="Calibri" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BLANDA MECÁNICA GERIÁTRICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="514" y="0" width="25" height="100" forecolor="#000000" uuid="ddc36c25-7b81-4d91-8d7a-e376764b89c6"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font fontName="Calibri" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TURMIX: SNG Y GASTROTOMÍA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="539" y="0" width="19" height="100" forecolor="#000000" uuid="19a410d0-3a1b-483c-a754-f392b8bdad78"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font fontName="Calibri" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ILEOSTOMÍA FASE 1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="558" y="0" width="19" height="100" forecolor="#000000" uuid="fe94623a-425d-4918-9ed5-588565161883"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font fontName="Calibri" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ILEOSTOMÍA FASE 2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="577" y="0" width="19" height="100" forecolor="#000000" uuid="77d5fa9f-1394-4edb-a6a8-9dce5a9de1ea"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font fontName="Calibri" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ILEOSTOMÍA FASE 3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="596" y="0" width="15" height="100" forecolor="#000000" uuid="4d4b19d0-06a1-4fb9-99b1-baba2b5a11b8"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font fontName="Calibri" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HIPO CALORÍCA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="611" y="0" width="18" height="100" forecolor="#000000" uuid="db22db26-ea04-49fc-b387-79adc1604867"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font fontName="Calibri" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HIPO PROTEICA ESTRICTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="629" y="0" width="15" height="100" forecolor="#000000" uuid="a1fd3cf1-6c0f-4579-8c54-3aba8d7d6f10"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font fontName="Calibri" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HIPOPROTEICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="644" y="0" width="17" height="100" forecolor="#000000" uuid="bfa9f0ee-ea8e-40e2-aa5d-2c0763782e55"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font fontName="Calibri" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HIPERCALORICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="661" y="0" width="25" height="100" forecolor="#000000" uuid="e8aefc10-4504-40cd-8ac3-6a4fb6b1e8fa"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font fontName="Calibri" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HIPERCALORICA-HIPERPROTEICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="686" y="0" width="24" height="100" forecolor="#000000" uuid="7f00506b-551c-441f-a1e2-7b4e70bed0b4"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font fontName="Calibri" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HIPERPROTEICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="710" y="0" width="19" height="100" forecolor="#000000" uuid="2bad4397-96b8-43a5-94f6-e462355764ae"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font fontName="Calibri" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HIPOHIDROCARBONADA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="729" y="0" width="25" height="100" forecolor="#000000" uuid="f2cbbed8-651c-4c10-9209-e709c903ea0c"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font fontName="Calibri" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HIPOHIDROCARBONADA HIPOPROTEICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="754" y="0" width="25" height="100" forecolor="#000000" uuid="9c5bbf0a-3cb8-483d-a877-545148807011"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font fontName="Calibri" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HIPOHIDROCARBONADA HIPERPROTEICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="779" y="0" width="18" height="100" forecolor="#000000" uuid="d466840b-e879-4335-94e8-f88306688293"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
+					<font fontName="Calibri" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SIN GLUTEN]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="797" height="18" uuid="3eda833c-f2cc-42e3-82d2-38cdb871b24d"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="209" height="18" uuid="38ada476-9542-41fa-ab9e-bbf1a841a887"/>
+					<textElement>
+						<font fontName="Calibri" size="14" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{departamento}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="209" y="0" width="15" height="18" uuid="5c09b4a6-ede8-4aec-a2ac-9035f2744ec3"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{LACTANCIA MATERNA} == null ? ' ' : $F{LACTANCIA MATERNA} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="227" y="0" width="19" height="18" uuid="dd80437a-6461-47cd-8a77-aa6e50fd0cc7"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{NPO} == null ? ' ' : $F{NPO} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="246" y="0" width="19" height="18" uuid="c871e29f-e45a-443f-9187-e7282ab90390"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{ACOMPAÑANTE} == null ? ' ' : $F{ACOMPAÑANTE} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="265" y="0" width="18" height="18" uuid="1d7f221f-8472-4064-bab2-7348416f441d"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{HIPOSODICA} == null ? ' ' : $F{HIPOSODICA} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="283" y="0" width="18" height="18" uuid="c779f38a-ec9a-4836-9254-ae3abf938d27"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{HIPOGRASA} == null ? ' ' : $F{HIPOGRASA} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="301" y="0" width="19" height="18" uuid="0be4b61d-ec14-4a33-a60f-a1e0a7c9377b"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{PEDIATRÍA 6 A 8 MESES} == null ? ' ' : $F{PEDIATRÍA 6 A 8 MESES} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="320" y="0" width="19" height="18" uuid="9abac95f-c0b0-4456-8da9-20d25c566560"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{PEDIATRÍA 9 A 11 MESES} == null ? ' ' : $F{PEDIATRÍA 9 A 11 MESES} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="339" y="0" width="21" height="18" uuid="a5036ad5-6641-4583-ba14-e6a104acf26a"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{PEDIATRÍA 12 A 23 MESES} == null ? ' ' : $F{PEDIATRÍA 12 A 23 MESES} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="360" y="0" width="18" height="18" uuid="bb818de1-2bc8-44de-8850-91f632a6b699"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{PEDIATRÍA 2 A 6 AÑOS} == null ? ' ' : $F{PEDIATRÍA 2 A 6 AÑOS} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="378" y="0" width="25" height="18" uuid="493892d2-deff-4147-8086-6d7512d6d5f2"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{PEDIATRÍA 7 A 11 AÑOS} == null ? ' ' : $F{PEDIATRÍA 7 A 11 AÑOS} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="403" y="0" width="19" height="18" uuid="2688c660-addd-449b-ad48-128b6786bbcb"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{LÍQUIDA ACALÓRICA} == null ? ' ' : $F{LÍQUIDA ACALÓRICA} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="422" y="0" width="18" height="18" uuid="a42ce550-17db-4d30-b9be-b67d32ec7cd4"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{LÍQUIDA ESTRICTA} == null ? ' ' : $F{LÍQUIDA ESTRICTA} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="440" y="0" width="17" height="18" uuid="9e473563-3196-4c2f-aab2-cb50f0c8e8b5"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{LÍQUIDA AMPLIA} == null ? ' ' : $F{LÍQUIDA AMPLIA} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="457" y="0" width="19" height="18" uuid="0f90c08e-f860-4c58-bf62-f8428be63879"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{BLANDA GÁSTRICA} == null ? ' ' : $F{BLANDA GÁSTRICA} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="476" y="0" width="19" height="18" uuid="dc651159-cf1f-4849-98f5-259efd8a2287"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{BLANDA INTESTINAL} == null ? ' ' : $F{BLANDA INTESTINAL} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="495" y="0" width="19" height="18" uuid="aea1b3fc-2d45-491c-940b-086e038f5333"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{BLANDA MECÁNICA GERIÁTRICA} == null ? ' ' : $F{BLANDA MECÁNICA GERIÁTRICA} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="514" y="0" width="25" height="18" uuid="6f5b2081-c853-483c-a295-2a1206232137"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{TURMIX: SNG Y GASTROTOMÍA} == null ? ' ' : $F{TURMIX: SNG Y GASTROTOMÍA} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="539" y="0" width="19" height="18" uuid="060e95ff-dd70-4d41-b143-772cf2dcc830"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{ILEOSTOMÍA FASE 1} == null ? ' ' : $F{ILEOSTOMÍA FASE 1} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="558" y="0" width="19" height="18" uuid="1e2d909a-f50d-4978-b864-14d6fdfc9e40"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{ILEOSTOMÍA FASE 2} == null ? ' ' : $F{ILEOSTOMÍA FASE 2} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="577" y="0" width="19" height="18" uuid="561901df-ea5c-4d38-b480-630579539c56"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{ILEOSTOMÍA FASE 3} == null ? ' ' : $F{ILEOSTOMÍA FASE 3} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="596" y="0" width="15" height="18" uuid="c0743423-9f98-48d5-8baf-9dbae15220b3"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{HIPO CALORÍCA} == null ? ' ' : $F{HIPO CALORÍCA} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="611" y="0" width="18" height="18" uuid="8834b512-0843-45ee-98c8-f9982fad1433"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{HIPO PROTEICA ESTRICTA} == null ? ' ' : $F{HIPO PROTEICA ESTRICTA} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="629" y="0" width="15" height="18" uuid="7b2f2e02-fcd5-4981-8c33-8bc801832e11"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{HIPOPROTEICA} == null ? ' ' : $F{HIPOPROTEICA} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="644" y="0" width="17" height="18" uuid="0220a3ef-2959-4725-97ae-c910464cda58"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{HIPERCALORICA} == null ? ' ' : $F{HIPERCALORICA} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="661" y="0" width="25" height="18" uuid="6dd9c04e-0342-4411-b6c5-549d134de1f4"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{HIPERCALORICA-HIPERPROTEICA} == null ? ' ' : $F{HIPERCALORICA-HIPERPROTEICA} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="686" y="0" width="24" height="18" uuid="5d989738-7cdb-4e9e-b297-1ff238285cbf"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{HIPERPROTEICA} == null ? ' ' : $F{HIPERPROTEICA} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="710" y="0" width="19" height="18" uuid="fdefd294-9507-4539-8d41-776003f87e2f"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{HIPOHIDROCARBONADA} == null ? ' ' : $F{HIPOHIDROCARBONADA} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="729" y="0" width="25" height="18" uuid="00d54ebf-d228-4a6b-9b01-14eb9991a204"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{HIPOHIDROCARBONADA HIPOPROTEICA} == null ? ' ' : $F{HIPOHIDROCARBONADA HIPOPROTEICA} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="754" y="0" width="25" height="18" uuid="d114e40c-2c26-4f98-b1e9-c0956e9e32b6"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{HIPOHIDROCARBONADA HIPERPROTEICA} == null ? ' ' : $F{HIPOHIDROCARBONADA HIPERPROTEICA} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="779" y="0" width="18" height="18" uuid="29eac947-2921-464f-8905-e18bb3cc2c35"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{SIN GLUTEN} == null ? ' ' : $F{SIN GLUTEN} )]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="36bb7285-495e-4a00-bd8d-b4f899a4ebb8"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="25" forecolor="#D0B48E" backcolor="#000000" uuid="3d75af61-1a6b-43a3-bb98-01fc1a983d7d"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="757" y="3" width="40" height="20" forecolor="#FFFFFF" uuid="54553046-828e-423e-8175-f4bbac5cfa5f"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="677" y="3" width="80" height="20" forecolor="#FFFFFF" uuid="6f99db90-abe9-4fc1-8be7-de2d78d22181"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="3" width="197" height="20" forecolor="#FFFFFF" uuid="15faa095-c957-42b8-b2e0-db714dfa3873"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
