@@ -240,5 +240,31 @@ public class BaseDatos_principal {
         }
         return Entidad;
     }
+    
+    public ArrayList<departamento> Listar_departamento() throws SQLException {
+        Connection con = null;
+            CallableStatement stmt1 = null;
+            ArrayList<departamento> ListaDepartamento = null;
+            ResultSet rs1 = null;
+        try {    
+            ListaDepartamento = new ArrayList<departamento>();
+            con = new NpgSqlConnection().getConection();
+            stmt1 = con.prepareCall("{call hrz.departamento_select(?)}");
+            stmt1.setInt(1, 0);
+            rs1 = stmt1.executeQuery();
+            while (rs1.next()) {
+                departamento departamento = new departamento();
+                departamento.setId(rs1.getInt("id"));
+                departamento.setDescripcion(rs1.getString("descripcion"));
+                ListaDepartamento.add(departamento);
+            }
+        } catch (SQLException ex) {
+            throw new SQLException(ex);
+        } finally {
+            NpgSqlUtilities.closeConnection(con, stmt1, rs1);
+        }
 
+        return ListaDepartamento;
+
+    }
 }

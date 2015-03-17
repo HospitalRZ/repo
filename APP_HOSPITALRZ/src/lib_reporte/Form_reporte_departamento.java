@@ -6,10 +6,13 @@
 package lib_reporte;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import lib_clases.departamento;
+import lib_datos.BaseDatos_principal;
 import lib_datos.NpgSqlConnection;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -27,8 +30,18 @@ public class Form_reporte_departamento extends javax.swing.JFrame {
     /**
      * Creates new form form_reporte
      */
-    public Form_reporte_departamento() {
+    BaseDatos_principal baseDatos= new BaseDatos_principal();
+    public Form_reporte_departamento() throws SQLException {
         initComponents();
+        AsignarDatos();
+    }
+    
+    private void AsignarDatos() throws SQLException
+    {
+        ArrayList<departamento> lista= baseDatos.Listar_departamento();
+        for (departamento lista1 : lista) {
+         this.lista_departamento.addItem(lista1.getDescripcion());
+        }
     }
 
     /**
@@ -48,8 +61,8 @@ public class Form_reporte_departamento extends javax.swing.JFrame {
         lista_departamento = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
         btnGenerar = new javax.swing.JButton();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jCalendarFechaDesde = new com.toedter.calendar.JDateChooser();
+        jCalendarFechaHasta = new com.toedter.calendar.JDateChooser();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -62,7 +75,6 @@ public class Form_reporte_departamento extends javax.swing.JFrame {
 
         jLabel4.setText("DEPARTAMENTO:");
 
-        lista_departamento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         lista_departamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lista_departamentoActionPerformed(evt);
@@ -94,11 +106,11 @@ public class Form_reporte_departamento extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jCalendarFechaDesde, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(18, 18, 18)
-                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jCalendarFechaHasta, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(42, 42, 42)
                 .addComponent(btnGenerar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(67, Short.MAX_VALUE))
@@ -114,12 +126,12 @@ public class Form_reporte_departamento extends javax.swing.JFrame {
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jCalendarFechaDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
-                            .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jCalendarFechaHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(btnGenerar, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
@@ -183,9 +195,9 @@ public class Form_reporte_departamento extends javax.swing.JFrame {
             String dir = "C:\\Users\\LUIS\\Documents\\NetBeansProjects\\repo\\APP_HOSPITALRZ\\src\\lib_reporte\\report_departamento.jrxml";
             JasperReport reporteJasper = JasperCompileManager.compileReport(dir);
             Map parametro = new HashMap();
-            //parametro.put("FechaDesde", this.jCalendarFechaDesde.getDate());
-            //parametro.put("FechaHasta", this.jCalendarFechaHasta.getDate());
-            //parametro.put("iddepartamento", Integer.parseInt("1") );
+            parametro.put("FechaDesde", this.jCalendarFechaDesde.getDate());
+            parametro.put("FechaHasta", this.jCalendarFechaHasta.getDate());
+            parametro.put("iddepartamento", Integer.parseInt("1") );
             JasperPrint mostrarReporte = JasperFillManager.fillReport(reporteJasper, null, conn.getConection());
             JasperViewer.viewReport(mostrarReporte);
         } catch (SQLException ex) {
@@ -230,7 +242,11 @@ public class Form_reporte_departamento extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Form_reporte_departamento().setVisible(true);
+                try {
+                    new Form_reporte_departamento().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Form_reporte_departamento.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -238,8 +254,8 @@ public class Form_reporte_departamento extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGenerar;
     private com.toedter.calendar.JCalendar jCalendar1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private com.toedter.calendar.JDateChooser jCalendarFechaDesde;
+    private com.toedter.calendar.JDateChooser jCalendarFechaHasta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
