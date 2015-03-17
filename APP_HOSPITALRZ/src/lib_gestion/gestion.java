@@ -21,10 +21,14 @@ public class gestion {
     public void Actualizar(entidad Entidad, principal Principal, dprincipal Dprincipal)throws SQLException {  
         BD.Update(Entidad, Principal, Dprincipal);
     }  
-    public ArrayList<entidad> ListarEntidad() throws SQLException{ return BD.Listar_Entidades();}
-    public ArrayList<dprincipal> Listar_principal(int identidad) throws SQLException{ return BD.Listar_principal(identidad);}
+    public ArrayList<entidad> ListarEntidad(int idhorario) throws SQLException{ return BD.Listar_Entidades(idhorario);}
+    public principal Listar_principal(int identidad) throws SQLException{ return BD.Listar_principal(identidad);}
     public entidad listapersona(String iden) throws SQLException
     {
         return BD.ListaPersona(iden);
     }
+    public ArrayList<dprincipal> Lista_dprincipal(principal p) throws SQLException{
+    return BD.Listar_dprincipal(p);
+    }
+ 
 }

@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import javax.net.ssl.SSLEngineResult;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import lib_clases.departamento;
 import lib_clases.dieta;
@@ -34,13 +35,14 @@ public class frm_proceso extends javax.swing.JFrame {
         gentidad = new entidad();
         gprincipal = new principal();
     }
-    public frm_proceso(int iddepartamento){
+
+    public frm_proceso(int iddepartamento) {
         initComponents();
         gestionM = new gestion();
         dprinci = new ArrayList<dprincipal>();
         gentidad = new entidad();
         gprincipal = new principal();
-        gtentida= new tentidad();
+        gtentida = new tentidad();
         gtentida.setId(1);
         gentidad.setIdtentidad(gtentida);
         departamento dep = new departamento();
@@ -49,13 +51,13 @@ public class frm_proceso extends javax.swing.JFrame {
         gentidad.setId(0);
         gprincipal.setId(0);
         gprincipal.setIdestado(0);
+        aniadeLista();
     }
-    tentidad gtentida ;
+    tentidad gtentida;
     gestion gestionM;
     ArrayList<dprincipal> dprinci;
     entidad gentidad;
     principal gprincipal;
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -73,9 +75,9 @@ public class frm_proceso extends javax.swing.JFrame {
         lbx1 = new javax.swing.JList();
         jScrollPane3 = new javax.swing.JScrollPane();
         lbx2 = new javax.swing.JList();
+        dtfecha = new com.toedter.calendar.JCalendar();
         jScrollPane4 = new javax.swing.JScrollPane();
         lbx3 = new javax.swing.JList();
-        dtfecha = new com.toedter.calendar.JCalendar();
         jPanel2 = new javax.swing.JPanel();
         jSplitPane2 = new javax.swing.JSplitPane();
         jPanel3 = new javax.swing.JPanel();
@@ -90,6 +92,7 @@ public class frm_proceso extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        txtcama = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         cbxLatanciaMaterna = new javax.swing.JCheckBox();
         cbxNPO = new javax.swing.JCheckBox();
@@ -141,12 +144,22 @@ public class frm_proceso extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
+        lbx1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbx1MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(lbx1);
 
         lbx2.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
+        });
+        lbx2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbx2MouseClicked(evt);
+            }
         });
         jScrollPane3.setViewportView(lbx2);
 
@@ -155,6 +168,11 @@ public class frm_proceso extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
+        lbx3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbx3MouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(lbx3);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -162,17 +180,23 @@ public class frm_proceso extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(dtfecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel4)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2)
-                    .addComponent(jScrollPane4))
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane2)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(38, 38, 38)
+                                .addComponent(dtfecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane4)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,11 +205,11 @@ public class frm_proceso extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(dtfecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
-                .addGap(13, 13, 13)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -208,7 +232,7 @@ public class frm_proceso extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(235, Short.MAX_VALUE)
+                .addContainerGap(357, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -237,10 +261,10 @@ public class frm_proceso extends javax.swing.JFrame {
 
         txtidentificacion.setName("txtcedula"); // NOI18N
         txtidentificacion.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 txtidentificacionInputMethodTextChanged(evt);
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         txtidentificacion.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -254,6 +278,11 @@ public class frm_proceso extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(51, 51, 255));
         jButton1.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jButton1.setText("NUEVO");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(51, 51, 255));
         jButton2.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
@@ -272,7 +301,7 @@ public class frm_proceso extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -282,7 +311,9 @@ public class frm_proceso extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtidentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel8)))
+                        .addComponent(jLabel8)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtcama)))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -299,7 +330,9 @@ public class frm_proceso extends javax.swing.JFrame {
                         .addComponent(jLabel6))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(2, 2, 2)
-                        .addComponent(jLabel8)))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(txtcama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 20, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -391,7 +424,9 @@ public class frm_proceso extends javax.swing.JFrame {
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TRANSCICIÓN\t\t\t ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri", 1, 12))); // NOI18N
@@ -592,7 +627,7 @@ public class frm_proceso extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(189, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -607,11 +642,12 @@ public class frm_proceso extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(126, 126, 126))
         );
 
         jSplitPane2.setRightComponent(jPanel4);
@@ -637,7 +673,7 @@ public class frm_proceso extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 588, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -645,13 +681,12 @@ public class frm_proceso extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        try{
-        asignarInterfasAGestion();
-        gestionM.Insertar(gentidad, gprincipal, dprinci);
-        }
-        catch(SQLException ex)
-        {
-            JOptionPane.showConfirmDialog(null,ex);
+        try {
+            asignarInterfasAGestion();
+            gestionM.Insertar(gentidad, gprincipal, dprinci);
+            aniadeLista();
+        } catch (SQLException ex) {
+            JOptionPane.showConfirmDialog(null, ex);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -659,28 +694,27 @@ public class frm_proceso extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             if (evt.getKeyCode() == 10) {
-                
+
                 gentidad = gestionM.listapersona(txtidentificacion.getText());
-                if (gentidad!=null) {
+                if (gentidad != null) {
                     txtApelliNom.setText(gentidad.getDescripcion());
                     txtidentificacion.setText(gentidad.getIdentificacion());
-                    
-                }   
+
+                }
             }
         } catch (SQLException ex) {
             JOptionPane.showInputDialog(ex);
         }
     }//GEN-LAST:event_txtidentificacionKeyPressed
 
-    private void Nuevo()
-    {
+    private void Nuevo() {
         dprinci = new ArrayList<dprincipal>();
         gentidad = new entidad();
         gentidad.setId(0);
         gprincipal = new principal();
         gprincipal.setId(0);
         gprincipal.setIdestado(0);
-        gtentida= new tentidad();
+        gtentida = new tentidad();
         gtentida.setId(1);
         gentidad.setIdtentidad(gtentida);
     }
@@ -688,6 +722,42 @@ public class frm_proceso extends javax.swing.JFrame {
         // TODO add your handling code here:
         JOptionPane.showInputDialog(evt.getText());
     }//GEN-LAST:event_txtidentificacionInputMethodTextChanged
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        aniadeLista();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void lbx3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbx3MouseClicked
+        // TODO add your handling code here:
+        gentidad = lentar.get(lbx3.getSelectedIndex());
+        gprincipal.setId(gentidad.getId());
+        Cargar();
+    }//GEN-LAST:event_lbx3MouseClicked
+
+    private void lbx2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbx2MouseClicked
+        // TODO add your handling code here:
+        gentidad = lenmed.get(lbx2.getSelectedIndex());
+        gprincipal.setId(gentidad.getId());
+        Cargar();
+    }//GEN-LAST:event_lbx2MouseClicked
+
+    private void lbx1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbx1MouseClicked
+        // TODO add your handling code here:
+        gentidad = lenma.get(lbx1.getSelectedIndex());
+        gprincipal.setId(gentidad.getId());
+        Cargar();
+    }//GEN-LAST:event_lbx1MouseClicked
+    private void Cargar() {
+        try {
+            gprincipal = gestionM.Listar_principal(gprincipal.getId());
+            gentidad = gprincipal.getIdentidad();
+            dprinci = gestionM.Lista_dprincipal(gprincipal);
+        } catch (SQLException ex) {
+            JOptionPane.showConfirmDialog(null, ex);
+        }
+    }
+
     private dprincipal aniadir(Integer id, boolean cbx, Integer estado) {
         dprincipal dprin = new dprincipal();
         dieta die = new dieta();
@@ -700,23 +770,25 @@ public class frm_proceso extends javax.swing.JFrame {
 
     private void asignarInterfasAGestion() {
 
-        if (gentidad.getId()==0) {
-        gentidad.setIdentificacion(txtidentificacion.getText());
-        gentidad.setDescripcion(this.txtApelliNom.getText());
+        if (gentidad.getId() == 0) {
+            gentidad.setIdentificacion(txtidentificacion.getText());
+            gentidad.setDescripcion(this.txtApelliNom.getText());
         }
         gprincipal.setFecha(dtfecha.getDate());
         //gprincipal.setIdhorario();
-        Calendar cald =  Calendar.getInstance();
-        if (cald.get(Calendar.HOUR_OF_DAY)<8) {
-          gprincipal.setIdhorario(1);  
+        Calendar cald = Calendar.getInstance();
+        if (cald.get(Calendar.HOUR_OF_DAY) < 8) {
+            gprincipal.setIdhorario(1);
+        } else {
+            if (cald.get(Calendar.HOUR_OF_DAY) < 12) {
+                gprincipal.setIdhorario(2);
+            } else {
+                if (cald.get(Calendar.HOUR_OF_DAY) < 18) {
+                    gprincipal.setIdhorario(3);
+                }
+            }
         }
-        if (cald.get(Calendar.HOUR_OF_DAY)<12) {
-          gprincipal.setIdhorario(2);    
-        }
-        if (cald.get(Calendar.HOUR_OF_DAY)<18) {
-          gprincipal.setIdhorario(3);      
-        }
-        gprincipal.setNum_cama("1");
+        gprincipal.setNum_cama(this.txtcama.getText());
         gprincipal.setObservacion(this.txtObservacion.getText());
         dprinci.add(aniadir(1, this.cbxLatanciaMaterna.isSelected(), 0));
         dprinci.add(aniadir(2, this.cbxNPO.isSelected(), 0));
@@ -749,8 +821,73 @@ public class frm_proceso extends javax.swing.JFrame {
         dprinci.add(aniadir(29, this.cbxBlaMec.isSelected(), 0));
         dprinci.add(aniadir(30, this.cbxTurGas.isSelected(), 0));
     }
+    ArrayList<entidad> lenma;
+    ArrayList<entidad> lenmed;
+    ArrayList<entidad> lentar;
+
+    private DefaultListModel<String> datas(ArrayList<entidad> lista) {
+        DefaultListModel<String> model = new DefaultListModel<>();
+        for (entidad enti : lista) {
+            entidad eg = new entidad();
+            eg = enti;
+            String data = eg.getDescripcion();
+            model.addElement(data);
+            //model.addElement(eg.getDescripcion());
+        }
+        return model;
+    }
+
+    private void aniadeLista() {
+        try {
+            lenma = new ArrayList<entidad>();
+            lenmed = new ArrayList<entidad>();
+            lentar = new ArrayList<entidad>();
+            lenma = gestionM.ListarEntidad(1);
+            lenmed = gestionM.ListarEntidad(2);
+            lentar = gestionM.ListarEntidad(3);
+            lbx1.setModel(datas(lenma));
+            lbx2.setModel(datas(lenmed));
+            lbx3.setModel(datas(lentar));
+
+        } catch (SQLException ex) {
+            JOptionPane.showConfirmDialog(null, ex.getSQLState());
+        }
+    }
 
     private void asignarGestionAInterface() {
+        this.txtApelliNom.setText(gentidad.getDescripcion());
+        this.txtidentificacion.setText(gentidad.getIdentificacion());
+        this.txtcama.setText(gprincipal.getNum_cama());
+        this.cbxLatanciaMaterna.setSelected(true);
+        this.cbxNPO.setSelected(true);
+        this.cbxAcompaniante.setSelected(true);
+        this.cbxHiposodica.setSelected(true);
+        this.cbxHipograsa.setSelected(true);
+        this.cbxPedi68.setSelected(true);
+        this.cbxPedi911.setSelected(true);
+        this.cbxPedi1223.setSelected(true);
+        this.cbxPedi26.setSelected(true);
+        this.cbxPedi711.setSelected(true);
+        this.cbxLiquiAca.setSelected(true);
+        this.cbxLiquiEst.setSelected(true);
+        this.cbxLiquiAmp.setSelected(true);
+        this.cbxBlaGast.setSelected(true);
+        this.cbxBlaInt.setSelected(true);
+        this.cbxHipoCal.setSelected(true);
+        this.cbxHipoProEst.setSelected(true);
+        this.cbxHipoHipo.setSelected(true);
+        this.cbxHipoHipe.setSelected(true);
+        this.cbxHipeHipe.setSelected(true);
+        this.cbxHiperp.setSelected(true);
+        this.cbxHipoc.setSelected(true);
+        this.cbxHipo1.setSelected(true);
+        this.cbxHipe2.setSelected(true);
+        this.cbxSinGlu.setSelected(true);
+        this.cbxIle1.setSelected(true);
+        this.cbxIle2.setSelected(true);
+        this.cbxIle3.setSelected(true);
+        this.cbxBlaMec.setSelected(true);
+        this.cbxTurGas.setSelected(true);
 
     }
 
@@ -850,6 +987,7 @@ public class frm_proceso extends javax.swing.JFrame {
     private javax.swing.JList lbx3;
     private javax.swing.JTextField txtApelliNom;
     private javax.swing.JTextArea txtObservacion;
+    private javax.swing.JTextField txtcama;
     private javax.swing.JTextField txtidentificacion;
     // End of variables declaration//GEN-END:variables
 }
