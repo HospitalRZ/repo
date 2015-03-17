@@ -40,7 +40,7 @@ public class Form_reporte_departamento extends javax.swing.JFrame {
     {
         ArrayList<departamento> lista= baseDatos.Listar_departamento();
         for (departamento lista1 : lista) {
-         this.lista_departamento.addItem(lista1.getDescripcion());
+         this.lista_departamento.addItem( lista1.getDescripcion());
         }
     }
 
