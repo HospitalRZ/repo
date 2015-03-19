@@ -13,18 +13,19 @@
 			<style mode="Opaque" backcolor="#F0EFEF"/>
 		</conditionalStyle>
 	</style>
-	<queryString language="SQL">
+	<parameter name="FechaDesde" class="java.lang.String"/>
+	<queryString>
 		<![CDATA[SELECT * FROM crosstab(
   $$ 
 	select dp.descripcion as departamento, d.iddieta, SUM(1) from hrz.dprincipal d
 	inner join hrz.principal p ON p.id=d.idprincipal AND p.idestado=d.idestado
 	inner join hrz.departamento dp on dp.id=p.iddepartamento AND dp.idestado=p.idestado
-	where d.idestado=0 and d.activado = true
+	where d.idestado=0 and d.activado = true 
 	group by dp.descripcion, d.iddieta order by d.iddieta $$,
-  $$ SELECT m FROM generate_series(1,30) m $$
+  $$ SELECT m FROM generate_series(1,28) m $$
 ) AS (
   departamento character varying, 
-  "LACTANCIA MATERNA" bigint, "NPO" int, "ACOMPAÑANTE" int, "HIPOSODICA" int, "HIPOGRASA" int, "PEDIATRÍA 6 A 8 MESES" int, "PEDIATRÍA 9 A 11 MESES" int, "PEDIATRÍA 12 A 23 MESES" int, "PEDIATRÍA 2 A 6 AÑOS" int, "PEDIATRÍA 7 A 11 AÑOS" int, 
+  "LACTANCIA MATERNA" bigint, "NPO" int, "ACOMPAÑANTE" int, "HIPOSODICA" int, "HIPOGRASA" int, "PEDIATRÍA 6 A 11 MESES" int, "PEDIATRÍA 12 A 59 MESES" int, "PEDIATRÍA 5 a 9 AÑOS" int, 
   "LÍQUIDA ACALÓRICA" int, "LÍQUIDA ESTRICTA" int, "LÍQUIDA AMPLIA" int, "BLANDA GÁSTRICA" int, "BLANDA INTESTINAL" int, "BLANDA MECÁNICA GERIÁTRICA" int, "TURMIX: SNG Y GASTROTOMÍA" int, "ILEOSTOMÍA FASE 1" int, "ILEOSTOMÍA FASE 2" int, "ILEOSTOMÍA FASE 3" int, 
   "HIPO CALORÍCA" int, "HIPO PROTEICA ESTRICTA" int, "HIPOPROTEICA" int, "HIPERCALORICA" int, "HIPERCALORICA-HIPERPROTEICA" int, "HIPERPROTEICA" int, "HIPOHIDROCARBONADA" int, "HIPOHIDROCARBONADA HIPOPROTEICA" int, "HIPOHIDROCARBONADA HIPERPROTEICA" int, "SIN GLUTEN" int
 );]]>
@@ -35,11 +36,9 @@
 	<field name="ACOMPAÑANTE" class="java.lang.Integer"/>
 	<field name="HIPOSODICA" class="java.lang.Integer"/>
 	<field name="HIPOGRASA" class="java.lang.Integer"/>
-	<field name="PEDIATRÍA 6 A 8 MESES" class="java.lang.Integer"/>
-	<field name="PEDIATRÍA 9 A 11 MESES" class="java.lang.Integer"/>
-	<field name="PEDIATRÍA 12 A 23 MESES" class="java.lang.Integer"/>
-	<field name="PEDIATRÍA 2 A 6 AÑOS" class="java.lang.Integer"/>
-	<field name="PEDIATRÍA 7 A 11 AÑOS" class="java.lang.Integer"/>
+	<field name="PEDIATRÍA 6 A 11 MESES" class="java.lang.Integer"/>
+	<field name="PEDIATRÍA 12 A 59 MESES" class="java.lang.Integer"/>
+	<field name="PEDIATRÍA 5 a 9 AÑOS" class="java.lang.Integer"/>
 	<field name="LÍQUIDA ACALÓRICA" class="java.lang.Integer"/>
 	<field name="LÍQUIDA ESTRICTA" class="java.lang.Integer"/>
 	<field name="LÍQUIDA AMPLIA" class="java.lang.Integer"/>
@@ -76,7 +75,70 @@
 		<variableExpression><![CDATA[$F{HIPOGRASA}]]></variableExpression>
 	</variable>
 	<variable name="SumPedriatria6" class="java.lang.Integer" calculation="Sum">
-		<variableExpression><![CDATA[$F{PEDIATRÍA 6 A 8 MESES}]]></variableExpression>
+		<variableExpression><![CDATA[]]></variableExpression>
+	</variable>
+	<variable name="SumPediatria12" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{PEDIATRÍA 12 A 59 MESES}]]></variableExpression>
+	</variable>
+	<variable name="SumPediatria5a9" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{PEDIATRÍA 5 a 9 AÑOS}]]></variableExpression>
+	</variable>
+	<variable name="SumLiAca" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{LÍQUIDA ACALÓRICA}]]></variableExpression>
+	</variable>
+	<variable name="SumLiEstricta" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{LÍQUIDA ESTRICTA}]]></variableExpression>
+	</variable>
+	<variable name="SumLiAmplia" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{LÍQUIDA AMPLIA}]]></variableExpression>
+	</variable>
+	<variable name="SumBlaGas" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{BLANDA GÁSTRICA}]]></variableExpression>
+	</variable>
+	<variable name="SumBlaIntestinal" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{BLANDA INTESTINAL}]]></variableExpression>
+	</variable>
+	<variable name="SumBlaMecanic" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{BLANDA MECÁNICA GERIÁTRICA}]]></variableExpression>
+	</variable>
+	<variable name="SumTurmix" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{TURMIX: SNG Y GASTROTOMÍA}]]></variableExpression>
+	</variable>
+	<variable name="SumIleFase1" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{ILEOSTOMÍA FASE 1}]]></variableExpression>
+	</variable>
+	<variable name="SumIleFase2" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{ILEOSTOMÍA FASE 2}]]></variableExpression>
+	</variable>
+	<variable name="SumIleFase3" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{ILEOSTOMÍA FASE 3}]]></variableExpression>
+	</variable>
+	<variable name="SumHipoProEstr" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{HIPO PROTEICA ESTRICTA}]]></variableExpression>
+	</variable>
+	<variable name="SumHipoproteica" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{HIPOPROTEICA}]]></variableExpression>
+	</variable>
+	<variable name="SumHipercalorica" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{HIPERCALORICA}]]></variableExpression>
+	</variable>
+	<variable name="SumHiperProCalo" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{HIPERCALORICA-HIPERPROTEICA}]]></variableExpression>
+	</variable>
+	<variable name="SumHiperproteica" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{HIPERPROTEICA}]]></variableExpression>
+	</variable>
+	<variable name="SumHipoHidroCarbo" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{HIPOHIDROCARBONADA}]]></variableExpression>
+	</variable>
+	<variable name="SumHipoHidroCarboHipotreica" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{HIPOHIDROCARBONADA HIPOPROTEICA}]]></variableExpression>
+	</variable>
+	<variable name="SumHipoHidroCarboHipertreica" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{HIPOHIDROCARBONADA HIPERPROTEICA}]]></variableExpression>
+	</variable>
+	<variable name="SumSinGluten" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{SIN GLUTEN}]]></variableExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
@@ -110,6 +172,10 @@
 					</textElement>
 					<text><![CDATA[Reporte Concentrado]]></text>
 				</staticText>
+				<textField>
+					<reportElement x="326" y="3" width="100" height="20" uuid="304e7c96-f681-4fda-910a-116e7a9d33d7"/>
+					<textFieldExpression><![CDATA[$P{FechaDesde}]]></textFieldExpression>
+				</textField>
 			</frame>
 		</band>
 	</title>
@@ -119,7 +185,7 @@
 	<columnHeader>
 		<band height="100" splitType="Stretch">
 			<staticText>
-				<reportElement style="Column header" x="0" y="80" width="209" height="20" forecolor="#000000" uuid="113fb15b-bb14-48e0-ad35-92399edb2996"/>
+				<reportElement style="Column header" x="0" y="80" width="252" height="20" forecolor="#000000" uuid="113fb15b-bb14-48e0-ad35-92399edb2996"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -132,7 +198,7 @@
 				<text><![CDATA[DEPARTAMENTO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="209" y="0" width="18" height="100" forecolor="#000000" uuid="f2d45c88-0558-44bb-919e-c255b313e91d"/>
+				<reportElement style="Column header" x="252" y="0" width="18" height="100" forecolor="#000000" uuid="f2d45c88-0558-44bb-919e-c255b313e91d"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -145,7 +211,7 @@
 				<text><![CDATA[LACTANCIA MATERNA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="227" y="0" width="19" height="100" forecolor="#000000" uuid="b8f97d73-7865-4070-84a4-4b14e199629f"/>
+				<reportElement style="Column header" x="270" y="0" width="19" height="100" forecolor="#000000" uuid="b8f97d73-7865-4070-84a4-4b14e199629f"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -158,7 +224,7 @@
 				<text><![CDATA[NPO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="246" y="0" width="19" height="100" forecolor="#000000" uuid="dbb706ae-21e7-4ace-ad02-795d6160940c"/>
+				<reportElement style="Column header" x="289" y="0" width="19" height="100" forecolor="#000000" uuid="dbb706ae-21e7-4ace-ad02-795d6160940c"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -171,7 +237,7 @@
 				<text><![CDATA[ACOMPAÑANTE]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="265" y="0" width="18" height="100" forecolor="#000000" uuid="178a7120-9967-47fc-9802-1d1859dde5cb"/>
+				<reportElement style="Column header" x="308" y="0" width="18" height="100" forecolor="#000000" uuid="178a7120-9967-47fc-9802-1d1859dde5cb"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -184,7 +250,7 @@
 				<text><![CDATA[HIPOSODICA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="283" y="0" width="18" height="100" forecolor="#000000" uuid="a2a108ff-fc41-42ae-a675-bc7e4791a2ae"/>
+				<reportElement style="Column header" x="326" y="0" width="18" height="100" forecolor="#000000" uuid="a2a108ff-fc41-42ae-a675-bc7e4791a2ae"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -197,7 +263,7 @@
 				<text><![CDATA[HIPOGRASA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="301" y="0" width="19" height="100" forecolor="#000000" uuid="301bbc95-8077-4eea-8b7b-6de5593c5b69"/>
+				<reportElement style="Column header" x="344" y="0" width="19" height="100" forecolor="#000000" uuid="301bbc95-8077-4eea-8b7b-6de5593c5b69"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -207,10 +273,10 @@
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Calibri" size="9" isBold="true"/>
 				</textElement>
-				<text><![CDATA[PEDIATRÍA 6 A 8 MESES]]></text>
+				<text><![CDATA[PEDIATRÍA 6 A 11 MESES]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="320" y="0" width="19" height="100" forecolor="#000000" uuid="18684e5f-e194-479c-9ca5-78215b44130c"/>
+				<reportElement style="Column header" x="363" y="0" width="19" height="100" forecolor="#000000" uuid="18684e5f-e194-479c-9ca5-78215b44130c"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -220,10 +286,10 @@
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Calibri" size="9" isBold="true"/>
 				</textElement>
-				<text><![CDATA[PEDIATRÍA 9 A 11 MESES]]></text>
+				<text><![CDATA[PEDIATRÍA 12 A 59 MESES]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="339" y="0" width="21" height="100" forecolor="#000000" uuid="b08a4fbb-0b84-4543-8018-d51e556e2742"/>
+				<reportElement style="Column header" x="382" y="0" width="21" height="100" forecolor="#000000" uuid="b08a4fbb-0b84-4543-8018-d51e556e2742"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -233,33 +299,7 @@
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Calibri" size="9" isBold="true"/>
 				</textElement>
-				<text><![CDATA[PEDIATRÍA 12 A 23 MESES]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="Column header" x="360" y="0" width="18" height="100" forecolor="#000000" uuid="d0ee82ba-7eca-4280-9e9e-1ab1748a02e0"/>
-				<box>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement verticalAlignment="Middle" rotation="Left">
-					<font fontName="Calibri" size="9" isBold="true"/>
-				</textElement>
-				<text><![CDATA[PEDIATRÍA 2 A 6 AÑOS]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="Column header" x="378" y="0" width="25" height="100" forecolor="#000000" uuid="c50e40de-17a6-46ae-a5ae-62a214d133cc"/>
-				<box>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement verticalAlignment="Middle" rotation="Left">
-					<font fontName="Calibri" size="9" isBold="true"/>
-				</textElement>
-				<text><![CDATA[PEDIATRÍA 7 A 11 AÑOS]]></text>
+				<text><![CDATA[PEDIATRÍA 5 A 9 AÑOS]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="403" y="0" width="19" height="100" forecolor="#000000" uuid="b307246c-7a77-4937-9397-088d601a0368"/>
@@ -528,7 +568,7 @@
 			<frame>
 				<reportElement style="Row" mode="Opaque" x="0" y="0" width="797" height="18" uuid="3eda833c-f2cc-42e3-82d2-38cdb871b24d"/>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="0" y="0" width="209" height="18" uuid="38ada476-9542-41fa-ab9e-bbf1a841a887"/>
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="252" height="18" uuid="38ada476-9542-41fa-ab9e-bbf1a841a887"/>
 					<box>
 						<topPen lineWidth="0.5"/>
 						<leftPen lineWidth="0.5"/>
@@ -541,7 +581,7 @@
 					<textFieldExpression><![CDATA[$F{departamento}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="209" y="0" width="18" height="18" uuid="5c09b4a6-ede8-4aec-a2ac-9035f2744ec3"/>
+					<reportElement style="Detail" positionType="Float" x="252" y="0" width="18" height="18" uuid="5c09b4a6-ede8-4aec-a2ac-9035f2744ec3"/>
 					<box>
 						<topPen lineWidth="0.5"/>
 						<leftPen lineWidth="0.5"/>
@@ -554,7 +594,7 @@
 					<textFieldExpression><![CDATA[( $F{LACTANCIA MATERNA} == null ? ' ' : $F{LACTANCIA MATERNA} )]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="227" y="0" width="19" height="18" uuid="dd80437a-6461-47cd-8a77-aa6e50fd0cc7"/>
+					<reportElement style="Detail" positionType="Float" x="270" y="0" width="19" height="18" uuid="dd80437a-6461-47cd-8a77-aa6e50fd0cc7"/>
 					<box>
 						<topPen lineWidth="0.5"/>
 						<leftPen lineWidth="0.5"/>
@@ -567,7 +607,7 @@
 					<textFieldExpression><![CDATA[( $F{NPO} == null ? ' ' : $F{NPO} )]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="246" y="0" width="19" height="18" uuid="c871e29f-e45a-443f-9187-e7282ab90390"/>
+					<reportElement style="Detail" positionType="Float" x="289" y="0" width="19" height="18" uuid="c871e29f-e45a-443f-9187-e7282ab90390"/>
 					<box>
 						<topPen lineWidth="0.5"/>
 						<leftPen lineWidth="0.5"/>
@@ -580,7 +620,7 @@
 					<textFieldExpression><![CDATA[( $F{ACOMPAÑANTE} == null ? ' ' : $F{ACOMPAÑANTE} )]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="265" y="0" width="18" height="18" uuid="1d7f221f-8472-4064-bab2-7348416f441d"/>
+					<reportElement style="Detail" positionType="Float" x="308" y="0" width="18" height="18" uuid="1d7f221f-8472-4064-bab2-7348416f441d"/>
 					<box>
 						<topPen lineWidth="0.5"/>
 						<leftPen lineWidth="0.5"/>
@@ -593,7 +633,7 @@
 					<textFieldExpression><![CDATA[( $F{HIPOSODICA} == null ? ' ' : $F{HIPOSODICA} )]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="283" y="0" width="18" height="18" uuid="c779f38a-ec9a-4836-9254-ae3abf938d27"/>
+					<reportElement style="Detail" positionType="Float" x="326" y="0" width="18" height="18" uuid="c779f38a-ec9a-4836-9254-ae3abf938d27"/>
 					<box>
 						<topPen lineWidth="0.5"/>
 						<leftPen lineWidth="0.5"/>
@@ -606,7 +646,7 @@
 					<textFieldExpression><![CDATA[( $F{HIPOGRASA} == null ? ' ' : $F{HIPOGRASA} )]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="301" y="0" width="19" height="18" uuid="0be4b61d-ec14-4a33-a60f-a1e0a7c9377b"/>
+					<reportElement style="Detail" positionType="Float" x="344" y="0" width="19" height="18" uuid="0be4b61d-ec14-4a33-a60f-a1e0a7c9377b"/>
 					<box>
 						<topPen lineWidth="0.5"/>
 						<leftPen lineWidth="0.5"/>
@@ -616,10 +656,10 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="12" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[( $F{PEDIATRÍA 6 A 8 MESES} == null ? ' ' : $F{PEDIATRÍA 6 A 8 MESES} )]]></textFieldExpression>
+					<textFieldExpression><![CDATA[( $F{PEDIATRÍA 6 A 11 MESES} == null ? ' ' : $F{PEDIATRÍA 6 A 11 MESES} )]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="320" y="0" width="19" height="18" uuid="9abac95f-c0b0-4456-8da9-20d25c566560"/>
+					<reportElement style="Detail" positionType="Float" x="363" y="0" width="19" height="18" uuid="9abac95f-c0b0-4456-8da9-20d25c566560"/>
 					<box>
 						<topPen lineWidth="0.5"/>
 						<leftPen lineWidth="0.5"/>
@@ -629,10 +669,10 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="12" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[( $F{PEDIATRÍA 9 A 11 MESES} == null ? ' ' : $F{PEDIATRÍA 9 A 11 MESES} )]]></textFieldExpression>
+					<textFieldExpression><![CDATA[( $F{PEDIATRÍA 12 A 59 MESES} == null ? ' ' : $F{PEDIATRÍA 12 A 59 MESES} )]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="339" y="0" width="21" height="18" uuid="a5036ad5-6641-4583-ba14-e6a104acf26a"/>
+					<reportElement style="Detail" positionType="Float" x="382" y="0" width="21" height="18" uuid="a5036ad5-6641-4583-ba14-e6a104acf26a"/>
 					<box>
 						<topPen lineWidth="0.5"/>
 						<leftPen lineWidth="0.5"/>
@@ -642,33 +682,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="12" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[( $F{PEDIATRÍA 12 A 23 MESES} == null ? ' ' : $F{PEDIATRÍA 12 A 23 MESES} )]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="360" y="0" width="18" height="18" uuid="bb818de1-2bc8-44de-8850-91f632a6b699"/>
-					<box>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Calibri" size="12" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[( $F{PEDIATRÍA 2 A 6 AÑOS} == null ? ' ' : $F{PEDIATRÍA 2 A 6 AÑOS} )]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="378" y="0" width="25" height="18" uuid="493892d2-deff-4147-8086-6d7512d6d5f2"/>
-					<box>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Calibri" size="12" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[( $F{PEDIATRÍA 7 A 11 AÑOS} == null ? ' ' : $F{PEDIATRÍA 7 A 11 AÑOS} )]]></textFieldExpression>
+					<textFieldExpression><![CDATA[( $F{PEDIATRÍA 5 a 9 AÑOS} == null ? ' ' : $F{PEDIATRÍA 5 a 9 AÑOS} )]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="403" y="0" width="19" height="18" uuid="2688c660-addd-449b-ad48-128b6786bbcb"/>
@@ -942,14 +956,14 @@
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement x="99" y="4" width="100" height="14" uuid="4de85c55-6d45-478a-98bf-d10a567931a8"/>
+				<reportElement x="99" y="4" width="141" height="14" uuid="4de85c55-6d45-478a-98bf-d10a567931a8"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font isBold="true" isItalic="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["TOTAL:"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="209" y="4" width="18" height="14" backcolor="#000000" uuid="48ccf23f-53d2-4dc9-84dc-f5d4b633b773"/>
+				<reportElement x="252" y="4" width="18" height="14" backcolor="#000000" uuid="48ccf23f-53d2-4dc9-84dc-f5d4b633b773"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -959,10 +973,10 @@
 				<textElement textAlignment="Center">
 					<font isBold="true" isItalic="false" isUnderline="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$V{SumLac}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[( $V{SumLac} == null ? ' ' : $V{SumLac} )]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="227" y="4" width="19" height="14" uuid="a6fc3d44-ebab-4c46-bee2-7e5bb3bd0ebf"/>
+				<reportElement x="270" y="4" width="19" height="14" uuid="a6fc3d44-ebab-4c46-bee2-7e5bb3bd0ebf"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -975,7 +989,7 @@
 				<textFieldExpression><![CDATA[( $V{SumNpo} == null ? ' ' : $V{SumNpo} )]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="246" y="4" width="19" height="14" uuid="bd75816c-05af-41aa-a1bb-f629337165a9"/>
+				<reportElement x="289" y="4" width="19" height="14" uuid="bd75816c-05af-41aa-a1bb-f629337165a9"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -985,28 +999,332 @@
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$V{SumAcomp}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[( $V{SumAcomp} == null ? ' ' : $V{SumAcomp} )]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="265" y="4" width="18" height="14" uuid="9dcbc05d-8131-4650-8e83-f971d936e5e7"/>
+				<reportElement x="308" y="4" width="18" height="14" uuid="9dcbc05d-8131-4650-8e83-f971d936e5e7"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<textElement textAlignment="Center">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$V{SumHiposodica}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[( $V{SumHiposodica} == null ? ' ' : $V{SumHiposodica} )]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="283" y="4" width="18" height="14" uuid="7aac2fdc-fcdd-4f6f-829e-9e580ac9accd"/>
+				<reportElement x="326" y="4" width="18" height="14" uuid="7aac2fdc-fcdd-4f6f-829e-9e580ac9accd"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
 				<textFieldExpression><![CDATA[( $V{SumHipograsa} == null ? ' ' : $V{SumHipograsa} )]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="301" y="4" width="19" height="14" uuid="98dcd1e2-0ed8-40cf-a8ec-aa1bb72c1f35"/>
+				<reportElement x="344" y="4" width="19" height="14" uuid="98dcd1e2-0ed8-40cf-a8ec-aa1bb72c1f35"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
 				<textFieldExpression><![CDATA[( $V{SumPedriatria6} == null ? ' ' : $V{SumPedriatria6} )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="363" y="4" width="19" height="14" uuid="2c5f889c-2de5-4f96-8f36-22d52065e0f1"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[( $V{SumPediatria12} == null ? ' ' : $V{SumPediatria12} )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="382" y="4" width="21" height="14" uuid="359186a8-f2a7-4769-998c-6f1ddd2ec11a"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[( $V{SumPediatria5a9} == null ? ' ' : $V{SumPediatria5a9} )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="4" width="19" height="14" uuid="126495c7-0c49-441e-9dff-367c4e7c4997"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[( $V{SumLiAca} == null ? ' ' : $V{SumLiAca} )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="422" y="4" width="18" height="14" uuid="d66a7461-066d-4206-8534-93a05495a1bd"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[( $V{SumLiEstricta} ==  null ? ' ' : $V{SumLiEstricta} )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="440" y="4" width="17" height="14" uuid="0b15c07d-750a-4cc7-b4d7-c419e1ad3484"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[( $V{SumLiAmplia} == null ? ' ' : $V{SumLiAmplia} )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="457" y="4" width="19" height="14" uuid="72e18023-7f0e-4f21-850e-5654b4721384"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[( $V{SumBlaGas} == null ? ' ' : $V{SumBlaGas} )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="476" y="4" width="19" height="14" uuid="e466c613-90b5-41f7-9280-ae781d2ac924"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[( $V{SumBlaIntestinal} == null ? ' ' : $V{SumBlaIntestinal} )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="495" y="4" width="19" height="14" uuid="426d9bc7-565d-4ef2-bf60-f72c9471a730"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[( $V{SumBlaMecanic} == null ? ' ' : $V{SumBlaMecanic} )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="514" y="4" width="25" height="14" uuid="39b56a02-7c17-47dd-a80d-293f42030379"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[( $V{SumTurmix} == null ? ' ' : $V{SumTurmix} )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="539" y="4" width="19" height="14" uuid="4375df46-1d95-4928-bb24-5fb689e37c2d"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[( $V{SumIleFase1} == null ? ' ' : $V{SumIleFase1} )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="558" y="4" width="19" height="14" uuid="72b71cd7-2fcb-4dd4-996b-852f34066c52"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[( $V{SumIleFase2} == null ? ' ' : $V{SumIleFase2} )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="577" y="4" width="19" height="14" uuid="54b3c292-024d-48b3-a745-a782d1eafe51"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[( $V{SumIleFase3} == null ? ' ' : $V{SumIleFase3} )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="596" y="4" width="15" height="14" uuid="0d5bbeba-259c-45ac-bebc-6dfaaae1c951"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[( $V{SumHipercalorica} == null ? ' ' : $V{SumHipercalorica} )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="611" y="4" width="18" height="14" uuid="7d3cce9e-b5ed-4c9c-b60d-9816572617af"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[( $V{SumHipoProEstr} == null ? ' ' : $V{SumHipoProEstr} )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="629" y="4" width="15" height="14" uuid="62746e5b-bd15-4d25-8c3a-ef670cb9e325"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[( $V{SumHipoproteica} == null ? ' ' : $V{SumHipoproteica} )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="644" y="4" width="17" height="14" uuid="2ab0aa2f-f8e6-4aef-bc1a-ee94bb2097e4"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[( $V{SumHipercalorica} == null ? ' ' : $V{SumHipercalorica} )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="661" y="4" width="25" height="14" uuid="4aed9d6b-58bb-41fa-9b2b-9778400272fa"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[( $V{SumHiperProCalo} == null ? ' ' : $V{SumHiperProCalo} )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="686" y="4" width="24" height="14" uuid="41eeb78e-98e8-4e00-8ec5-e1927ee388d4"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[( $V{SumHiperproteica} == null ? ' ' : $V{SumHiperproteica} )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="710" y="4" width="19" height="14" uuid="7716d18d-4010-43df-a5a6-ac934a47f967"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[( $V{SumHipoHidroCarbo} == null ? ' ' : $V{SumHipoHidroCarbo} )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="729" y="4" width="25" height="14" uuid="1e98133f-3c0d-476e-bec0-02df1b614062"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[( $V{SumHipoHidroCarboHipotreica} == null ? ' ' : $V{SumHipoHidroCarboHipotreica} )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="754" y="4" width="25" height="14" uuid="7f2622e3-4c8b-4837-bb90-c282a2bcc901"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[( $V{SumHipoHidroCarboHipertreica} == null ? ' ' : $V{SumHipoHidroCarboHipertreica} )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="779" y="4" width="18" height="14" uuid="d56c0392-1fb8-4349-9bec-0c3f21088319"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[( $V{SumSinGluten} == null ? ' ' : $V{SumSinGluten} )]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnFooter>
