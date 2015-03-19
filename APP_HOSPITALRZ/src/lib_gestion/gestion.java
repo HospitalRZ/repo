@@ -31,5 +31,8 @@ public class gestion {
     public ArrayList<dprincipal> Lista_dprincipal(principal p) throws SQLException{
     return BD.Listar_dprincipal(p);
     }
+     public ArrayList<departamento> ListarDepartamentos_Entidad(int identidad) throws SQLException{
+         return BD.Listar_departamento_entidad(identidad);
+     }
  
 }
