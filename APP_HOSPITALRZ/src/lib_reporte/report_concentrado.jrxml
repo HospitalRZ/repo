@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a7169bcc-5030-4309-aa68-6facb39e2167">
 	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="196"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
@@ -60,38 +60,56 @@
 	<field name="HIPOHIDROCARBONADA HIPOPROTEICA" class="java.lang.Integer"/>
 	<field name="HIPOHIDROCARBONADA HIPERPROTEICA" class="java.lang.Integer"/>
 	<field name="SIN GLUTEN" class="java.lang.Integer"/>
+	<variable name="SumLac" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{LACTANCIA MATERNA}]]></variableExpression>
+	</variable>
+	<variable name="SumNpo" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{NPO}]]></variableExpression>
+	</variable>
+	<variable name="SumAcomp" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{ACOMPAÑANTE}]]></variableExpression>
+	</variable>
+	<variable name="SumHiposodica" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{HIPOSODICA}]]></variableExpression>
+	</variable>
+	<variable name="SumHipograsa" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{HIPOGRASA}]]></variableExpression>
+	</variable>
+	<variable name="SumPedriatria6" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{PEDIATRÍA 6 A 8 MESES}]]></variableExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
 		<band height="102" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="0" y="0" width="721" height="66" backcolor="#000000" uuid="8c17a339-cc68-4598-b174-e55b5c26013e"/>
+				<reportElement mode="Opaque" x="0" y="0" width="797" height="66" backcolor="#D4A90A" uuid="8c17a339-cc68-4598-b174-e55b5c26013e"/>
 				<staticText>
-					<reportElement style="Title" x="0" y="0" width="370" height="66" uuid="96e12f1b-4cee-4dee-a74f-0d7005193080"/>
+					<reportElement style="Title" x="57" y="15" width="697" height="39" uuid="96e12f1b-4cee-4dee-a74f-0d7005193080"/>
 					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
-					<textElement verticalAlignment="Bottom">
-						<font isBold="false"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font size="24" isBold="false"/>
 					</textElement>
-					<text><![CDATA[Cherry Title]]></text>
-				</staticText>
-				<staticText>
-					<reportElement style="SubTitle" x="370" y="37" width="316" height="29" uuid="b49c00e6-b10c-404f-a1c2-bb341a69c41f"/>
-					<textElement textAlignment="Right">
-						<font size="22" isBold="false"/>
-					</textElement>
-					<text><![CDATA[Cherry SubTitle]]></text>
+					<text><![CDATA[HOSPITAL DR. RAFAEL RODRIGUEZ ZAMBRANO]]></text>
 				</staticText>
 			</frame>
 			<frame>
-				<reportElement mode="Opaque" x="0" y="70" width="721" height="32" forecolor="#000000" backcolor="#CC0000" uuid="01a06866-3f32-4a5e-bd92-49d88ca55f9e"/>
+				<reportElement mode="Opaque" x="0" y="70" width="797" height="32" forecolor="#000000" backcolor="#FFFFFF" uuid="01a06866-3f32-4a5e-bd92-49d88ca55f9e"/>
 				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement x="553" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="89d4537e-037e-4c3c-9514-a80acaa2eccf"/>
+					<reportElement x="644" y="12" width="144" height="20" forecolor="#000000" uuid="89d4537e-037e-4c3c-9514-a80acaa2eccf"/>
 					<textElement textAlignment="Right">
 						<font size="12"/>
 					</textElement>
 					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 				</textField>
+				<staticText>
+					<reportElement style="SubTitle" x="4" y="3" width="316" height="29" forecolor="#000000" uuid="b49c00e6-b10c-404f-a1c2-bb341a69c41f"/>
+					<textElement>
+						<font size="22" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Reporte Concentrado]]></text>
+				</staticText>
 			</frame>
 		</band>
 	</title>
@@ -102,6 +120,12 @@
 		<band height="100" splitType="Stretch">
 			<staticText>
 				<reportElement style="Column header" x="0" y="80" width="209" height="20" forecolor="#000000" uuid="113fb15b-bb14-48e0-ad35-92399edb2996"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement verticalAlignment="Middle" rotation="None">
 					<font fontName="Calibri" size="11" isBold="true"/>
 				</textElement>
@@ -109,6 +133,12 @@
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="209" y="0" width="18" height="100" forecolor="#000000" uuid="f2d45c88-0558-44bb-919e-c255b313e91d"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Calibri" size="9" isBold="true"/>
 				</textElement>
@@ -116,6 +146,12 @@
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="227" y="0" width="19" height="100" forecolor="#000000" uuid="b8f97d73-7865-4070-84a4-4b14e199629f"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Calibri" size="11" isBold="true"/>
 				</textElement>
@@ -123,6 +159,12 @@
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="246" y="0" width="19" height="100" forecolor="#000000" uuid="dbb706ae-21e7-4ace-ad02-795d6160940c"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Calibri" size="11" isBold="true"/>
 				</textElement>
@@ -130,6 +172,12 @@
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="265" y="0" width="18" height="100" forecolor="#000000" uuid="178a7120-9967-47fc-9802-1d1859dde5cb"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Calibri" size="11" isBold="true"/>
 				</textElement>
@@ -137,6 +185,12 @@
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="283" y="0" width="18" height="100" forecolor="#000000" uuid="a2a108ff-fc41-42ae-a675-bc7e4791a2ae"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Calibri" size="11" isBold="true"/>
 				</textElement>
@@ -144,6 +198,12 @@
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="301" y="0" width="19" height="100" forecolor="#000000" uuid="301bbc95-8077-4eea-8b7b-6de5593c5b69"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Calibri" size="9" isBold="true"/>
 				</textElement>
@@ -151,6 +211,12 @@
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="320" y="0" width="19" height="100" forecolor="#000000" uuid="18684e5f-e194-479c-9ca5-78215b44130c"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Calibri" size="9" isBold="true"/>
 				</textElement>
@@ -158,6 +224,12 @@
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="339" y="0" width="21" height="100" forecolor="#000000" uuid="b08a4fbb-0b84-4543-8018-d51e556e2742"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Calibri" size="9" isBold="true"/>
 				</textElement>
@@ -165,6 +237,12 @@
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="360" y="0" width="18" height="100" forecolor="#000000" uuid="d0ee82ba-7eca-4280-9e9e-1ab1748a02e0"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Calibri" size="9" isBold="true"/>
 				</textElement>
@@ -172,6 +250,12 @@
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="378" y="0" width="25" height="100" forecolor="#000000" uuid="c50e40de-17a6-46ae-a5ae-62a214d133cc"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Calibri" size="9" isBold="true"/>
 				</textElement>
@@ -179,6 +263,12 @@
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="403" y="0" width="19" height="100" forecolor="#000000" uuid="b307246c-7a77-4937-9397-088d601a0368"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Calibri" size="11" isBold="true"/>
 				</textElement>
@@ -186,6 +276,12 @@
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="422" y="0" width="18" height="100" forecolor="#000000" uuid="31eafaf0-7fbf-49e6-97cb-3c827383f9b5"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Calibri" size="11" isBold="true"/>
 				</textElement>
@@ -193,6 +289,12 @@
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="440" y="0" width="17" height="100" forecolor="#000000" uuid="1d04f832-0f31-4a34-84d6-024b79b3f321"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Calibri" size="11" isBold="true"/>
 				</textElement>
@@ -200,6 +302,12 @@
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="457" y="0" width="19" height="100" forecolor="#000000" uuid="255bd7ca-1d14-40ee-8b54-6b44adc829d2"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Calibri" size="11" isBold="true"/>
 				</textElement>
@@ -207,6 +315,12 @@
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="476" y="0" width="19" height="100" forecolor="#000000" uuid="eb66e19d-520c-40e5-8c5e-419ae5e9407f"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Calibri" size="11" isBold="true"/>
 				</textElement>
@@ -214,6 +328,12 @@
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="495" y="0" width="19" height="100" forecolor="#000000" uuid="e7df675c-6d49-4ab4-b102-516cc4a88dee"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Calibri" size="11" isBold="true"/>
 				</textElement>
@@ -221,6 +341,12 @@
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="514" y="0" width="25" height="100" forecolor="#000000" uuid="ddc36c25-7b81-4d91-8d7a-e376764b89c6"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Calibri" size="9" isBold="true"/>
 				</textElement>
@@ -228,6 +354,12 @@
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="539" y="0" width="19" height="100" forecolor="#000000" uuid="19a410d0-3a1b-483c-a754-f392b8bdad78"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Calibri" size="11" isBold="true"/>
 				</textElement>
@@ -235,6 +367,12 @@
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="558" y="0" width="19" height="100" forecolor="#000000" uuid="fe94623a-425d-4918-9ed5-588565161883"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Calibri" size="11" isBold="true"/>
 				</textElement>
@@ -242,6 +380,12 @@
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="577" y="0" width="19" height="100" forecolor="#000000" uuid="77d5fa9f-1394-4edb-a6a8-9dce5a9de1ea"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Calibri" size="11" isBold="true"/>
 				</textElement>
@@ -249,6 +393,12 @@
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="596" y="0" width="15" height="100" forecolor="#000000" uuid="4d4b19d0-06a1-4fb9-99b1-baba2b5a11b8"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Calibri" size="11" isBold="true"/>
 				</textElement>
@@ -256,6 +406,12 @@
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="611" y="0" width="18" height="100" forecolor="#000000" uuid="db22db26-ea04-49fc-b387-79adc1604867"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Calibri" size="9" isBold="true"/>
 				</textElement>
@@ -263,6 +419,12 @@
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="629" y="0" width="15" height="100" forecolor="#000000" uuid="a1fd3cf1-6c0f-4579-8c54-3aba8d7d6f10"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Calibri" size="11" isBold="true"/>
 				</textElement>
@@ -270,6 +432,12 @@
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="644" y="0" width="17" height="100" forecolor="#000000" uuid="bfa9f0ee-ea8e-40e2-aa5d-2c0763782e55"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Calibri" size="11" isBold="true"/>
 				</textElement>
@@ -277,6 +445,12 @@
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="661" y="0" width="25" height="100" forecolor="#000000" uuid="e8aefc10-4504-40cd-8ac3-6a4fb6b1e8fa"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Calibri" size="9" isBold="true"/>
 				</textElement>
@@ -284,6 +458,12 @@
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="686" y="0" width="24" height="100" forecolor="#000000" uuid="7f00506b-551c-441f-a1e2-7b4e70bed0b4"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Calibri" size="11" isBold="true"/>
 				</textElement>
@@ -291,6 +471,12 @@
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="710" y="0" width="19" height="100" forecolor="#000000" uuid="2bad4397-96b8-43a5-94f6-e462355764ae"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Calibri" size="9" isBold="true"/>
 				</textElement>
@@ -298,6 +484,12 @@
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="729" y="0" width="25" height="100" forecolor="#000000" uuid="f2cbbed8-651c-4c10-9209-e709c903ea0c"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Calibri" size="9" isBold="true"/>
 				</textElement>
@@ -305,6 +497,12 @@
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="754" y="0" width="25" height="100" forecolor="#000000" uuid="9c5bbf0a-3cb8-483d-a877-545148807011"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Calibri" size="9" isBold="true"/>
 				</textElement>
@@ -312,6 +510,12 @@
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="779" y="0" width="18" height="100" forecolor="#000000" uuid="d466840b-e879-4335-94e8-f88306688293"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Calibri" size="11" isBold="true"/>
 				</textElement>
@@ -325,13 +529,25 @@
 				<reportElement style="Row" mode="Opaque" x="0" y="0" width="797" height="18" uuid="3eda833c-f2cc-42e3-82d2-38cdb871b24d"/>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="0" y="0" width="209" height="18" uuid="38ada476-9542-41fa-ab9e-bbf1a841a887"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
 					<textElement>
 						<font fontName="Calibri" size="14" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{departamento}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="209" y="0" width="15" height="18" uuid="5c09b4a6-ede8-4aec-a2ac-9035f2744ec3"/>
+					<reportElement style="Detail" positionType="Float" x="209" y="0" width="18" height="18" uuid="5c09b4a6-ede8-4aec-a2ac-9035f2744ec3"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="12" isBold="false"/>
 					</textElement>
@@ -339,6 +555,12 @@
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="227" y="0" width="19" height="18" uuid="dd80437a-6461-47cd-8a77-aa6e50fd0cc7"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="12" isBold="false"/>
 					</textElement>
@@ -346,6 +568,12 @@
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="246" y="0" width="19" height="18" uuid="c871e29f-e45a-443f-9187-e7282ab90390"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="12" isBold="false"/>
 					</textElement>
@@ -353,6 +581,12 @@
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="265" y="0" width="18" height="18" uuid="1d7f221f-8472-4064-bab2-7348416f441d"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="12" isBold="false"/>
 					</textElement>
@@ -360,6 +594,12 @@
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="283" y="0" width="18" height="18" uuid="c779f38a-ec9a-4836-9254-ae3abf938d27"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="12" isBold="false"/>
 					</textElement>
@@ -367,6 +607,12 @@
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="301" y="0" width="19" height="18" uuid="0be4b61d-ec14-4a33-a60f-a1e0a7c9377b"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="12" isBold="false"/>
 					</textElement>
@@ -374,6 +620,12 @@
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="320" y="0" width="19" height="18" uuid="9abac95f-c0b0-4456-8da9-20d25c566560"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="12" isBold="false"/>
 					</textElement>
@@ -381,6 +633,12 @@
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="339" y="0" width="21" height="18" uuid="a5036ad5-6641-4583-ba14-e6a104acf26a"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="12" isBold="false"/>
 					</textElement>
@@ -388,6 +646,12 @@
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="360" y="0" width="18" height="18" uuid="bb818de1-2bc8-44de-8850-91f632a6b699"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="12" isBold="false"/>
 					</textElement>
@@ -395,6 +659,12 @@
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="378" y="0" width="25" height="18" uuid="493892d2-deff-4147-8086-6d7512d6d5f2"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="12" isBold="false"/>
 					</textElement>
@@ -402,6 +672,12 @@
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="403" y="0" width="19" height="18" uuid="2688c660-addd-449b-ad48-128b6786bbcb"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="12" isBold="false"/>
 					</textElement>
@@ -409,6 +685,12 @@
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="422" y="0" width="18" height="18" uuid="a42ce550-17db-4d30-b9be-b67d32ec7cd4"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="12" isBold="false"/>
 					</textElement>
@@ -416,6 +698,12 @@
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="440" y="0" width="17" height="18" uuid="9e473563-3196-4c2f-aab2-cb50f0c8e8b5"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="12" isBold="false"/>
 					</textElement>
@@ -423,6 +711,12 @@
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="457" y="0" width="19" height="18" uuid="0f90c08e-f860-4c58-bf62-f8428be63879"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="12" isBold="false"/>
 					</textElement>
@@ -430,6 +724,12 @@
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="476" y="0" width="19" height="18" uuid="dc651159-cf1f-4849-98f5-259efd8a2287"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="12" isBold="false"/>
 					</textElement>
@@ -437,6 +737,12 @@
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="495" y="0" width="19" height="18" uuid="aea1b3fc-2d45-491c-940b-086e038f5333"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="12" isBold="false"/>
 					</textElement>
@@ -444,6 +750,12 @@
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="514" y="0" width="25" height="18" uuid="6f5b2081-c853-483c-a295-2a1206232137"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="12" isBold="false"/>
 					</textElement>
@@ -451,6 +763,12 @@
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="539" y="0" width="19" height="18" uuid="060e95ff-dd70-4d41-b143-772cf2dcc830"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="12" isBold="false"/>
 					</textElement>
@@ -458,6 +776,12 @@
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="558" y="0" width="19" height="18" uuid="1e2d909a-f50d-4978-b864-14d6fdfc9e40"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="12" isBold="false"/>
 					</textElement>
@@ -465,6 +789,12 @@
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="577" y="0" width="19" height="18" uuid="561901df-ea5c-4d38-b480-630579539c56"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="12" isBold="false"/>
 					</textElement>
@@ -472,6 +802,12 @@
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="596" y="0" width="15" height="18" uuid="c0743423-9f98-48d5-8baf-9dbae15220b3"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="12" isBold="false"/>
 					</textElement>
@@ -479,6 +815,12 @@
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="611" y="0" width="18" height="18" uuid="8834b512-0843-45ee-98c8-f9982fad1433"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="12" isBold="false"/>
 					</textElement>
@@ -486,6 +828,12 @@
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="629" y="0" width="15" height="18" uuid="7b2f2e02-fcd5-4981-8c33-8bc801832e11"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="12" isBold="false"/>
 					</textElement>
@@ -493,6 +841,12 @@
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="644" y="0" width="17" height="18" uuid="0220a3ef-2959-4725-97ae-c910464cda58"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="12" isBold="false"/>
 					</textElement>
@@ -500,6 +854,12 @@
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="661" y="0" width="25" height="18" uuid="6dd9c04e-0342-4411-b6c5-549d134de1f4"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="12" isBold="false"/>
 					</textElement>
@@ -507,6 +867,12 @@
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="686" y="0" width="24" height="18" uuid="5d989738-7cdb-4e9e-b297-1ff238285cbf"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="12" isBold="false"/>
 					</textElement>
@@ -514,6 +880,12 @@
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="710" y="0" width="19" height="18" uuid="fdefd294-9507-4539-8d41-776003f87e2f"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="12" isBold="false"/>
 					</textElement>
@@ -521,6 +893,12 @@
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="729" y="0" width="25" height="18" uuid="00d54ebf-d228-4a6b-9b01-14eb9991a204"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="12" isBold="false"/>
 					</textElement>
@@ -528,6 +906,12 @@
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="754" y="0" width="25" height="18" uuid="d114e40c-2c26-4f98-b1e9-c0956e9e32b6"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="12" isBold="false"/>
 					</textElement>
@@ -535,6 +919,12 @@
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="779" y="0" width="18" height="18" uuid="29eac947-2921-464f-8905-e18bb3cc2c35"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="12" isBold="false"/>
 					</textElement>
@@ -544,13 +934,80 @@
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="7" splitType="Stretch">
+		<band height="23" splitType="Stretch">
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="36bb7285-495e-4a00-bd8d-b4f899a4ebb8"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
 			</line>
+			<textField>
+				<reportElement x="99" y="4" width="100" height="14" uuid="4de85c55-6d45-478a-98bf-d10a567931a8"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TOTAL:"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="209" y="4" width="18" height="14" backcolor="#000000" uuid="48ccf23f-53d2-4dc9-84dc-f5d4b633b773"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true" isItalic="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{SumLac}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="227" y="4" width="19" height="14" uuid="a6fc3d44-ebab-4c46-bee2-7e5bb3bd0ebf"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[( $V{SumNpo} == null ? ' ' : $V{SumNpo} )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="246" y="4" width="19" height="14" uuid="bd75816c-05af-41aa-a1bb-f629337165a9"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{SumAcomp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="265" y="4" width="18" height="14" uuid="9dcbc05d-8131-4650-8e83-f971d936e5e7"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{SumHiposodica}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="283" y="4" width="18" height="14" uuid="7aac2fdc-fcdd-4f6f-829e-9e580ac9accd"/>
+				<textFieldExpression><![CDATA[( $V{SumHipograsa} == null ? ' ' : $V{SumHipograsa} )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="301" y="4" width="19" height="14" uuid="98dcd1e2-0ed8-40cf-a8ec-aa1bb72c1f35"/>
+				<textFieldExpression><![CDATA[( $V{SumPedriatria6} == null ? ' ' : $V{SumPedriatria6} )]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnFooter>
 	<pageFooter>
