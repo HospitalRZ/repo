@@ -20,7 +20,8 @@ public class NpgSqlConnection {
         public Connection getConection() throws SQLException{  
             try{  
                 Class.forName("org.postgresql.Driver");  
-                con = DriverManager.getConnection("jdbc:postgresql://localhost/hrz?" + "user=postgres&password=12345");  
+                con = DriverManager.getConnection("jdbc:postgresql://25.114.228.203/hrz?" + "user=kill&password=kill");  
+                //con = DriverManager.getConnection("jdbc:postgresql://localhost/hrz?" + "user=postgres&password=12345");  
             }  
             catch (SQLException e){  
                 throw new SQLException(e);  

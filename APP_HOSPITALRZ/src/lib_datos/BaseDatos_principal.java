@@ -64,7 +64,7 @@ public class BaseDatos_principal {
 
     }
 
-    public void Update(entidad Entidad, principal Principal, dprincipal Dprincipal) throws SQLException {
+    public void Update(entidad Entidad, principal Principal, ArrayList<dprincipal> Dprincipal) throws SQLException {
         Connection con = null;
         CallableStatement stmt = null;
         ResultSet rs = null;
@@ -72,21 +72,24 @@ public class BaseDatos_principal {
             con = new NpgSqlConnection().getConection();
             stmt = con.prepareCall("{call hrz.principal_update (?,?,?,?,?,?,?,?)}");
             stmt.setInt(1, Principal.getId());
-            stmt.setDate(2, (Date) Principal.getFecha());
+            stmt.setDate(2, new java.sql.Date((Principal.getFecha().getTime())));
             stmt.setInt(3, Principal.getIddertamento().getId());
             stmt.setInt(4, Principal.getIdhorario());
             stmt.setString(5, Principal.getNum_cama());
             stmt.setInt(6, Principal.getIdentidad().getId());
             stmt.setString(7, Principal.getObservacion());
             stmt.setInt(8, Principal.getIdestado());
-            stmt.executeUpdate();
-            stmt = con.prepareCall("{call hrz.dprincipal_update (?,?,?,?,?)}");
-            stmt.setInt(1, Dprincipal.getId());
-            stmt.setInt(2, Dprincipal.getIdprincipal().getId());
-            stmt.setInt(3, Dprincipal.getIddieta().getId());
-            stmt.setBoolean(4, Dprincipal.getActivado());
-            stmt.setInt(5, Dprincipal.getIdestado());
-            stmt.executeUpdate();
+            stmt.executeQuery();
+            for (dprincipal pr : Dprincipal) {
+                stmt = con.prepareCall("{call hrz.dprincipal_update (?,?,?,?,?)}");
+                stmt.setInt(1, pr.getId());
+                stmt.setInt(2, Principal.getId());
+                stmt.setInt(3, pr.getIddieta().getId());
+                stmt.setBoolean(4, pr.getActivado());
+                stmt.setInt(5, Principal.getIdestado());
+                stmt.executeQuery();
+            }
+            
 
         } catch (SQLException ex) {
             throw new SQLException(ex);
@@ -95,15 +98,16 @@ public class BaseDatos_principal {
         }
     }
 
-    public ArrayList<entidad> Listar_Entidades(int idhorario) throws SQLException {
+    public ArrayList<entidad> Listar_Entidades(int idhorario, java.util.Date fecha) throws SQLException {
         Connection con = null;
         CallableStatement stmt = null;
         ArrayList<entidad> Entidades = null;
         ResultSet rs = null;
         try {
             con = new NpgSqlConnection().getConection();
-            stmt = con.prepareCall("{call hrz.entidad_select(?)}");
+            stmt = con.prepareCall("{call hrz.entidad_select(?,?)}");
             stmt.setInt(1, idhorario);
+            stmt.setDate(2, new java.sql.Date(fecha.getTime()));
             Entidades = new ArrayList<>();
             rs = stmt.executeQuery();
             while (rs.next()) {
@@ -181,6 +185,42 @@ public class BaseDatos_principal {
 
     }
 
+    
+    public void Listar_principal_all(int iddepartamento,java.util.Date fecha) throws SQLException
+    {
+        Connection con = null;
+            CallableStatement stmt1 = null;
+            ArrayList<dprincipal> Dprincipales = null;
+            ArrayList<principal> lprincipal = null;
+            ResultSet rs1 = null;
+        try {    
+            Dprincipales = new ArrayList<dprincipal>();
+            lprincipal = new ArrayList<principal>();
+            con = new NpgSqlConnection().getConection();
+            stmt1 = con.prepareCall("{call hrz.principal_tselect_all(?,?)}");
+            stmt1.setInt(1,1);
+            
+            stmt1.setDate(2, new java.sql.Date(fecha.getTime()));
+            rs1 = stmt1.executeQuery();
+            while (rs1.next()) {
+                dprincipal Dprincipal = new dprincipal();
+                Dprincipal.setId(rs1.getInt("id"));
+                //Dprincipal.setIdprincipal(idprincipal);
+                dieta Dieta = new dieta();
+                Dieta.setId(rs1.getInt("iddieta"));
+                Dprincipal.setIddieta(Dieta);
+                Dprincipal.setActivado(rs1.getBoolean("activado"));
+                Dprincipales.add(Dprincipal);
+
+            }
+        } catch (SQLException ex) {
+            throw new SQLException(ex);
+        } finally {
+            NpgSqlUtilities.closeConnection(con, stmt1, rs1);
+        }
+
+        
+    }
     public ArrayList<dprincipal> Listar_dprincipal(principal idprincipal) throws SQLException {
         Connection con = null;
             CallableStatement stmt1 = null;

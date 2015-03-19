@@ -6,6 +6,7 @@
 package lib_gestion;
 import java.sql.SQLException;  
 import java.util.ArrayList;  
+import java.util.Date;
 import lib_clases.*;
 import lib_datos.*;
 public class gestion {
@@ -18,10 +19,10 @@ public class gestion {
     public void Insertar(entidad Entidad, principal Principal, ArrayList<dprincipal> Dprincipal) throws SQLException {  
         BD.Insert(Entidad, Principal, Dprincipal);
     }  
-    public void Actualizar(entidad Entidad, principal Principal, dprincipal Dprincipal)throws SQLException {  
+    public void Actualizar(entidad Entidad, principal Principal, ArrayList<dprincipal> Dprincipal)throws SQLException {  
         BD.Update(Entidad, Principal, Dprincipal);
     }  
-    public ArrayList<entidad> ListarEntidad(int idhorario) throws SQLException{ return BD.Listar_Entidades(idhorario);}
+    public ArrayList<entidad> ListarEntidad(int idhorario,Date fecha) throws SQLException{ return BD.Listar_Entidades(idhorario,fecha);}
     public principal Listar_principal(int identidad) throws SQLException{ return BD.Listar_principal(identidad);}
     public entidad listapersona(String iden) throws SQLException
     {

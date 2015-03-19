@@ -30,10 +30,7 @@ public class frm_proceso extends javax.swing.JFrame {
      */
     public frm_proceso() {
         initComponents();
-        gestionM = new gestion();
-        dprinci = new ArrayList<dprincipal>();
-        gentidad = new entidad();
-        gprincipal = new principal();
+
     }
 
     public frm_proceso(int iddepartamento) {
@@ -43,14 +40,10 @@ public class frm_proceso extends javax.swing.JFrame {
         gentidad = new entidad();
         gprincipal = new principal();
         gtentida = new tentidad();
-        gtentida.setId(1);
-        gentidad.setIdtentidad(gtentida);
         departamento dep = new departamento();
         dep.setId(iddepartamento);
         gprincipal.setIddertamento(dep);
-        gentidad.setId(0);
-        gprincipal.setId(0);
-        gprincipal.setIdestado(0);
+        Nuevo();
         aniadeLista();
     }
     tentidad gtentida;
@@ -78,6 +71,9 @@ public class frm_proceso extends javax.swing.JFrame {
         dtfecha = new com.toedter.calendar.JCalendar();
         jScrollPane4 = new javax.swing.JScrollPane();
         lbx3 = new javax.swing.JList();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jSplitPane2 = new javax.swing.JSplitPane();
         jPanel3 = new javax.swing.JPanel();
@@ -93,6 +89,7 @@ public class frm_proceso extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         txtcama = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         cbxLatanciaMaterna = new javax.swing.JCheckBox();
         cbxNPO = new javax.swing.JCheckBox();
@@ -175,6 +172,12 @@ public class frm_proceso extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(lbx3);
 
+        jLabel2.setText("Desayuno");
+
+        jLabel5.setText("Almuerzo");
+
+        jLabel9.setText("Merienda");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -193,9 +196,16 @@ public class frm_proceso extends javax.swing.JFrame {
                                 .addGap(38, 38, 38)
                                 .addComponent(dtfecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane4)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel9))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -205,13 +215,19 @@ public class frm_proceso extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(dtfecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addComponent(jLabel5)
+                .addGap(3, 3, 3)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel9)
+                .addGap(1, 1, 1)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -232,7 +248,7 @@ public class frm_proceso extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(357, Short.MAX_VALUE)
+                .addContainerGap(265, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -293,31 +309,43 @@ public class frm_proceso extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setText("FECHA NACIMIENTO:");
+        jLabel8.setText("NÚMERO CAMA:");
+
+        jButton3.setBackground(new java.awt.Color(51, 51, 255));
+        jButton3.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jButton3.setText("ELIMINAR");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtApelliNom, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtidentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel8)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtcama)))
-                .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtcama))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtApelliNom, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton2)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -337,10 +365,11 @@ public class frm_proceso extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(txtApelliNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -419,7 +448,7 @@ public class frm_proceso extends javax.swing.JFrame {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE)
+                .addComponent(jScrollPane1)
                 .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
@@ -502,7 +531,7 @@ public class frm_proceso extends javax.swing.JFrame {
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cbxIle1)
                             .addComponent(cbxIle2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cbxTurGas)
                             .addComponent(cbxBlaMec))
@@ -580,7 +609,7 @@ public class frm_proceso extends javax.swing.JFrame {
                                 .addComponent(cbxHipeHipe)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cbxSinGlu)))
-                        .addContainerGap(15, Short.MAX_VALUE))))
+                        .addContainerGap(48, Short.MAX_VALUE))))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -613,21 +642,22 @@ public class frm_proceso extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addGap(6, 6, 6)
+                            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(189, Short.MAX_VALUE))
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -641,7 +671,7 @@ public class frm_proceso extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -650,7 +680,7 @@ public class frm_proceso extends javax.swing.JFrame {
                 .addGap(126, 126, 126))
         );
 
-        jSplitPane2.setRightComponent(jPanel4);
+        jSplitPane2.setBottomComponent(jPanel4);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -673,7 +703,7 @@ public class frm_proceso extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 588, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 610, Short.MAX_VALUE)
         );
 
         pack();
@@ -683,8 +713,20 @@ public class frm_proceso extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             asignarInterfasAGestion();
-            gestionM.Insertar(gentidad, gprincipal, dprinci);
+            if (gprincipal.getId()==0) {
+                int i = gprincipal.getIdhorario();
+                //Repeticion en por jornada
+                while (i<=3) {
+                    gprincipal.setIdhorario(i);
+                    gestionM.Insertar(gentidad, gprincipal, dprinci);
+                    i++;
+                }
+            }else
+            {
+                gestionM.Actualizar(gentidad, gprincipal, dprinci);
+            }
             aniadeLista();
+            Nuevo();
         } catch (SQLException ex) {
             JOptionPane.showConfirmDialog(null, ex);
         }
@@ -696,10 +738,9 @@ public class frm_proceso extends javax.swing.JFrame {
             if (evt.getKeyCode() == 10) {
 
                 gentidad = gestionM.listapersona(txtidentificacion.getText());
-                if (gentidad != null) {
+                if (gentidad.getDescripcion() != null) {
                     txtApelliNom.setText(gentidad.getDescripcion());
                     txtidentificacion.setText(gentidad.getIdentificacion());
-
                 }
             }
         } catch (SQLException ex) {
@@ -711,12 +752,16 @@ public class frm_proceso extends javax.swing.JFrame {
         dprinci = new ArrayList<dprincipal>();
         gentidad = new entidad();
         gentidad.setId(0);
-        gprincipal = new principal();
         gprincipal.setId(0);
         gprincipal.setIdestado(0);
+        gprincipal.setNum_cama("");
+        gprincipal.setObservacion("");
         gtentida = new tentidad();
         gtentida.setId(1);
         gentidad.setIdtentidad(gtentida);
+        gentidad.setId(0);
+        asignarGestionAInterface();
+
     }
     private void txtidentificacionInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtidentificacionInputMethodTextChanged
         // TODO add your handling code here:
@@ -726,6 +771,7 @@ public class frm_proceso extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         aniadeLista();
+        Nuevo();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void lbx3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbx3MouseClicked
@@ -748,20 +794,36 @@ public class frm_proceso extends javax.swing.JFrame {
         gprincipal.setId(gentidad.getId());
         Cargar();
     }//GEN-LAST:event_lbx1MouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+         try {
+            asignarInterfasAGestion();
+            gprincipal.setIdestado(1);
+            gestionM.Actualizar(gentidad, gprincipal, dprinci);
+            aniadeLista();
+            Nuevo();
+        } catch (SQLException ex) {
+            JOptionPane.showConfirmDialog(null, ex);
+        }
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
     private void Cargar() {
         try {
             gprincipal = gestionM.Listar_principal(gprincipal.getId());
             gentidad = gprincipal.getIdentidad();
             dprinci = gestionM.Lista_dprincipal(gprincipal);
+            asignarGestionAInterface();
         } catch (SQLException ex) {
             JOptionPane.showConfirmDialog(null, ex);
         }
     }
 
-    private dprincipal aniadir(Integer id, boolean cbx, Integer estado) {
+    private dprincipal aniadir(Integer id, Integer iddieta, boolean cbx, Integer estado) {
         dprincipal dprin = new dprincipal();
         dieta die = new dieta();
-        die.setId(id);
+        dprin.setId(id);
+        die.setId(iddieta);
         dprin.setIddieta(die);
         dprin.setActivado(cbx);
         dprin.setIdestado(estado);
@@ -770,56 +832,96 @@ public class frm_proceso extends javax.swing.JFrame {
 
     private void asignarInterfasAGestion() {
 
-        if (gentidad.getId() == 0) {
-            gentidad.setIdentificacion(txtidentificacion.getText());
-            gentidad.setDescripcion(this.txtApelliNom.getText());
-        }
-        gprincipal.setFecha(dtfecha.getDate());
-        //gprincipal.setIdhorario();
-        Calendar cald = Calendar.getInstance();
-        if (cald.get(Calendar.HOUR_OF_DAY) < 8) {
-            gprincipal.setIdhorario(1);
-        } else {
-            if (cald.get(Calendar.HOUR_OF_DAY) < 12) {
-                gprincipal.setIdhorario(2);
+        if (gprincipal.getId() == 0) {
+            if (gentidad.getId() == 0) {
+                gentidad.setIdentificacion(txtidentificacion.getText());
+                gentidad.setDescripcion(this.txtApelliNom.getText());
+            }
+            gprincipal.setFecha(dtfecha.getDate());
+            //gprincipal.setIdhorario();
+            Calendar cald = Calendar.getInstance();
+            if (cald.get(Calendar.HOUR_OF_DAY) < 10) {
+                gprincipal.setIdhorario(1);
             } else {
-                if (cald.get(Calendar.HOUR_OF_DAY) < 18) {
-                    gprincipal.setIdhorario(3);
+                if (cald.get(Calendar.HOUR_OF_DAY) < 14) {
+                    gprincipal.setIdhorario(2);
+                } else {
+                    if (cald.get(Calendar.HOUR_OF_DAY) < 18) {
+                        gprincipal.setIdhorario(3);
+                    }
                 }
             }
+            gprincipal.setNum_cama(this.txtcama.getText());
+            gprincipal.setObservacion(this.txtObservacion.getText());
+            dprinci.add(aniadir(0, 1, this.cbxLatanciaMaterna.isSelected(), 0));
+            dprinci.add(aniadir(0, 2, this.cbxNPO.isSelected(), 0));
+            dprinci.add(aniadir(0, 3, this.cbxAcompaniante.isSelected(), 0));
+            dprinci.add(aniadir(0, 4, this.cbxHiposodica.isSelected(), 0));
+            dprinci.add(aniadir(0, 5, this.cbxHipograsa.isSelected(), 0));
+            dprinci.add(aniadir(0, 6, this.cbxPedi68.isSelected(), 0));
+            dprinci.add(aniadir(0, 7, this.cbxPedi911.isSelected(), 0));
+            dprinci.add(aniadir(0, 8, this.cbxPedi1223.isSelected(), 0));
+            dprinci.add(aniadir(0, 9, this.cbxPedi26.isSelected(), 0));
+            dprinci.add(aniadir(0, 10, this.cbxPedi711.isSelected(), 0));
+            dprinci.add(aniadir(0, 11, this.cbxLiquiAca.isSelected(), 0));
+            dprinci.add(aniadir(0, 12, this.cbxLiquiEst.isSelected(), 0));
+            dprinci.add(aniadir(0, 13, this.cbxLiquiAmp.isSelected(), 0));
+            dprinci.add(aniadir(0, 14, this.cbxBlaGast.isSelected(), 0));
+            dprinci.add(aniadir(0, 15, this.cbxBlaInt.isSelected(), 0));
+            dprinci.add(aniadir(0, 16, this.cbxHipoCal.isSelected(), 0));
+            dprinci.add(aniadir(0, 17, this.cbxHipoProEst.isSelected(), 0));
+            dprinci.add(aniadir(0, 18, this.cbxHipoHipo.isSelected(), 0));
+            dprinci.add(aniadir(0, 19, this.cbxHipoHipe.isSelected(), 0));
+            dprinci.add(aniadir(0, 20, this.cbxHipeHipe.isSelected(), 0));
+            dprinci.add(aniadir(0, 21, this.cbxHiperp.isSelected(), 0));
+            dprinci.add(aniadir(0, 22, this.cbxHipoc.isSelected(), 0));
+            dprinci.add(aniadir(0, 23, this.cbxHipo1.isSelected(), 0));
+            dprinci.add(aniadir(0, 24, this.cbxHipe2.isSelected(), 0));
+            dprinci.add(aniadir(0, 25, this.cbxSinGlu.isSelected(), 0));
+            dprinci.add(aniadir(0, 26, this.cbxIle1.isSelected(), 0));
+            dprinci.add(aniadir(0, 27, this.cbxIle2.isSelected(), 0));
+            dprinci.add(aniadir(0, 28, this.cbxIle3.isSelected(), 0));
+            dprinci.add(aniadir(0, 29, this.cbxBlaMec.isSelected(), 0));
+            dprinci.add(aniadir(0, 30, this.cbxTurGas.isSelected(), 0));
+        } else {
+            ArrayList<dprincipal> copy = new ArrayList<dprincipal>();
+            copy = dprinci;
+            dprinci =new ArrayList<dprincipal>();
+            gprincipal.setNum_cama(this.txtcama.getText());
+            gprincipal.setFecha(dtfecha.getDate());
+            gprincipal.setObservacion(this.txtObservacion.getText());
+            dprinci.add(aniadir(copy.get(0).getId(), 1, this.cbxLatanciaMaterna.isSelected(), 0));
+            dprinci.add(aniadir(copy.get(1).getId(), 2, this.cbxNPO.isSelected(), 0));
+            dprinci.add(aniadir(copy.get(2).getId(), 3, this.cbxAcompaniante.isSelected(), 0));
+            dprinci.add(aniadir(copy.get(3).getId(), 4, this.cbxHiposodica.isSelected(), 0));
+            dprinci.add(aniadir(copy.get(4).getId(), 5, this.cbxHipograsa.isSelected(), 0));
+            dprinci.add(aniadir(copy.get(5).getId(), 6, this.cbxPedi68.isSelected(), 0));
+            dprinci.add(aniadir(copy.get(6).getId(), 7, this.cbxPedi911.isSelected(), 0));
+            dprinci.add(aniadir(copy.get(7).getId(), 8, this.cbxPedi1223.isSelected(), 0));
+            dprinci.add(aniadir(copy.get(8).getId(), 9, this.cbxPedi26.isSelected(), 0));
+            dprinci.add(aniadir(copy.get(9).getId(), 10, this.cbxPedi711.isSelected(), 0));
+            dprinci.add(aniadir(copy.get(10).getId(), 11, this.cbxLiquiAca.isSelected(), 0));
+            dprinci.add(aniadir(copy.get(11).getId(), 12, this.cbxLiquiEst.isSelected(), 0));
+            dprinci.add(aniadir(copy.get(12).getId(), 13, this.cbxLiquiAmp.isSelected(), 0));
+            dprinci.add(aniadir(copy.get(13).getId(), 14, this.cbxBlaGast.isSelected(), 0));
+            dprinci.add(aniadir(copy.get(14).getId(), 15, this.cbxBlaInt.isSelected(), 0));
+            dprinci.add(aniadir(copy.get(15).getId(), 16, this.cbxHipoCal.isSelected(), 0));
+            dprinci.add(aniadir(copy.get(16).getId(), 17, this.cbxHipoProEst.isSelected(), 0));
+            dprinci.add(aniadir(copy.get(17).getId(), 18, this.cbxHipoHipo.isSelected(), 0));
+            dprinci.add(aniadir(copy.get(18).getId(), 19, this.cbxHipoHipe.isSelected(), 0));
+            dprinci.add(aniadir(copy.get(19).getId(), 20, this.cbxHipeHipe.isSelected(), 0));
+            dprinci.add(aniadir(copy.get(20).getId(), 21, this.cbxHiperp.isSelected(), 0));
+            dprinci.add(aniadir(copy.get(21).getId(), 22, this.cbxHipoc.isSelected(), 0));
+            dprinci.add(aniadir(copy.get(22).getId(), 23, this.cbxHipo1.isSelected(), 0));
+            dprinci.add(aniadir(copy.get(23).getId(), 24, this.cbxHipe2.isSelected(), 0));
+            dprinci.add(aniadir(copy.get(24).getId(), 25, this.cbxSinGlu.isSelected(), 0));
+            dprinci.add(aniadir(copy.get(25).getId(), 26, this.cbxIle1.isSelected(), 0));
+            dprinci.add(aniadir(copy.get(26).getId(), 27, this.cbxIle2.isSelected(), 0));
+            dprinci.add(aniadir(copy.get(27).getId(), 28, this.cbxIle3.isSelected(), 0));
+            dprinci.add(aniadir(copy.get(28).getId(), 29, this.cbxBlaMec.isSelected(), 0));
+            dprinci.add(aniadir(copy.get(29).getId(), 30, this.cbxTurGas.isSelected(), 0));
         }
-        gprincipal.setNum_cama(this.txtcama.getText());
-        gprincipal.setObservacion(this.txtObservacion.getText());
-        dprinci.add(aniadir(1, this.cbxLatanciaMaterna.isSelected(), 0));
-        dprinci.add(aniadir(2, this.cbxNPO.isSelected(), 0));
-        dprinci.add(aniadir(3, this.cbxAcompaniante.isSelected(), 0));
-        dprinci.add(aniadir(4, this.cbxHiposodica.isSelected(), 0));
-        dprinci.add(aniadir(5, this.cbxHipograsa.isSelected(), 0));
-        dprinci.add(aniadir(6, this.cbxPedi68.isSelected(), 0));
-        dprinci.add(aniadir(7, this.cbxPedi911.isSelected(), 0));
-        dprinci.add(aniadir(8, this.cbxPedi1223.isSelected(), 0));
-        dprinci.add(aniadir(9, this.cbxPedi26.isSelected(), 0));
-        dprinci.add(aniadir(10, this.cbxPedi711.isSelected(), 0));
-        dprinci.add(aniadir(11, this.cbxLiquiAca.isSelected(), 0));
-        dprinci.add(aniadir(12, this.cbxLiquiEst.isSelected(), 0));
-        dprinci.add(aniadir(13, this.cbxLiquiAmp.isSelected(), 0));
-        dprinci.add(aniadir(14, this.cbxBlaGast.isSelected(), 0));
-        dprinci.add(aniadir(15, this.cbxBlaInt.isSelected(), 0));
-        dprinci.add(aniadir(16, this.cbxHipoCal.isSelected(), 0));
-        dprinci.add(aniadir(17, this.cbxHipoProEst.isSelected(), 0));
-        dprinci.add(aniadir(18, this.cbxHipoHipo.isSelected(), 0));
-        dprinci.add(aniadir(19, this.cbxHipoHipe.isSelected(), 0));
-        dprinci.add(aniadir(20, this.cbxHipeHipe.isSelected(), 0));
-        dprinci.add(aniadir(21, this.cbxHiperp.isSelected(), 0));
-        dprinci.add(aniadir(22, this.cbxHipoc.isSelected(), 0));
-        dprinci.add(aniadir(23, this.cbxHipo1.isSelected(), 0));
-        dprinci.add(aniadir(24, this.cbxHipe2.isSelected(), 0));
-        dprinci.add(aniadir(25, this.cbxSinGlu.isSelected(), 0));
-        dprinci.add(aniadir(26, this.cbxIle1.isSelected(), 0));
-        dprinci.add(aniadir(27, this.cbxIle2.isSelected(), 0));
-        dprinci.add(aniadir(28, this.cbxIle3.isSelected(), 0));
-        dprinci.add(aniadir(29, this.cbxBlaMec.isSelected(), 0));
-        dprinci.add(aniadir(30, this.cbxTurGas.isSelected(), 0));
+
     }
     ArrayList<entidad> lenma;
     ArrayList<entidad> lenmed;
@@ -842,9 +944,9 @@ public class frm_proceso extends javax.swing.JFrame {
             lenma = new ArrayList<entidad>();
             lenmed = new ArrayList<entidad>();
             lentar = new ArrayList<entidad>();
-            lenma = gestionM.ListarEntidad(1);
-            lenmed = gestionM.ListarEntidad(2);
-            lentar = gestionM.ListarEntidad(3);
+            lenma = gestionM.ListarEntidad(1, dtfecha.getDate());
+            lenmed = gestionM.ListarEntidad(2, dtfecha.getDate());
+            lentar = gestionM.ListarEntidad(3, dtfecha.getDate());
             lbx1.setModel(datas(lenma));
             lbx2.setModel(datas(lenmed));
             lbx3.setModel(datas(lentar));
@@ -858,36 +960,73 @@ public class frm_proceso extends javax.swing.JFrame {
         this.txtApelliNom.setText(gentidad.getDescripcion());
         this.txtidentificacion.setText(gentidad.getIdentificacion());
         this.txtcama.setText(gprincipal.getNum_cama());
-        this.cbxLatanciaMaterna.setSelected(true);
-        this.cbxNPO.setSelected(true);
-        this.cbxAcompaniante.setSelected(true);
-        this.cbxHiposodica.setSelected(true);
-        this.cbxHipograsa.setSelected(true);
-        this.cbxPedi68.setSelected(true);
-        this.cbxPedi911.setSelected(true);
-        this.cbxPedi1223.setSelected(true);
-        this.cbxPedi26.setSelected(true);
-        this.cbxPedi711.setSelected(true);
-        this.cbxLiquiAca.setSelected(true);
-        this.cbxLiquiEst.setSelected(true);
-        this.cbxLiquiAmp.setSelected(true);
-        this.cbxBlaGast.setSelected(true);
-        this.cbxBlaInt.setSelected(true);
-        this.cbxHipoCal.setSelected(true);
-        this.cbxHipoProEst.setSelected(true);
-        this.cbxHipoHipo.setSelected(true);
-        this.cbxHipoHipe.setSelected(true);
-        this.cbxHipeHipe.setSelected(true);
-        this.cbxHiperp.setSelected(true);
-        this.cbxHipoc.setSelected(true);
-        this.cbxHipo1.setSelected(true);
-        this.cbxHipe2.setSelected(true);
-        this.cbxSinGlu.setSelected(true);
-        this.cbxIle1.setSelected(true);
-        this.cbxIle2.setSelected(true);
-        this.cbxIle3.setSelected(true);
-        this.cbxBlaMec.setSelected(true);
-        this.cbxTurGas.setSelected(true);
+        this.txtObservacion.setText(gprincipal.getObservacion());
+        if (gprincipal.getId()!=0) {
+            
+        
+        this.cbxLatanciaMaterna.setSelected(dprinci.get(0).getActivado());
+        this.cbxNPO.setSelected(dprinci.get(1).getActivado());
+        this.cbxAcompaniante.setSelected(dprinci.get(2).getActivado());
+        this.cbxHiposodica.setSelected(dprinci.get(3).getActivado());
+        this.cbxHipograsa.setSelected(dprinci.get(4).getActivado());
+        this.cbxPedi68.setSelected(dprinci.get(5).getActivado());
+        this.cbxPedi911.setSelected(dprinci.get(6).getActivado());
+        this.cbxPedi1223.setSelected(dprinci.get(7).getActivado());
+        this.cbxPedi26.setSelected(dprinci.get(8).getActivado());
+        this.cbxPedi711.setSelected(dprinci.get(9).getActivado());
+        this.cbxLiquiAca.setSelected(dprinci.get(10).getActivado());
+        this.cbxLiquiEst.setSelected(dprinci.get(11).getActivado());
+        this.cbxLiquiAmp.setSelected(dprinci.get(12).getActivado());
+        this.cbxBlaGast.setSelected(dprinci.get(13).getActivado());
+        this.cbxBlaInt.setSelected(dprinci.get(14).getActivado());
+        this.cbxHipoCal.setSelected(dprinci.get(15).getActivado());
+        this.cbxHipoProEst.setSelected(dprinci.get(16).getActivado());
+        this.cbxHipoHipo.setSelected(dprinci.get(17).getActivado());
+        this.cbxHipoHipe.setSelected(dprinci.get(18).getActivado());
+        this.cbxHipeHipe.setSelected(dprinci.get(19).getActivado());
+        this.cbxHiperp.setSelected(dprinci.get(20).getActivado());
+        this.cbxHipoc.setSelected(dprinci.get(21).getActivado());
+        this.cbxHipo1.setSelected(dprinci.get(22).getActivado());
+        this.cbxHipe2.setSelected(dprinci.get(23).getActivado());
+        this.cbxSinGlu.setSelected(dprinci.get(24).getActivado());
+        this.cbxIle1.setSelected(dprinci.get(25).getActivado());
+        this.cbxIle2.setSelected(dprinci.get(26).getActivado());
+        this.cbxIle3.setSelected(dprinci.get(27).getActivado());
+        this.cbxBlaMec.setSelected(dprinci.get(28).getActivado());
+        this.cbxTurGas.setSelected(dprinci.get(29).getActivado());
+        }
+        else{
+            this.cbxLatanciaMaterna.setSelected(false);
+        this.cbxNPO.setSelected(false);
+        this.cbxAcompaniante.setSelected(false);
+        this.cbxHiposodica.setSelected(false);
+        this.cbxHipograsa.setSelected(false);
+        this.cbxPedi68.setSelected(false);
+        this.cbxPedi911.setSelected(false);
+        this.cbxPedi1223.setSelected(false);
+        this.cbxPedi26.setSelected(false);
+        this.cbxPedi711.setSelected(false);
+        this.cbxLiquiAca.setSelected(false);
+        this.cbxLiquiEst.setSelected(false);
+        this.cbxLiquiAmp.setSelected(false);
+        this.cbxBlaGast.setSelected(false);
+        this.cbxBlaInt.setSelected(false);
+        this.cbxHipoCal.setSelected(false);
+        this.cbxHipoProEst.setSelected(false);
+        this.cbxHipoHipo.setSelected(false);
+        this.cbxHipoHipe.setSelected(false);
+        this.cbxHipeHipe.setSelected(false);
+        this.cbxHiperp.setSelected(false);
+        this.cbxHipoc.setSelected(false);
+        this.cbxHipo1.setSelected(false);
+        this.cbxHipe2.setSelected(false);
+        this.cbxSinGlu.setSelected(false);
+        this.cbxIle1.setSelected(false);
+        this.cbxIle2.setSelected(false);
+        this.cbxIle3.setSelected(false);
+        this.cbxBlaMec.setSelected(false);
+        this.cbxTurGas.setSelected(false);
+        }
 
     }
 
@@ -960,12 +1099,16 @@ public class frm_proceso extends javax.swing.JFrame {
     private com.toedter.calendar.JCalendar dtfecha;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;

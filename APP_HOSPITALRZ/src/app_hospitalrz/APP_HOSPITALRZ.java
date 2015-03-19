@@ -5,6 +5,8 @@
  */
 package app_hospitalrz;
 
+import lib_presentacion.Permisos;
+import lib_presentacion.frm_login;
 import lib_presentacion.frm_proceso;
 
 /**
@@ -18,6 +20,8 @@ public class APP_HOSPITALRZ {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        //frm_login frm = new frm_login();
+        //Permisos frm = new Permisos();
         frm_proceso frm = new frm_proceso(1);
         frm.show();
     }
