@@ -19,6 +19,7 @@ import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
 /**
@@ -192,12 +193,13 @@ public class Form_reporte_departamento extends javax.swing.JFrame {
     NpgSqlConnection conn = new NpgSqlConnection();
     private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
         try {
-            String dir = "C:\\Users\\LUIS\\Documents\\NetBeansProjects\\repo\\APP_HOSPITALRZ\\src\\lib_reporte\\report_departamento.jrxml";
-            JasperReport reporteJasper = JasperCompileManager.compileReport(dir);
+            String dir = "C:\\Users\\LUIS\\Documents\\NetBeansProjects\\repo\\APP_HOSPITALRZ\\src\\lib_reporte\\report_departamento.jasper";
+            //JasperReport reporteJasper = JasperCompileManager.compileReport(dir);
+            JasperReport reporteJasper = (JasperReport)JRLoader.loadObjectFromFile(dir);
             Map parametro = new HashMap();
             parametro.put("FechaDesde", this.jCalendarFechaDesde.getDate());
             parametro.put("FechaHasta", this.jCalendarFechaHasta.getDate());
-            parametro.put("iddepartamento", Integer.parseInt("1") );
+            parametro.put("iddepartamento", 1 );
             JasperPrint mostrarReporte = JasperFillManager.fillReport(reporteJasper, null, conn.getConection());
             JasperViewer.viewReport(mostrarReporte);
         } catch (SQLException ex) {

@@ -30,7 +30,7 @@
 	INNER JOIN "hrz"."dieta" dieta ON dprincipal."iddieta" = dieta."id" AND dprincipal."idestado" = dieta."idestado"
 	INNER JOIN "hrz"."entidad" entidad ON principal."identidad" = entidad."id" AND principal."idestado" = entidad."idestado"
 	WHERE principal."idestado" = 0 AND dprincipal."activado" = true
-	AND principal."iddepartamento" = 1
+	AND principal."iddepartamento" = $P{iddepartamento}
 	ORDER BY dieta."id" $$,
   $$ SELECT m FROM generate_series(1,30) m $$
 ) AS (
