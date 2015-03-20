@@ -22,7 +22,7 @@ public class APP_HOSPITALRZ {
         // TODO code application logic here
         //frm_login frm = new frm_login();
         //Permisos frm = new Permisos();
-        frm_proceso frm = new frm_proceso(1);
+        frm_login frm = new frm_login();
         frm.show();
     }
     

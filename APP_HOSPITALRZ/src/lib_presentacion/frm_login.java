@@ -152,8 +152,9 @@ public class frm_login extends javax.swing.JFrame {
         int id = gestion.logear(gusuario);
         if (id!=0) {
             //aqui llama a tu formulario principal
-            frm_proceso pr = new frm_proceso(id);
+            frm_principal pr = new frm_principal(id);          
             pr.show();
+            this.dispose();
         }
         else
         {

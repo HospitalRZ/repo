@@ -307,4 +307,29 @@ public class BaseDatos_principal {
         return ListaDepartamento;
 
     }
+    public ArrayList<departamento> Listar_departamento_entidad(int identidad) throws SQLException {
+        Connection con = null;
+        CallableStatement stmt = null;
+        ArrayList<departamento> Departamento = null;
+        ResultSet rs = null;
+        try {
+            con = new NpgSqlConnection().getConection();
+            stmt = con.prepareCall("{call hrz.departamento_entidad_select(?)}");
+            stmt.setInt(1, identidad);
+            Departamento = new ArrayList<>();
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                departamento objeto = new departamento();
+                objeto.setId(rs.getInt("id"));
+                objeto.setDescripcion(rs.getString("descripcion"));
+                Departamento.add(objeto);
+            }
+        } catch (SQLException ex) {
+            throw new SQLException(ex);
+        } finally {
+            NpgSqlUtilities.closeConnection(con, stmt, rs);
+        }
+
+        return Departamento;
+    }
 }

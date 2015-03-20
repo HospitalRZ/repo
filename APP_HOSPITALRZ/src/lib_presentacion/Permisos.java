@@ -242,18 +242,17 @@ public class Permisos extends javax.swing.JFrame {
             TableModel model =  dtgpermisos.getModel();
             int i =  model.getRowCount();
             for (int j = 0; j < i; j++) {
-                boolean dt =  ((JCheckBox)model.getValueAt(1,1)).isSelected();
-                JOptionPane.showMessageDialog(null, dt);
+                boolean dt =  Boolean.valueOf(model.getValueAt(j, 1).toString());
                 if (false) {
                     permiso per =  new permiso();
-                departamento dpa =  new departamento();
-                usuario user =  new usuario();
-                user.setId(luser.get(cbxusuarios.getSelectedIndex()).getId());
-                dpa.setId((Integer)model.getValueAt(i, 0));
-                per.setIdDepartamento(dpa);
-                per.setIdestado(0);
-                //per.setId((Integer)model.getValueAt(i, 0));
-                lpermiso.add(per); 
+                    departamento dpa =  new departamento();
+                    usuario user =  new usuario();
+                    user.setId(luser.get(cbxusuarios.getSelectedIndex()).getId());
+                    dpa.setId((Integer)model.getValueAt(i, 0));
+                    per.setIdDepartamento(dpa);
+                    per.setIdestado(0);
+                    //per.setId((Integer)model.getValueAt(i, 0));
+                    lpermiso.add(per); 
                 }
             }
             gestion.IngresaPermiso(lpermiso);
@@ -262,8 +261,6 @@ public class Permisos extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null, ex.getSQLState());
         }
-        
-
     }//GEN-LAST:event_bttGuardarActionPerformed
 
     private void cbxusuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxusuariosActionPerformed
