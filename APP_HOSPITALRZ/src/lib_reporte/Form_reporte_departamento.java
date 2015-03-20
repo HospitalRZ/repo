@@ -213,7 +213,6 @@ public class Form_reporte_departamento extends javax.swing.JFrame {
         try {
             String dir = System.getProperty("user.dir") + "/src/lib_reporte/report_departamento.jrxml";
             JasperReport reporteJasper = JasperCompileManager.compileReport(dir);
-            //JasperReport reporteJasper = (JasperReport)JRLoader.loadObjectFromFile(dir);
             Map parametro = new HashMap();
             parametro.put("FechaDesde","'"+new SimpleDateFormat("yyyy-MM-dd").format(this.jCalendarFechaDesde.getDate())+"'");
             parametro.put("FechaHasta", "'"+new SimpleDateFormat("yyyy-MM-dd").format(this.jCalendarFechaHasta.getDate())+"'");
