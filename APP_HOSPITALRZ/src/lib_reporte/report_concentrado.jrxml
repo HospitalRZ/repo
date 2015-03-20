@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a7169bcc-5030-4309-aa68-6facb39e2167">
-	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Reporte concentrado" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a7169bcc-5030-4309-aa68-6facb39e2167">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="396"/>
+	<property name="ireport.y" value="35"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
@@ -26,7 +26,7 @@
 	Select dp.descripcion, d.iddieta, SUM(case when d.iddieta is null or d.activado = false then 0 else 1 end) from hrz.departamento dp
 	left outer join hrz.principal p on p.iddepartamento=dp.id and p.idestado=dp.idestado
 	left join hrz.dprincipal d on d.idprincipal=p.id and d.idestado=p.idestado
-	where dp.idestado=0 and p.fecha between $P!{FechaDesde} and $P!{FechaHasta}
+	where dp.idestado=0 and (p.fecha between $P!{FechaDesde} and $P!{FechaHasta} or p.fecha is null )
 	group by dp.id, dp.descripcion, d.iddieta order by dp.id
   $$,
   $$ SELECT m FROM generate_series(1,28) m $$
@@ -82,7 +82,7 @@
 		<variableExpression><![CDATA[$F{HIPOGRASA}]]></variableExpression>
 	</variable>
 	<variable name="SumPedriatria6" class="java.lang.Integer" calculation="Sum">
-		<variableExpression><![CDATA[]]></variableExpression>
+		<variableExpression><![CDATA[$F{PEDIATRÍA 6 A 11 MESES}]]></variableExpression>
 	</variable>
 	<variable name="SumPediatria12" class="java.lang.Integer" calculation="Sum">
 		<variableExpression><![CDATA[$F{PEDIATRÍA 12 A 59 MESES}]]></variableExpression>
@@ -631,7 +631,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[( $F{LACTANCIA MATERNA} == null ? ' ' : $F{LACTANCIA MATERNA} )]]></textFieldExpression>
+					<textFieldExpression><![CDATA[( $F{LACTANCIA MATERNA} == 0 || null == $F{LACTANCIA MATERNA} ? ' ' : $F{LACTANCIA MATERNA} )]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="250" y="0" width="19" height="18" uuid="dd80437a-6461-47cd-8a77-aa6e50fd0cc7"/>
@@ -644,7 +644,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[( $F{NPO} == null ? ' ' : $F{NPO} )]]></textFieldExpression>
+					<textFieldExpression><![CDATA[( $F{NPO} == 0 || null == $F{NPO} ? ' ' : $F{NPO} )]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="269" y="0" width="19" height="18" uuid="c871e29f-e45a-443f-9187-e7282ab90390"/>
@@ -657,7 +657,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[( $F{ACOMPAÑANTE} == null ? ' ' : $F{ACOMPAÑANTE} )]]></textFieldExpression>
+					<textFieldExpression><![CDATA[( $F{ACOMPAÑANTE} == 0  || null == $F{ACOMPAÑANTE}? ' ' : $F{ACOMPAÑANTE} )]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="288" y="0" width="18" height="18" uuid="1d7f221f-8472-4064-bab2-7348416f441d"/>
@@ -670,7 +670,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[( $F{HIPOSODICA} == null ? ' ' : $F{HIPOSODICA} )]]></textFieldExpression>
+					<textFieldExpression><![CDATA[( $F{HIPOSODICA} == 0  || null == $F{HIPOSODICA}? ' ' : $F{HIPOSODICA} )]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="306" y="0" width="18" height="18" uuid="c779f38a-ec9a-4836-9254-ae3abf938d27"/>
@@ -683,7 +683,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[( $F{HIPOGRASA} == null ? ' ' : $F{HIPOGRASA} )]]></textFieldExpression>
+					<textFieldExpression><![CDATA[( $F{HIPOGRASA} == 0 || null == $F{HIPOGRASA} ? ' ' : $F{HIPOGRASA} )]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="324" y="0" width="19" height="18" uuid="0be4b61d-ec14-4a33-a60f-a1e0a7c9377b"/>
@@ -696,7 +696,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[( $F{PEDIATRÍA 6 A 11 MESES} == null ? ' ' : $F{PEDIATRÍA 6 A 11 MESES} )]]></textFieldExpression>
+					<textFieldExpression><![CDATA[( $F{PEDIATRÍA 6 A 11 MESES} == 0 || null == $F{PEDIATRÍA 6 A 11 MESES} ? ' ' : $F{PEDIATRÍA 6 A 11 MESES} )]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="343" y="0" width="19" height="18" uuid="9abac95f-c0b0-4456-8da9-20d25c566560"/>
@@ -709,7 +709,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[( $F{PEDIATRÍA 12 A 59 MESES} == null ? ' ' : $F{PEDIATRÍA 12 A 59 MESES} )]]></textFieldExpression>
+					<textFieldExpression><![CDATA[( $F{PEDIATRÍA 12 A 59 MESES} == 0 || null == $F{PEDIATRÍA 12 A 59 MESES} ? ' ' : $F{PEDIATRÍA 12 A 59 MESES} )]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="362" y="0" width="21" height="18" uuid="a5036ad5-6641-4583-ba14-e6a104acf26a"/>
@@ -722,7 +722,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[( $F{PEDIATRÍA 5 a 9 AÑOS} == null ? ' ' : $F{PEDIATRÍA 5 a 9 AÑOS} )]]></textFieldExpression>
+					<textFieldExpression><![CDATA[( $F{PEDIATRÍA 5 a 9 AÑOS} == 0 || null == $F{PEDIATRÍA 5 a 9 AÑOS} ? ' ' : $F{PEDIATRÍA 5 a 9 AÑOS} )]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="383" y="0" width="19" height="18" uuid="2688c660-addd-449b-ad48-128b6786bbcb"/>
@@ -735,7 +735,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[( $F{LÍQUIDA ACALÓRICA} == null ? ' ' : $F{LÍQUIDA ACALÓRICA} )]]></textFieldExpression>
+					<textFieldExpression><![CDATA[( $F{LÍQUIDA ACALÓRICA} == 0 || null == $F{LÍQUIDA ACALÓRICA} ? ' ' : $F{LÍQUIDA ACALÓRICA} )]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="402" y="0" width="18" height="18" uuid="a42ce550-17db-4d30-b9be-b67d32ec7cd4"/>
@@ -748,7 +748,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[( $F{LÍQUIDA ESTRICTA} == null ? ' ' : $F{LÍQUIDA ESTRICTA} )]]></textFieldExpression>
+					<textFieldExpression><![CDATA[( $F{LÍQUIDA ESTRICTA} == 0 || null == $F{LÍQUIDA ESTRICTA} ? ' ' : $F{LÍQUIDA ESTRICTA} )]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="420" y="0" width="17" height="18" uuid="9e473563-3196-4c2f-aab2-cb50f0c8e8b5"/>
@@ -761,7 +761,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[( $F{LÍQUIDA AMPLIA} == null ? ' ' : $F{LÍQUIDA AMPLIA} )]]></textFieldExpression>
+					<textFieldExpression><![CDATA[( $F{LÍQUIDA AMPLIA} == 0 || null == $F{LÍQUIDA AMPLIA} ? ' ' : $F{LÍQUIDA AMPLIA} )]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="437" y="0" width="19" height="18" uuid="0f90c08e-f860-4c58-bf62-f8428be63879"/>
@@ -774,7 +774,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[( $F{BLANDA GÁSTRICA} == null ? ' ' : $F{BLANDA GÁSTRICA} )]]></textFieldExpression>
+					<textFieldExpression><![CDATA[( $F{BLANDA GÁSTRICA} == 0 || null == $F{BLANDA GÁSTRICA} ? ' ' : $F{BLANDA GÁSTRICA} )]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="456" y="0" width="19" height="18" uuid="dc651159-cf1f-4849-98f5-259efd8a2287"/>
@@ -787,7 +787,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[( $F{BLANDA INTESTINAL} == null ? ' ' : $F{BLANDA INTESTINAL} )]]></textFieldExpression>
+					<textFieldExpression><![CDATA[( $F{BLANDA INTESTINAL} == 0 || null == $F{BLANDA INTESTINAL} ? ' ' : $F{BLANDA INTESTINAL} )]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="475" y="0" width="19" height="18" uuid="aea1b3fc-2d45-491c-940b-086e038f5333"/>
@@ -800,7 +800,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[( $F{BLANDA MECÁNICA GERIÁTRICA} == null ? ' ' : $F{BLANDA MECÁNICA GERIÁTRICA} )]]></textFieldExpression>
+					<textFieldExpression><![CDATA[( $F{BLANDA MECÁNICA GERIÁTRICA} == 0 || null == $F{BLANDA MECÁNICA GERIÁTRICA} ? ' ' : $F{BLANDA MECÁNICA GERIÁTRICA} )]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="494" y="0" width="25" height="18" uuid="6f5b2081-c853-483c-a295-2a1206232137"/>
@@ -813,7 +813,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[( $F{TURMIX: SNG Y GASTROTOMÍA} == null ? ' ' : $F{TURMIX: SNG Y GASTROTOMÍA} )]]></textFieldExpression>
+					<textFieldExpression><![CDATA[( $F{TURMIX: SNG Y GASTROTOMÍA} == 0 || null == $F{TURMIX: SNG Y GASTROTOMÍA} ? ' ' : $F{TURMIX: SNG Y GASTROTOMÍA} )]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="519" y="0" width="19" height="18" uuid="060e95ff-dd70-4d41-b143-772cf2dcc830"/>
@@ -826,7 +826,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[( $F{ILEOSTOMÍA FASE 1} == null ? ' ' : $F{ILEOSTOMÍA FASE 1} )]]></textFieldExpression>
+					<textFieldExpression><![CDATA[( $F{ILEOSTOMÍA FASE 1} == 0 || null == $F{ILEOSTOMÍA FASE 1} ? ' ' : $F{ILEOSTOMÍA FASE 1} )]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="538" y="0" width="19" height="18" uuid="1e2d909a-f50d-4978-b864-14d6fdfc9e40"/>
@@ -839,7 +839,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[( $F{ILEOSTOMÍA FASE 2} == null ? ' ' : $F{ILEOSTOMÍA FASE 2} )]]></textFieldExpression>
+					<textFieldExpression><![CDATA[( $F{ILEOSTOMÍA FASE 2} == 0 || null == $F{ILEOSTOMÍA FASE 2} ? ' ' : $F{ILEOSTOMÍA FASE 2} )]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="557" y="0" width="19" height="18" uuid="561901df-ea5c-4d38-b480-630579539c56"/>
@@ -852,7 +852,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[( $F{ILEOSTOMÍA FASE 3} == null ? ' ' : $F{ILEOSTOMÍA FASE 3} )]]></textFieldExpression>
+					<textFieldExpression><![CDATA[( $F{ILEOSTOMÍA FASE 3} == 0 || null == $F{ILEOSTOMÍA FASE 3} ? ' ' : $F{ILEOSTOMÍA FASE 3} )]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="576" y="0" width="15" height="18" uuid="c0743423-9f98-48d5-8baf-9dbae15220b3"/>
@@ -865,7 +865,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[( $F{HIPO CALORÍCA} == null ? ' ' : $F{HIPO CALORÍCA} )]]></textFieldExpression>
+					<textFieldExpression><![CDATA[( $F{HIPO CALORÍCA} == 0 || null == $F{HIPO CALORÍCA} ? ' ' : $F{HIPO CALORÍCA} )]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="591" y="0" width="18" height="18" uuid="8834b512-0843-45ee-98c8-f9982fad1433"/>
@@ -878,7 +878,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[( $F{HIPO PROTEICA ESTRICTA} == null ? ' ' : $F{HIPO PROTEICA ESTRICTA} )]]></textFieldExpression>
+					<textFieldExpression><![CDATA[( $F{HIPO PROTEICA ESTRICTA} == 0 || null == $F{HIPO PROTEICA ESTRICTA} ? ' ' : $F{HIPO PROTEICA ESTRICTA} )]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="609" y="0" width="15" height="18" uuid="7b2f2e02-fcd5-4981-8c33-8bc801832e11"/>
@@ -891,7 +891,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[( $F{HIPOPROTEICA} == null ? ' ' : $F{HIPOPROTEICA} )]]></textFieldExpression>
+					<textFieldExpression><![CDATA[( $F{HIPOPROTEICA} == 0 || null == $F{HIPOPROTEICA} ? ' ' : $F{HIPOPROTEICA} )]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="624" y="0" width="17" height="18" uuid="0220a3ef-2959-4725-97ae-c910464cda58"/>
@@ -904,7 +904,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[( $F{HIPERCALORICA} == null ? ' ' : $F{HIPERCALORICA} )]]></textFieldExpression>
+					<textFieldExpression><![CDATA[( $F{HIPERCALORICA} == 0 || null == $F{HIPERCALORICA} ? ' ' : $F{HIPERCALORICA} )]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="641" y="0" width="25" height="18" uuid="6dd9c04e-0342-4411-b6c5-549d134de1f4"/>
@@ -917,7 +917,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[( $F{HIPERCALORICA-HIPERPROTEICA} == null ? ' ' : $F{HIPERCALORICA-HIPERPROTEICA} )]]></textFieldExpression>
+					<textFieldExpression><![CDATA[( $F{HIPERCALORICA-HIPERPROTEICA} == 0 || null == $F{HIPERCALORICA-HIPERPROTEICA} ? ' ' : $F{HIPERCALORICA-HIPERPROTEICA} )]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="666" y="0" width="24" height="18" uuid="5d989738-7cdb-4e9e-b297-1ff238285cbf"/>
@@ -930,7 +930,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[( $F{HIPERPROTEICA} == null ? ' ' : $F{HIPERPROTEICA} )]]></textFieldExpression>
+					<textFieldExpression><![CDATA[( $F{HIPERPROTEICA} == 0 || null == $F{HIPERPROTEICA} ? ' ' : $F{HIPERPROTEICA} )]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="690" y="0" width="19" height="18" uuid="fdefd294-9507-4539-8d41-776003f87e2f"/>
@@ -943,7 +943,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[( $F{HIPOHIDROCARBONADA} == null ? ' ' : $F{HIPOHIDROCARBONADA} )]]></textFieldExpression>
+					<textFieldExpression><![CDATA[( $F{HIPOHIDROCARBONADA} == 0 || null == $F{HIPOHIDROCARBONADA} ? ' ' : $F{HIPOHIDROCARBONADA} )]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="709" y="0" width="25" height="18" uuid="00d54ebf-d228-4a6b-9b01-14eb9991a204"/>
@@ -956,7 +956,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[( $F{HIPOHIDROCARBONADA HIPOPROTEICA} == null ? ' ' : $F{HIPOHIDROCARBONADA HIPOPROTEICA} )]]></textFieldExpression>
+					<textFieldExpression><![CDATA[( $F{HIPOHIDROCARBONADA HIPOPROTEICA} == 0 || null == $F{HIPOHIDROCARBONADA HIPOPROTEICA} ? ' ' : $F{HIPOHIDROCARBONADA HIPOPROTEICA} )]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="734" y="0" width="25" height="18" uuid="d114e40c-2c26-4f98-b1e9-c0956e9e32b6"/>
@@ -969,7 +969,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[( $F{HIPOHIDROCARBONADA HIPERPROTEICA} == null ? ' ' : $F{HIPOHIDROCARBONADA HIPERPROTEICA} )]]></textFieldExpression>
+					<textFieldExpression><![CDATA[( $F{HIPOHIDROCARBONADA HIPERPROTEICA} == 0 || null == $F{HIPOHIDROCARBONADA HIPERPROTEICA} ? ' ' : $F{HIPOHIDROCARBONADA HIPERPROTEICA} )]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="759" y="0" width="18" height="18" uuid="29eac947-2921-464f-8905-e18bb3cc2c35"/>
@@ -982,7 +982,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Calibri" size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[( $F{SIN GLUTEN} == null ? ' ' : $F{SIN GLUTEN} )]]></textFieldExpression>
+					<textFieldExpression><![CDATA[( $F{SIN GLUTEN} == 0 || null == $F{SIN GLUTEN} ? ' ' : $F{SIN GLUTEN} )]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="777" y="0" width="18" height="18" uuid="27a3ac70-c8fd-41eb-b2c1-1e16f32396bf"/>

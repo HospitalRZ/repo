@@ -7,6 +7,7 @@ package lib_reporte;
 
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -30,6 +31,8 @@ public class Form_reporte_concentrado extends javax.swing.JFrame {
      */
     public Form_reporte_concentrado() {
         initComponents();
+        this.jCalendarFechaDesde.setDate(new Date());
+        this.jCalendarFechaHasta.setDate(new Date());
     }
 
     /**
