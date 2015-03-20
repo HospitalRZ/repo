@@ -6,6 +6,7 @@
 package lib_reporte;
 
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -162,12 +163,12 @@ public class Form_reporte_concentrado extends javax.swing.JFrame {
     NpgSqlConnection conn = new NpgSqlConnection();
     private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
         try {
-            String dir = "C:\\Users\\LUIS\\Documents\\NetBeansProjects\\repo\\APP_HOSPITALRZ\\src\\lib_reporte\\report_concentrado.jrxml";
+            String dir = System.getProperty("user.dir") + "/src/lib_reporte/report_concentrado.jrxml";
             JasperReport reporteJasper = JasperCompileManager.compileReport(dir);
             Map parametro = new HashMap();
-            parametro.put("FechaDesde", this.jCalendarFechaDesde.getDate());
-            parametro.put("FechaHasta", this.jCalendarFechaHasta.getDate());
-            JasperPrint mostrarReporte = JasperFillManager.fillReport(reporteJasper, null, conn.getConection());
+            parametro.put("FechaDesde","'"+new SimpleDateFormat("yyyy-MM-dd").format(this.jCalendarFechaDesde.getDate())+"'");
+            parametro.put("FechaHasta", "'"+new SimpleDateFormat("yyyy-MM-dd").format(this.jCalendarFechaHasta.getDate())+"'");
+            JasperPrint mostrarReporte = JasperFillManager.fillReport(reporteJasper, parametro, conn.getConection());
             JasperViewer.viewReport(mostrarReporte);
         } catch (SQLException ex) {
             Logger.getLogger(Form_reporte_concentrado.class.getName()).log(Level.SEVERE, null, ex);

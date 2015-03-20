@@ -5,12 +5,18 @@
  */
 package lib_reporte;
 
+import java.awt.Component;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.ListCellRenderer;
 import lib_clases.departamento;
 import lib_datos.BaseDatos_principal;
 import lib_datos.NpgSqlConnection;
@@ -26,6 +32,15 @@ import net.sf.jasperreports.view.JasperViewer;
  *
  * @author LUIS
  */
+class MyListRenderer extends JLabel implements ListCellRenderer {
+
+    @Override
+    public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+        Object[] itemData = (Object[])value;
+        setText((String)itemData[1]);
+        return this;        
+    }
+}
 public class Form_reporte_departamento extends javax.swing.JFrame {
 
     /**
@@ -35,13 +50,16 @@ public class Form_reporte_departamento extends javax.swing.JFrame {
     public Form_reporte_departamento() throws SQLException {
         initComponents();
         AsignarDatos();
+        lista_departamento.setRenderer(new MyListRenderer());
     }
     
     private void AsignarDatos() throws SQLException
     {
         ArrayList<departamento> lista= baseDatos.Listar_departamento();
+        this.jCalendarFechaDesde.setDate(new Date());
+        this.jCalendarFechaHasta.setDate(new Date());
         for (departamento lista1 : lista) {
-         this.lista_departamento.addItem( lista1.getDescripcion());
+         this.lista_departamento.addItem(new Object[] {lista1.getId(), lista1.getDescripcion()} );
         }
     }
 
@@ -193,14 +211,16 @@ public class Form_reporte_departamento extends javax.swing.JFrame {
     NpgSqlConnection conn = new NpgSqlConnection();
     private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
         try {
-            String dir = "C:\\Users\\LUIS\\Documents\\NetBeansProjects\\repo\\APP_HOSPITALRZ\\src\\lib_reporte\\report_departamento.jasper";
-            //JasperReport reporteJasper = JasperCompileManager.compileReport(dir);
-            JasperReport reporteJasper = (JasperReport)JRLoader.loadObjectFromFile(dir);
+            String dir = System.getProperty("user.dir") + "/src/lib_reporte/report_departamento.jrxml";
+            JasperReport reporteJasper = JasperCompileManager.compileReport(dir);
+            //JasperReport reporteJasper = (JasperReport)JRLoader.loadObjectFromFile(dir);
             Map parametro = new HashMap();
-            parametro.put("FechaDesde", this.jCalendarFechaDesde.getDate());
-            parametro.put("FechaHasta", this.jCalendarFechaHasta.getDate());
-            parametro.put("iddepartamento", 1 );
-            JasperPrint mostrarReporte = JasperFillManager.fillReport(reporteJasper, null, conn.getConection());
+            parametro.put("FechaDesde","'"+new SimpleDateFormat("yyyy-MM-dd").format(this.jCalendarFechaDesde.getDate())+"'");
+            parametro.put("FechaHasta", "'"+new SimpleDateFormat("yyyy-MM-dd").format(this.jCalendarFechaHasta.getDate())+"'");
+            Object[] dato =(Object[]) this.lista_departamento.getSelectedItem();
+            parametro.put("iddepartamento", dato[0] );
+            parametro.put("departamento", dato[1]);
+            JasperPrint mostrarReporte = JasperFillManager.fillReport(reporteJasper, parametro, conn.getConection());
             JasperViewer.viewReport(mostrarReporte);
         } catch (SQLException ex) {
             Logger.getLogger(Form_reporte_departamento.class.getName()).log(Level.SEVERE, null, ex);
