@@ -5,6 +5,8 @@
  */
 package lib_clases;
 
+import java.util.Date;
+
 /**
  *
  * @author LUIS
@@ -13,9 +15,18 @@ public class entidad extends estandar{
     String identificacion;
     String descripcion;
     tentidad idtentidad;
+    Date fechanacimiento;
 
     public String getIdentificacion() {
         return identificacion;
+    }
+    public Date getFechanaci()
+    {
+        return fechanacimiento;
+    }
+    public void setFechaNaci( Date fecha)
+    {
+        this.fechanacimiento =  fecha;
     }
 
     public void setIdentificacion(String identificacion) {
@@ -37,4 +48,5 @@ public class entidad extends estandar{
     public void setIdtentidad(tentidad idtentidad) {
         this.idtentidad = idtentidad;
     }
+    
 }

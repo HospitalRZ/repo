@@ -11,6 +11,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  *
@@ -25,11 +26,12 @@ public class BaseDatos_principal {
         try {
             con = new NpgSqlConnection().getConection();
             if (Entidad.getId() == 0) {
-                stmt = con.prepareCall("{call hrz.entidad_insert (?,?,?,?)}");
+                stmt = con.prepareCall("{call hrz.entidad_insert (?,?,?,?,?)}");
                 stmt.setString(1, Entidad.getIdentificacion());
                 stmt.setString(2, Entidad.getDescripcion());
                 stmt.setInt(3, Entidad.getIdtentidad().getId());
                 stmt.setInt(4, Entidad.getIdestado());
+                stmt.setDate(5, new java.sql.Date(Entidad.getFechanaci().getTime()));
                 rs = stmt.executeQuery();
                 if (rs.next()) {
                     Entidad.setId(rs.getInt(1));
@@ -115,6 +117,7 @@ public class BaseDatos_principal {
                 Entidad.setId(rs.getInt("id"));
                 Entidad.setDescripcion(rs.getString("descripcion"));
                 Entidad.setIdentificacion(rs.getString("identificacion"));
+                Entidad.setFechaNaci(rs.getDate("fechanaci"));
                 Entidades.add(Entidad);
             }
         } catch (SQLException ex) {
@@ -153,6 +156,7 @@ public class BaseDatos_principal {
                 Entidad.setId(rs.getInt("identidad"));
                 Entidad.setDescripcion(rs.getString("descripcion"));
                 Entidad.setIdentificacion(rs.getString("identificacion"));
+                Entidad.setFechaNaci((Date)rs.getDate("fechanaci"));
                 Principal.setIdentidad(Entidad);
                 Principal.setObservacion(rs.getString("observacion"));
                 Principal.setIdestado(rs.getInt("idestado"));
@@ -186,37 +190,48 @@ public class BaseDatos_principal {
     }
 
     
-    public void Listar_principal_all(int iddepartamento,java.util.Date fecha) throws SQLException
+    public ArrayList<principal> Listar_principal_all(int iddepartamento,java.util.Date fecha) throws SQLException
     {
         Connection con = null;
             CallableStatement stmt1 = null;
-            ArrayList<dprincipal> Dprincipales = null;
+            
             ArrayList<principal> lprincipal = null;
-            ResultSet rs1 = null;
+            ResultSet rs = null;
         try {    
-            Dprincipales = new ArrayList<dprincipal>();
             lprincipal = new ArrayList<principal>();
             con = new NpgSqlConnection().getConection();
             stmt1 = con.prepareCall("{call hrz.principal_tselect_all(?,?)}");
-            stmt1.setInt(1,1);
-            
-            stmt1.setDate(2, new java.sql.Date(fecha.getTime()));
-            rs1 = stmt1.executeQuery();
-            while (rs1.next()) {
-                dprincipal Dprincipal = new dprincipal();
-                Dprincipal.setId(rs1.getInt("id"));
-                //Dprincipal.setIdprincipal(idprincipal);
-                dieta Dieta = new dieta();
-                Dieta.setId(rs1.getInt("iddieta"));
-                Dprincipal.setIddieta(Dieta);
-                Dprincipal.setActivado(rs1.getBoolean("activado"));
-                Dprincipales.add(Dprincipal);
-
+            stmt1.setInt(1,iddepartamento);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(fecha); 
+	    calendar.add(Calendar.DATE, -1);
+            stmt1.setDate(2, (new java.sql.Date(calendar.getTimeInMillis())));
+            rs = stmt1.executeQuery();
+            while (rs.next()) {
+                principal Principal = new principal();
+                Principal.setId(rs.getInt("id"));
+                Principal.setFecha((Date) rs.getDate("fecha"));
+                departamento Departamento = new departamento();
+                Departamento.setId(rs.getInt("iddepartamento"));
+                Principal.setIddertamento(Departamento);
+                Principal.setIdhorario(rs.getInt("idhorario"));
+                Principal.setNum_cama(rs.getString("ncama"));
+                entidad Entidad = new entidad();
+                Entidad.setId(rs.getInt("identidad"));
+                Entidad.setDescripcion(rs.getString("descripcion"));
+                Entidad.setIdentificacion(rs.getString("identificacion"));
+                Entidad.setFechaNaci((Date)rs.getDate("fechanaci"));
+                Principal.setIdentidad(Entidad);
+                Principal.setObservacion(rs.getString("observacion"));
+                Principal.setIdestado(rs.getInt("idestado"));
+                lprincipal.add(Principal);
             }
+            return lprincipal;
+            
         } catch (SQLException ex) {
             throw new SQLException(ex);
         } finally {
-            NpgSqlUtilities.closeConnection(con, stmt1, rs1);
+            NpgSqlUtilities.closeConnection(con, stmt1, rs);
         }
 
         
@@ -268,6 +283,7 @@ public class BaseDatos_principal {
                 Entidad.setId(rs.getInt("id"));
                 Entidad.setDescripcion(rs.getString("descripcion"));
                 Entidad.setIdentificacion(rs.getString("identificacion"));
+                Entidad.setFechaNaci((Date) rs.getDate("fechanaci"));
                 tentidad Tentidad = new tentidad();
                 Tentidad.setId(rs.getInt("idtentidad"));
                 Entidad.setIdtentidad(Tentidad);
