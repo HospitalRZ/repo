@@ -41,7 +41,7 @@ class MyListRenderer extends JLabel implements ListCellRenderer {
         return this;        
     }
 }
-public class Form_reporte_departamento extends javax.swing.JFrame {
+public class Form_reporte_departamento extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form form_reporte
@@ -49,6 +49,7 @@ public class Form_reporte_departamento extends javax.swing.JFrame {
     BaseDatos_principal baseDatos= new BaseDatos_principal();
     public Form_reporte_departamento() throws SQLException {
         initComponents();
+        setClosable(true);
         AsignarDatos();
         lista_departamento.setRenderer(new MyListRenderer());
     }
@@ -220,7 +221,7 @@ public class Form_reporte_departamento extends javax.swing.JFrame {
             parametro.put("iddepartamento", dato[0] );
             parametro.put("departamento", dato[1]);
             JasperPrint mostrarReporte = JasperFillManager.fillReport(reporteJasper, parametro, conn.getConection());
-            JasperViewer.viewReport(mostrarReporte);
+            JasperViewer.viewReport(mostrarReporte, false);
         } catch (SQLException ex) {
             Logger.getLogger(Form_reporte_departamento.class.getName()).log(Level.SEVERE, null, ex);
         } catch (JRException ex) {

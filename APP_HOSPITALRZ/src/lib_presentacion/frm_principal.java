@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JMenuItem;
 import lib_clases.departamento;
 import lib_gestion.gestion;
 import lib_reporte.Form_reporte_concentrado;
@@ -38,6 +39,16 @@ public class frm_principal extends javax.swing.JFrame {
         gestionM = new gestion();
         departamentos = gestionM.ListarDepartamentos_Entidad(identidad);
         Combo_departamentos.removeAllItems();
+        for (int i = 0; i < jMenu1.getItemCount(); i++) {
+            JMenuItem s = jMenu1.getItem(i);
+            Boolean estado = false;
+            for(departamento objeto: departamentos)
+            {
+                if (s.getText().equals(objeto.getDescripcion()))
+                    estado= true;
+            }
+            s.setEnabled(estado);
+        }
         for(departamento objeto: departamentos)
         {
             Combo_departamentos.addItem(objeto.getDescripcion());
@@ -185,12 +196,12 @@ public class frm_principal extends javax.swing.JFrame {
                     .addContainerGap(50, Short.MAX_VALUE)))
         );
 
-        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 22)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 51, 255));
         jLabel2.setText("Hospital Rafeal Rodriguez Zambrano");
 
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 51, 255));
         jLabel1.setText("Control de Dietas");
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
@@ -227,7 +238,7 @@ public class frm_principal extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addContainerGap(191, Short.MAX_VALUE))
         );
         jDesktopPane1.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -253,6 +264,7 @@ public class frm_principal extends javax.swing.JFrame {
         jMenu1.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
 
         jMenuItemEMERGENCIA.setText("EMERGENCIA");
+        jMenuItemEMERGENCIA.setEnabled(false);
         jMenuItemEMERGENCIA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemEMERGENCIAActionPerformed(evt);

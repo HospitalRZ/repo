@@ -24,13 +24,14 @@ import net.sf.jasperreports.view.JasperViewer;
  *
  * @author LUIS
  */
-public class Form_reporte_concentrado extends javax.swing.JFrame {
+public class Form_reporte_concentrado extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form form_reporte
      */
     public Form_reporte_concentrado() {
         initComponents();
+        setClosable(true);
         this.jCalendarFechaDesde.setDate(new Date());
         this.jCalendarFechaHasta.setDate(new Date());
     }
@@ -172,7 +173,7 @@ public class Form_reporte_concentrado extends javax.swing.JFrame {
             parametro.put("FechaDesde","'"+new SimpleDateFormat("yyyy-MM-dd").format(this.jCalendarFechaDesde.getDate())+"'");
             parametro.put("FechaHasta", "'"+new SimpleDateFormat("yyyy-MM-dd").format(this.jCalendarFechaHasta.getDate())+"'");
             JasperPrint mostrarReporte = JasperFillManager.fillReport(reporteJasper, parametro, conn.getConection());
-            JasperViewer.viewReport(mostrarReporte);
+            JasperViewer.viewReport(mostrarReporte, false);
         } catch (SQLException ex) {
             Logger.getLogger(Form_reporte_concentrado.class.getName()).log(Level.SEVERE, null, ex);
         } catch (JRException ex) {
