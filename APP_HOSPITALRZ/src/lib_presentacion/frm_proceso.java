@@ -37,18 +37,19 @@ import net.sf.jasperreports.view.JasperViewer;
  *
  * @author LUIS
  */
-public class frm_proceso extends javax.swing.JFrame {
+public class frm_proceso extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form frm_proceso
      */
     public frm_proceso() {
         initComponents();
-
+        setClosable(true);
     }
 
     public frm_proceso(int iddepartamento) {
         initComponents();
+        setClosable(true);
         gestionM = new gestion();
         dprinci = new ArrayList<dprincipal>();
         gentidad = new entidad();

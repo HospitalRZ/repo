@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import lib_clases.departamento;
 import lib_gestion.gestion;
 import lib_reporte.Form_reporte_concentrado;
@@ -33,7 +34,7 @@ public class frm_principal extends javax.swing.JFrame {
     }
     public frm_principal(int identidad) throws SQLException {
         initComponents();
-        
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         gestionM = new gestion();
         departamentos = gestionM.ListarDepartamentos_Entidad(identidad);
         Combo_departamentos.removeAllItems();
@@ -52,8 +53,7 @@ public class frm_principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
         jPanel1 = new javax.swing.JPanel();
         Combo_departamentos = new javax.swing.JComboBox();
         aceptar_boton = new javax.swing.JToggleButton();
@@ -62,14 +62,31 @@ public class frm_principal extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         ch_Reporte_departamento = new javax.swing.JCheckBox();
         ch_Reporte_concentrado1 = new javax.swing.JCheckBox();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItemUSUARIO = new javax.swing.JMenuItem();
+        jMenuItemPACIENTES = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jMenuItemSALIR = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItemEMERGENCIA = new javax.swing.JMenuItem();
+        jMenuItemCIRUGIA = new javax.swing.JMenuItem();
+        jMenuItemGINECOBSTETRICIA = new javax.swing.JMenuItem();
+        jMenuItemTRAUMATOLOGIA = new javax.swing.JMenuItem();
+        jMenuItemMEDICINAINTERNA = new javax.swing.JMenuItem();
+        jMenuItemPEDIATRIA = new javax.swing.JMenuItem();
+        jMenuItemUCI = new javax.swing.JMenuItem();
+        jMenuItemINFECTOLOGIA = new javax.swing.JMenuItem();
+        jMenuItemUNIDADQUEMADOS = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItemDEPARTAMENTO = new javax.swing.JMenuItem();
+        jMenuItemCONCENTRADO = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItemACERCADE = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 22)); // NOI18N
-        jLabel2.setText("Hospital Rafeal Rodriguez Zambrano");
-
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel1.setText("Control de Dietas");
 
         Combo_departamentos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Combo_departamentos.addItemListener(new java.awt.event.ItemListener() {
@@ -101,14 +118,13 @@ public class frm_principal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Combo_departamentos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(aceptar_boton, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(55, 55, 55))))
+                    .addComponent(Combo_departamentos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(aceptar_boton, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jLabel3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,74 +174,220 @@ public class frm_principal extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(18, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addGap(71, 71, 71)
-                .addComponent(ch_Reporte_departamento)
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addComponent(ch_Reporte_departamento))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addGap(58, 58, 58)
                     .addComponent(ch_Reporte_concentrado1)
-                    .addContainerGap(152, Short.MAX_VALUE)))
+                    .addContainerGap(50, Short.MAX_VALUE)))
         );
+
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 22)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Hospital Rafeal Rodriguez Zambrano");
+
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Control de Dietas");
+
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(87, 87, 87))
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(217, 217, 217)
+                        .addComponent(jLabel1))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addComponent(jLabel2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(180, Short.MAX_VALUE))
+        );
+        jDesktopPane1.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jMenu4.setText("ARCHIVO");
+        jMenu4.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+
+        jMenuItemUSUARIO.setText("USUARIO");
+        jMenu4.add(jMenuItemUSUARIO);
+
+        jMenuItemPACIENTES.setText("PACIENTES");
+        jMenu4.add(jMenuItemPACIENTES);
+        jMenu4.add(jSeparator1);
+
+        jMenuItemSALIR.setText("SALIR");
+        jMenu4.add(jMenuItemSALIR);
+
+        jMenuBar1.add(jMenu4);
+
+        jMenu1.setText("DEPARTAMENTOS");
+        jMenu1.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+
+        jMenuItemEMERGENCIA.setText("EMERGENCIA");
+        jMenuItemEMERGENCIA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemEMERGENCIAActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemEMERGENCIA);
+
+        jMenuItemCIRUGIA.setText("CIRUGIA");
+        jMenuItemCIRUGIA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCIRUGIAActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemCIRUGIA);
+
+        jMenuItemGINECOBSTETRICIA.setText("GINECO-OBSTETRICIA");
+        jMenuItemGINECOBSTETRICIA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemGINECOBSTETRICIAActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemGINECOBSTETRICIA);
+
+        jMenuItemTRAUMATOLOGIA.setText("TRAUMATOLOGIA");
+        jMenuItemTRAUMATOLOGIA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemTRAUMATOLOGIAActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemTRAUMATOLOGIA);
+
+        jMenuItemMEDICINAINTERNA.setText("MEDICINA INTERNA");
+        jMenuItemMEDICINAINTERNA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemMEDICINAINTERNAActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemMEDICINAINTERNA);
+
+        jMenuItemPEDIATRIA.setText("PEDIATRIA");
+        jMenuItemPEDIATRIA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemPEDIATRIAActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemPEDIATRIA);
+
+        jMenuItemUCI.setText("UCI");
+        jMenuItemUCI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemUCIActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemUCI);
+
+        jMenuItemINFECTOLOGIA.setText("INFECTOLOGIA");
+        jMenuItemINFECTOLOGIA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemINFECTOLOGIAActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemINFECTOLOGIA);
+
+        jMenuItemUNIDADQUEMADOS.setText("UNIDAD DE QUEMADOS");
+        jMenuItemUNIDADQUEMADOS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemUNIDADQUEMADOSActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemUNIDADQUEMADOS);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("REPORTES");
+        jMenu2.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+
+        jMenuItemDEPARTAMENTO.setText("DEPARTAMENTO");
+        jMenuItemDEPARTAMENTO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemDEPARTAMENTOActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItemDEPARTAMENTO);
+
+        jMenuItemCONCENTRADO.setText("CONCENTRADO");
+        jMenuItemCONCENTRADO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCONCENTRADOActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItemCONCENTRADO);
+
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("INFORMACIÓN");
+        jMenu3.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+
+        jMenuItemACERCADE.setText("ACERCA DE..");
+        jMenu3.add(jMenuItemACERCADE);
+
+        jMenuBar1.add(jMenu3);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel2)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap())
+                .addComponent(jDesktopPane1)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(24, Short.MAX_VALUE))
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Combo_departamentosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_Combo_departamentosItemStateChanged
-        if (evt.getSource() == Combo_departamentos) {
-            
-            
-            String seleccionado=(String)Combo_departamentos.getSelectedItem();
-            for(departamento objeto: departamentos)
+    private departamento buscarDepartamento(String texto){
+        departamento dep = new departamento();
+        for(departamento objeto: departamentos)
             {
-                if (seleccionado == null ? objeto.getDescripcion() == null : seleccionado.equals(objeto.getDescripcion())) {
+                if (texto == null ? objeto.getDescripcion() == null : texto.equals(objeto.getDescripcion())) {
                     iddepartamento = objeto.getId();
+                    return dep=objeto;
                 }
             }
-            
-          
+        return dep;
+    }
+    private void Combo_departamentosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_Combo_departamentosItemStateChanged
+        if (evt.getSource() == Combo_departamentos) {
+            String seleccionado=(String)Combo_departamentos.getSelectedItem();
+            buscarDepartamento(seleccionado);
         }
     }//GEN-LAST:event_Combo_departamentosItemStateChanged
 
@@ -254,6 +416,86 @@ public class frm_principal extends javax.swing.JFrame {
     private void aceptar_botonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptar_botonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_aceptar_botonActionPerformed
+
+    private void jMenuItemEMERGENCIAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEMERGENCIAActionPerformed
+        buscarDepartamento(evt.getActionCommand().toString());
+        frm_proceso proceso = new frm_proceso(iddepartamento);
+        jDesktopPane1.add(proceso);
+        proceso.setVisible(true); 
+    }//GEN-LAST:event_jMenuItemEMERGENCIAActionPerformed
+
+    private void jMenuItemCIRUGIAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCIRUGIAActionPerformed
+        buscarDepartamento(evt.getActionCommand().toString());
+        frm_proceso proceso = new frm_proceso(iddepartamento);           
+        jDesktopPane1.add(proceso);
+        proceso.setVisible(true); 
+    }//GEN-LAST:event_jMenuItemCIRUGIAActionPerformed
+
+    private void jMenuItemGINECOBSTETRICIAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemGINECOBSTETRICIAActionPerformed
+        buscarDepartamento(evt.getActionCommand().toString());
+        frm_proceso proceso = new frm_proceso(iddepartamento);           
+        jDesktopPane1.add(proceso);
+        proceso.setVisible(true); 
+    }//GEN-LAST:event_jMenuItemGINECOBSTETRICIAActionPerformed
+
+    private void jMenuItemTRAUMATOLOGIAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTRAUMATOLOGIAActionPerformed
+        buscarDepartamento(evt.getActionCommand().toString());
+        frm_proceso proceso = new frm_proceso(iddepartamento);           
+        jDesktopPane1.add(proceso);
+        proceso.setVisible(true); 
+    }//GEN-LAST:event_jMenuItemTRAUMATOLOGIAActionPerformed
+
+    private void jMenuItemMEDICINAINTERNAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMEDICINAINTERNAActionPerformed
+        buscarDepartamento(evt.getActionCommand().toString());
+        frm_proceso proceso = new frm_proceso(iddepartamento);           
+        jDesktopPane1.add(proceso);
+        proceso.setVisible(true); 
+    }//GEN-LAST:event_jMenuItemMEDICINAINTERNAActionPerformed
+
+    private void jMenuItemPEDIATRIAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPEDIATRIAActionPerformed
+        buscarDepartamento(evt.getActionCommand().toString());
+        frm_proceso proceso = new frm_proceso(iddepartamento);           
+        jDesktopPane1.add(proceso);
+        proceso.setVisible(true); 
+    }//GEN-LAST:event_jMenuItemPEDIATRIAActionPerformed
+
+    private void jMenuItemUCIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUCIActionPerformed
+        buscarDepartamento(evt.getActionCommand().toString());
+        frm_proceso proceso = new frm_proceso(iddepartamento);           
+        jDesktopPane1.add(proceso);
+        proceso.setVisible(true); 
+    }//GEN-LAST:event_jMenuItemUCIActionPerformed
+
+    private void jMenuItemINFECTOLOGIAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemINFECTOLOGIAActionPerformed
+        buscarDepartamento(evt.getActionCommand().toString());
+        frm_proceso proceso = new frm_proceso(iddepartamento);           
+        jDesktopPane1.add(proceso);
+        proceso.setVisible(true); 
+    }//GEN-LAST:event_jMenuItemINFECTOLOGIAActionPerformed
+
+    private void jMenuItemUNIDADQUEMADOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUNIDADQUEMADOSActionPerformed
+        buscarDepartamento(evt.getActionCommand().toString());
+        frm_proceso proceso = new frm_proceso(iddepartamento);           
+        jDesktopPane1.add(proceso);
+        proceso.setVisible(true); 
+    }//GEN-LAST:event_jMenuItemUNIDADQUEMADOSActionPerformed
+
+    private void jMenuItemDEPARTAMENTOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDEPARTAMENTOActionPerformed
+        Form_reporte_departamento frm_departamento= null;
+        try {
+            frm_departamento = new Form_reporte_departamento();
+        } catch (SQLException ex) {
+            Logger.getLogger(frm_principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        jDesktopPane1.add(frm_departamento);
+        frm_departamento.setVisible(true); 
+    }//GEN-LAST:event_jMenuItemDEPARTAMENTOActionPerformed
+
+    private void jMenuItemCONCENTRADOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCONCENTRADOActionPerformed
+        Form_reporte_concentrado frm_concentrado = new Form_reporte_concentrado(); 
+        jDesktopPane1.add(frm_concentrado);
+        frm_concentrado.setVisible(true); 
+    }//GEN-LAST:event_jMenuItemCONCENTRADOActionPerformed
 
     /**
      * @param args the command line arguments
@@ -299,11 +541,33 @@ public class frm_principal extends javax.swing.JFrame {
     private javax.swing.JToggleButton aceptar_boton;
     private javax.swing.JCheckBox ch_Reporte_concentrado1;
     private javax.swing.JCheckBox ch_Reporte_departamento;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItemACERCADE;
+    private javax.swing.JMenuItem jMenuItemCIRUGIA;
+    private javax.swing.JMenuItem jMenuItemCONCENTRADO;
+    private javax.swing.JMenuItem jMenuItemDEPARTAMENTO;
+    private javax.swing.JMenuItem jMenuItemEMERGENCIA;
+    private javax.swing.JMenuItem jMenuItemGINECOBSTETRICIA;
+    private javax.swing.JMenuItem jMenuItemINFECTOLOGIA;
+    private javax.swing.JMenuItem jMenuItemMEDICINAINTERNA;
+    private javax.swing.JMenuItem jMenuItemPACIENTES;
+    private javax.swing.JMenuItem jMenuItemPEDIATRIA;
+    private javax.swing.JMenuItem jMenuItemSALIR;
+    private javax.swing.JMenuItem jMenuItemTRAUMATOLOGIA;
+    private javax.swing.JMenuItem jMenuItemUCI;
+    private javax.swing.JMenuItem jMenuItemUNIDADQUEMADOS;
+    private javax.swing.JMenuItem jMenuItemUSUARIO;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
