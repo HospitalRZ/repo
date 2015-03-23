@@ -11,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import lib_clases.departamento;
 import lib_gestion.gestion;
 import lib_reporte.Form_reporte_concentrado;
@@ -36,9 +37,23 @@ public class frm_principal extends javax.swing.JFrame {
     public frm_principal(int identidad) throws SQLException {
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        gestionM = new gestion();
-        departamentos = gestionM.ListarDepartamentos_Entidad(identidad);
-        Combo_departamentos.removeAllItems();
+        gestionM = new gestion();        
+        
+//        Combo_departamentos.removeAllItems();
+       Identidad = identidad;
+        ActualizaDepa();
+//        for(departamento objeto: departamentos)
+//        {
+//            Combo_departamentos.addItem(objeto.getDescripcion());
+//        }
+//        
+    }
+
+    int Identidad=0;
+    public void ActualizaDepa()
+    {
+        try{
+        departamentos = gestionM.ListarDepartamentos_Entidad(Identidad);
         for (int i = 0; i < jMenu1.getItemCount(); i++) {
             JMenuItem s = jMenu1.getItem(i);
             Boolean estado = false;
@@ -49,12 +64,11 @@ public class frm_principal extends javax.swing.JFrame {
             }
             s.setEnabled(estado);
         }
-        for(departamento objeto: departamentos)
+        }catch(SQLException ex)
         {
-            Combo_departamentos.addItem(objeto.getDescripcion());
+            JOptionPane.showMessageDialog(null, ex.getCause());
         }
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -65,20 +79,14 @@ public class frm_principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
-        jPanel1 = new javax.swing.JPanel();
-        Combo_departamentos = new javax.swing.JComboBox();
-        aceptar_boton = new javax.swing.JToggleButton();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        ch_Reporte_departamento = new javax.swing.JCheckBox();
-        ch_Reporte_concentrado1 = new javax.swing.JCheckBox();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu4 = new javax.swing.JMenu();
         jMenuItemUSUARIO = new javax.swing.JMenuItem();
         jMenuItemPACIENTES = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItemSALIR = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
@@ -99,103 +107,6 @@ public class frm_principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Combo_departamentos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        Combo_departamentos.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                Combo_departamentosItemStateChanged(evt);
-            }
-        });
-
-        aceptar_boton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        aceptar_boton.setText("Aceptar");
-        aceptar_boton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                aceptar_botonMouseClicked(evt);
-            }
-        });
-        aceptar_boton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aceptar_botonActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel3.setText("Registro de dieta");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Combo_departamentos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(aceptar_boton, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel3)
-                .addGap(9, 9, 9)
-                .addComponent(Combo_departamentos, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(aceptar_boton))
-        );
-
-        jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel4.setText("Reportes");
-
-        ch_Reporte_departamento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        ch_Reporte_departamento.setText("Departamento");
-        ch_Reporte_departamento.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                ch_Reporte_departamentoItemStateChanged(evt);
-            }
-        });
-
-        ch_Reporte_concentrado1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        ch_Reporte_concentrado1.setText("Concentrado");
-        ch_Reporte_concentrado1.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                ch_Reporte_concentrado1ItemStateChanged(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ch_Reporte_departamento)
-                    .addComponent(jLabel4))
-                .addContainerGap(41, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(16, 16, 16)
-                    .addComponent(ch_Reporte_concentrado1)
-                    .addContainerGap(39, Short.MAX_VALUE)))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(71, 71, 71)
-                .addComponent(ch_Reporte_departamento))
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(58, 58, 58)
-                    .addComponent(ch_Reporte_concentrado1)
-                    .addContainerGap(50, Short.MAX_VALUE)))
-        );
-
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 255));
         jLabel2.setText("Hospital Rafeal Rodriguez Zambrano");
@@ -204,55 +115,61 @@ public class frm_principal extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(51, 51, 255));
         jLabel1.setText("Control de Dietas");
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo-2.jpg"))); // NOI18N
+
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(87, 87, 87))
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap(173, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(164, 164, 164))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(217, 217, 217)
-                        .addComponent(jLabel1))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(74, 74, 74)
-                        .addComponent(jLabel2)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE)
+                        .addGap(135, 135, 135))))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(191, Short.MAX_VALUE))
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                .addGap(27, 27, 27)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(281, 281, 281))
         );
-        jDesktopPane1.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jMenu4.setText("ARCHIVO");
         jMenu4.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
 
         jMenuItemUSUARIO.setText("USUARIO");
+        jMenuItemUSUARIO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemUSUARIOActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItemUSUARIO);
 
         jMenuItemPACIENTES.setText("PACIENTES");
         jMenu4.add(jMenuItemPACIENTES);
+
+        jMenuItem1.setText("PERMISOS");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem1);
         jMenu4.add(jSeparator1);
 
         jMenuItemSALIR.setText("SALIR");
@@ -262,6 +179,29 @@ public class frm_principal extends javax.swing.JFrame {
 
         jMenu1.setText("DEPARTAMENTOS");
         jMenu1.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jMenu1.addMenuKeyListener(new javax.swing.event.MenuKeyListener() {
+            public void menuKeyPressed(javax.swing.event.MenuKeyEvent evt) {
+                jMenu1MenuKeyPressed(evt);
+            }
+            public void menuKeyReleased(javax.swing.event.MenuKeyEvent evt) {
+            }
+            public void menuKeyTyped(javax.swing.event.MenuKeyEvent evt) {
+            }
+        });
+        jMenu1.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jMenu1MenuSelected(evt);
+            }
+        });
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
 
         jMenuItemEMERGENCIA.setText("EMERGENCIA");
         jMenuItemEMERGENCIA.setEnabled(false);
@@ -363,6 +303,11 @@ public class frm_principal extends javax.swing.JFrame {
         jMenu3.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
 
         jMenuItemACERCADE.setText("ACERCA DE..");
+        jMenuItemACERCADE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemACERCADEActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItemACERCADE);
 
         jMenuBar1.add(jMenu3);
@@ -396,39 +341,6 @@ public class frm_principal extends javax.swing.JFrame {
             }
         return dep;
     }
-    private void Combo_departamentosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_Combo_departamentosItemStateChanged
-        if (evt.getSource() == Combo_departamentos) {
-            String seleccionado=(String)Combo_departamentos.getSelectedItem();
-            buscarDepartamento(seleccionado);
-        }
-    }//GEN-LAST:event_Combo_departamentosItemStateChanged
-
-    private void aceptar_botonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aceptar_botonMouseClicked
-        if (iddepartamento != -1) {
-                  frm_proceso proceso = new frm_proceso(iddepartamento);           
-            proceso.show();
-            }
-    }//GEN-LAST:event_aceptar_botonMouseClicked
-
-    private void ch_Reporte_concentrado1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ch_Reporte_concentrado1ItemStateChanged
-        Form_reporte_concentrado frm_concentrado = new Form_reporte_concentrado(); 
-        frm_concentrado.show();
-    }//GEN-LAST:event_ch_Reporte_concentrado1ItemStateChanged
-
-    private void ch_Reporte_departamentoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ch_Reporte_departamentoItemStateChanged
-        Form_reporte_departamento frm_departamento = null;
-        try {
-            frm_departamento = new Form_reporte_departamento();
-        } catch (SQLException ex) {
-            Logger.getLogger(frm_principal.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        frm_departamento.show();
-    }//GEN-LAST:event_ch_Reporte_departamentoItemStateChanged
-
-    private void aceptar_botonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptar_botonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_aceptar_botonActionPerformed
-
     private void jMenuItemEMERGENCIAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEMERGENCIAActionPerformed
         buscarDepartamento(evt.getActionCommand().toString());
         frm_proceso proceso = new frm_proceso(iddepartamento);
@@ -509,6 +421,44 @@ public class frm_principal extends javax.swing.JFrame {
         frm_concentrado.setVisible(true); 
     }//GEN-LAST:event_jMenuItemCONCENTRADOActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        Permisos frm_permiso = new Permisos();
+        jDesktopPane1.add(frm_permiso);
+        frm_permiso.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+        // TODO add your handling code here:
+        
+       
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void jMenu1MenuKeyPressed(javax.swing.event.MenuKeyEvent evt) {//GEN-FIRST:event_jMenu1MenuKeyPressed
+        // TODO add your handling code here:
+    
+    }//GEN-LAST:event_jMenu1MenuKeyPressed
+
+    private void jMenu1MenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu1MenuSelected
+        // TODO add your handling code here:
+         ActualizaDepa();
+    }//GEN-LAST:event_jMenu1MenuSelected
+
+    private void jMenuItemUSUARIOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUSUARIOActionPerformed
+        // TODO add your handling code here:
+         frm_usuario frm_permiso = new frm_usuario();
+        jDesktopPane1.add(frm_permiso);
+        frm_permiso.setVisible(true);
+                                    
+    }//GEN-LAST:event_jMenuItemUSUARIOActionPerformed
+
+    private void jMenuItemACERCADEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemACERCADEActionPerformed
+        // TODO add your handling code here:
+        frm_info info = new frm_info();
+        jDesktopPane1.add(info);
+        info.setVisible(true);
+    }//GEN-LAST:event_jMenuItemACERCADEActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -549,20 +499,16 @@ public class frm_principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox Combo_departamentos;
-    private javax.swing.JToggleButton aceptar_boton;
-    private javax.swing.JCheckBox ch_Reporte_concentrado1;
-    private javax.swing.JCheckBox ch_Reporte_departamento;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItemACERCADE;
     private javax.swing.JMenuItem jMenuItemCIRUGIA;
     private javax.swing.JMenuItem jMenuItemCONCENTRADO;
@@ -578,8 +524,6 @@ public class frm_principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemUCI;
     private javax.swing.JMenuItem jMenuItemUNIDADQUEMADOS;
     private javax.swing.JMenuItem jMenuItemUSUARIO;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

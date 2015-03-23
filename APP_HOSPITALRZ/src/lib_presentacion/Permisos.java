@@ -22,7 +22,7 @@ import lib_gestion.gestionUsuario;
  *
  * @author PROGRAMADOR
  */
-public class Permisos extends javax.swing.JFrame {
+public class Permisos extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Permisos
@@ -36,10 +36,11 @@ public class Permisos extends javax.swing.JFrame {
         luser = new ArrayList<usuario>();
         lpermiso = new ArrayList<permiso>();
         int columna[] = new int[]{0};
-        //setOcultarColumnasJTable(dtgpermisos, columna);
+        setOcultarColumnasJTable(dtgpermisos, columna);
         cargar();
         cbxusuarios.setSelectedIndex(-1);
         nuevo();
+        setClosable(true);
     }
 
     usuario gusuario;
@@ -84,6 +85,11 @@ public class Permisos extends javax.swing.JFrame {
         jLabel1.setText("Usuario");
 
         bttNuevo.setText("Nuevo");
+        bttNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttNuevoActionPerformed(evt);
+            }
+        });
 
         bttGuardar.setText("Guardar");
         bttGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -219,10 +225,12 @@ public class Permisos extends javax.swing.JFrame {
             for (int i = 0;filas>i; i++) {
                 modelo.removeRow(0);
             }
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al limpiar la tabla." + e.getMessage());
         }
     }
+    
     private void cargar() {
         try {
             luser = gestion.listarU();
@@ -243,12 +251,14 @@ public class Permisos extends javax.swing.JFrame {
             int i =  model.getRowCount();
             for (int j = 0; j < i; j++) {
                 boolean dt =  Boolean.valueOf(model.getValueAt(j, 1).toString());
-                if (false) {
+                if (dt) {
                     permiso per =  new permiso();
                     departamento dpa =  new departamento();
                     usuario user =  new usuario();
-                    user.setId(luser.get(cbxusuarios.getSelectedIndex()).getId());
-                    dpa.setId((Integer)model.getValueAt(i, 0));
+                    int id=cbxusuarios.getSelectedIndex();
+                    user.setId(luser.get(id).getId());
+                    dpa.setId(Integer.parseInt(model.getValueAt(j, 0).toString()));
+                    per.setIdUsuario(user);
                     per.setIdDepartamento(dpa);
                     per.setIdestado(0);
                     //per.setId((Integer)model.getValueAt(i, 0));
@@ -256,6 +266,7 @@ public class Permisos extends javax.swing.JFrame {
                 }
             }
             gestion.IngresaPermiso(lpermiso);
+            nuevo();
         }
         }catch (SQLException ex)
         {
@@ -288,6 +299,13 @@ public class Permisos extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_cbxusuariosActionPerformed
+
+    private void bttNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttNuevoActionPerformed
+        // TODO add your handling code here:
+        nuevo();
+        cbxusuarios.setSelectedIndex(-1);
+        
+    }//GEN-LAST:event_bttNuevoActionPerformed
     private void setOcultarColumnasJTable(JTable tbl, int columna[]) {
         for (int i = 0; i < columna.length; i++) {
             tbl.getColumnModel().getColumn(columna[i]).setMaxWidth(0);

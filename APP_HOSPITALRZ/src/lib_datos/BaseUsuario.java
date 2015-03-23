@@ -100,8 +100,12 @@ public class BaseUsuario {
         ResultSet rs = null;
         try {
             con = new NpgSqlConnection().getConection();
+            stmt = con.prepareCall("{call hrz.permiso_delete (?)}");
+            stmt.setInt(1, per.get(0).IdUsuario().getId());
+            stmt.executeQuery(); 
+            stmt = null;
             for (permiso p : per) {
-                stmt = con.prepareCall("{call hrz.permiso_insert (?,?,?)}");
+            stmt = con.prepareCall("{call hrz.permiso_insert (?,?,?)}");
             stmt.setInt(1, p.IdUsuario().getId());
             stmt.setInt(2, p.getIdDepartamento().getId());
             stmt.setInt(3, p.getIdestado());

@@ -100,16 +100,17 @@ public class BaseDatos_principal {
         }
     }
 
-    public ArrayList<entidad> Listar_Entidades(int idhorario, java.util.Date fecha) throws SQLException {
+    public ArrayList<entidad> Listar_Entidades(int idhorario, java.util.Date fecha,int depar) throws SQLException {
         Connection con = null;
         CallableStatement stmt = null;
         ArrayList<entidad> Entidades = null;
         ResultSet rs = null;
         try {
             con = new NpgSqlConnection().getConection();
-            stmt = con.prepareCall("{call hrz.entidad_select(?,?)}");
+            stmt = con.prepareCall("{call hrz.entidad_select(?,?,?)}");
             stmt.setInt(1, idhorario);
             stmt.setDate(2, new java.sql.Date(fecha.getTime()));
+            stmt.setInt(3, depar);
             Entidades = new ArrayList<>();
             rs = stmt.executeQuery();
             while (rs.next()) {

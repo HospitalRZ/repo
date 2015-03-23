@@ -137,8 +137,6 @@ public class frm_login extends javax.swing.JFrame {
                 .addGap(21, 21, 21))
         );
 
-        jLabel3.getAccessibleContext().setAccessibleName("Usuario:");
-
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/doctor-icon1.png"))); // NOI18N
         jLabel5.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jLabel5.setAutoscrolls(true);

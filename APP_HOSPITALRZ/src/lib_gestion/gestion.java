@@ -22,7 +22,7 @@ public class gestion {
     public void Actualizar(entidad Entidad, principal Principal, ArrayList<dprincipal> Dprincipal)throws SQLException {  
         BD.Update(Entidad, Principal, Dprincipal);
     }  
-    public ArrayList<entidad> ListarEntidad(int idhorario,Date fecha) throws SQLException{ return BD.Listar_Entidades(idhorario,fecha);}
+    public ArrayList<entidad> ListarEntidad(int idhorario,Date fecha,int depa) throws SQLException{ return BD.Listar_Entidades(idhorario,fecha,depa);}
     public principal Listar_principal(int identidad) throws SQLException{ return BD.Listar_principal(identidad);}
     public entidad listapersona(String iden) throws SQLException
     {

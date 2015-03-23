@@ -55,18 +55,21 @@ public class frm_proceso extends javax.swing.JInternalFrame {
         gentidad = new entidad();
         gprincipal = new principal();
         gtentida = new tentidad();
-        departamento dep = new departamento();
+        dep = new departamento();
         dep.setId(iddepartamento);
         gprincipal.setIddertamento(dep);
         Nuevo();
         aniadeLista();
         estado = true;
+        
+
     }
     tentidad gtentida;
     gestion gestionM;
     ArrayList<dprincipal> dprinci;
     entidad gentidad;
     principal gprincipal;
+    departamento dep;
     boolean estado= false;
 
     /**
@@ -147,11 +150,10 @@ public class frm_proceso extends javax.swing.JInternalFrame {
         cbxHipoHipe = new javax.swing.JCheckBox();
         cbxSinGlu = new javax.swing.JCheckBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jSplitPane1.setDividerLocation(250);
+        jSplitPane1.setDividerLocation(290);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(270, 638));
 
         jLabel4.setText("FECHA:");
 
@@ -233,7 +235,7 @@ public class frm_proceso extends javax.swing.JInternalFrame {
                             .addComponent(jScrollPane4)
                             .addComponent(jScrollPane3)
                             .addComponent(jScrollPane2))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,7 +288,7 @@ public class frm_proceso extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 185, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -317,7 +319,7 @@ public class frm_proceso extends javax.swing.JInternalFrame {
 
         jLabel7.setText("APELLIDOS Y NOMBRES:");
 
-        jLabel6.setText("CÃ‰DULA:");
+        jLabel6.setText("CÉDULA:");
 
         jButton1.setBackground(new java.awt.Color(51, 51, 255));
         jButton1.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
@@ -350,10 +352,10 @@ public class frm_proceso extends javax.swing.JInternalFrame {
 
         txtidentificacion.setName("txtcedula"); // NOI18N
         txtidentificacion.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 txtidentificacionInputMethodTextChanged(evt);
-            }
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         txtidentificacion.addActionListener(new java.awt.event.ActionListener() {
@@ -367,7 +369,7 @@ public class frm_proceso extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel8.setText("NÃšMERO CAMA:");
+        jLabel8.setText("NÚMERO CAMA:");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -436,20 +438,25 @@ public class frm_proceso extends javax.swing.JInternalFrame {
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "BASAL", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri", 1, 12))); // NOI18N
 
         cbxLatanciaMaterna.setText("Lactancia Materna");
+        cbxLatanciaMaterna.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxLatanciaMaternaActionPerformed(evt);
+            }
+        });
 
         cbxNPO.setText("NPO");
 
-        cbxAcompaniante.setText("AcompaÃ±ante");
+        cbxAcompaniante.setText("Acompañante");
 
         cbxHiposodica.setText("Hiposodica");
 
         cbxHipograsa.setText("Hipograsa ");
 
-        cbxPedi611.setText("PediatrÃ­a 6 a 11 meses");
+        cbxPedi611.setText("Pediatría 6 a 11 meses");
 
-        cbxPedi1259.setText("PediatrÃ­a 12 a 59 meses");
+        cbxPedi1259.setText("Pediatría 12 a 59 meses");
 
-        cbxPedi59.setText("PediatrÃ­a 5 a 9 aÃ±os");
+        cbxPedi59.setText("Pediatría 5 a 9 años");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -499,7 +506,7 @@ public class frm_proceso extends javax.swing.JInternalFrame {
                 .addGap(15, 15, 15))
         );
 
-        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "OBSERVACIÃ“N", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri", 1, 14))); // NOI18N
+        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "OBSERVACIÓN", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri", 1, 14))); // NOI18N
 
         txtObservacion.setColumns(20);
         txtObservacion.setRows(5);
@@ -519,15 +526,15 @@ public class frm_proceso extends javax.swing.JInternalFrame {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TRANSCICIÃ“N\t\t\t ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri", 1, 12))); // NOI18N
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TRANSCICIÓN\t\t\t ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri", 1, 12))); // NOI18N
 
-        cbxLiquiAca.setText("LÃ­quida acalÃ³rica ");
+        cbxLiquiAca.setText("Líquida acalórica ");
 
-        cbxLiquiEst.setText("LÃ­quida Estricta");
+        cbxLiquiEst.setText("Líquida Estricta");
 
-        cbxLiquiAmp.setText("LÃ­quida Amplia");
+        cbxLiquiAmp.setText("Líquida Amplia");
 
-        cbxBlaGast.setText("Blanda GÃ¡strica");
+        cbxBlaGast.setText("Blanda Gástrica");
 
         cbxBlaInt.setText("Blanda Intestinal");
 
@@ -565,16 +572,16 @@ public class frm_proceso extends javax.swing.JInternalFrame {
 
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TEXTURA MODIFICADA", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri", 1, 12))); // NOI18N
 
-        cbxBlaMec.setText("Blanda mecÃ¡nica GeriÃ¡trica");
+        cbxBlaMec.setText("Blanda mecánica Geriátrica");
 
-        cbxTurGas.setText("Turmix: SNG y GastrotomÃ­a ");
+        cbxTurGas.setText("Turmix: SNG y Gastrotomía ");
 
-        cbxIle1.setText("IleostomÃ­a fase 1");
+        cbxIle1.setText("Ileostomía fase 1");
         cbxIle1.setActionCommand("");
 
-        cbxIle2.setText("IleostomÃ­a fase 2 ");
+        cbxIle2.setText("Ileostomía fase 2 ");
 
-        cbxIle3.setText("IleostomÃ­a fase 3");
+        cbxIle3.setText("Ileostomía fase 3");
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -590,7 +597,7 @@ public class frm_proceso extends javax.swing.JInternalFrame {
                     .addComponent(cbxIle1)
                     .addComponent(cbxIle2)
                     .addComponent(cbxIle3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -610,13 +617,13 @@ public class frm_proceso extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TERAPÃ‰UTICAS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri", 1, 12))); // NOI18N
+        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TERAPÉUTICAS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri", 1, 12))); // NOI18N
 
         cbxHipercalorica.setText("Hipercalorica");
 
         cbxHipeHipe.setText("HIPERCALORICA-HIPERPROTEICA");
 
-        cbxHipoCal.setText("Hipo calorÃ­ca ");
+        cbxHipoCal.setText("Hipo caloríca ");
         cbxHipoCal.setActionCommand("");
 
         cbxHipoProEst.setText("Hipo Proteica estricta ");
@@ -693,23 +700,20 @@ public class frm_proceso extends javax.swing.JInternalFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(46, Short.MAX_VALUE))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(28, 28, 28)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -751,7 +755,7 @@ public class frm_proceso extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1125, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -761,10 +765,23 @@ public class frm_proceso extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public boolean validar()
+    {
+        int contador =0;
+        for (dprincipal dpl: dprinci) {
+            if (dpl.getActivado()) {
+                contador++;
+            }
+        }
+        if (contador==0 || contador>1) {
+            return false;
+        }else { return true;}
+    }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         try {
             asignarInterfasAGestion();
+            if(validar()){
             if (gprincipal.getId() == 0) {
                 int i = gprincipal.getIdhorario();
                 //Repeticion en por jornada
@@ -776,10 +793,15 @@ public class frm_proceso extends javax.swing.JInternalFrame {
             } else {
                 gestionM.Actualizar(gentidad, gprincipal, dprinci);
             }
+            
             aniadeLista();
             Nuevo();
+            }else 
+            {
+                JOptionPane.showMessageDialog(null, "Debe selecciona minimo 1 elemento para continuar");
+            }
         } catch (SQLException ex) {
-            JOptionPane.showConfirmDialog(null, ex);
+            JOptionPane.showMessageDialog(null, ex);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -796,7 +818,7 @@ public class frm_proceso extends javax.swing.JInternalFrame {
                 }
             }
         } catch (SQLException ex) {
-            JOptionPane.showInputDialog(ex);
+            JOptionPane.showMessageDialog(null,ex);
         }
     }//GEN-LAST:event_txtidentificacionKeyPressed
 
@@ -857,7 +879,7 @@ public class frm_proceso extends javax.swing.JInternalFrame {
             aniadeLista();
             Nuevo();
         } catch (SQLException ex) {
-            JOptionPane.showConfirmDialog(null, ex);
+            JOptionPane.showMessageDialog(null, ex);
         }
 
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -903,6 +925,11 @@ public class frm_proceso extends javax.swing.JInternalFrame {
         }
         
     }//GEN-LAST:event_dtfechaPropertyChange
+
+    private void cbxLatanciaMaternaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxLatanciaMaternaActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_cbxLatanciaMaternaActionPerformed
     private void Cargar() {
         try {
             gprincipal = gestionM.Listar_principal(gprincipal.getId());
@@ -910,7 +937,7 @@ public class frm_proceso extends javax.swing.JInternalFrame {
             dprinci = gestionM.Lista_dprincipal(gprincipal);
             asignarGestionAInterface();
         } catch (SQLException ex) {
-            JOptionPane.showConfirmDialog(null, ex);
+            JOptionPane.showMessageDialog(null, ex);
         }
     }
 
@@ -949,6 +976,7 @@ public class frm_proceso extends javax.swing.JInternalFrame {
             }
             gprincipal.setNum_cama(this.txtcama.getText());
             gprincipal.setObservacion(this.txtObservacion.getText());
+            dprinci = new ArrayList<dprincipal>();
             dprinci.add(aniadir(0, 1, this.cbxLatanciaMaterna.isSelected(), 0));
             dprinci.add(aniadir(0, 2, this.cbxNPO.isSelected(), 0));
             dprinci.add(aniadir(0, 3, this.cbxAcompaniante.isSelected(), 0));
@@ -1035,21 +1063,24 @@ public class frm_proceso extends javax.swing.JInternalFrame {
         }
         return model;
     }
-
+ 
     private void aniadeLista() {
         try {
             lenma = new ArrayList<entidad>();
             lenmed = new ArrayList<entidad>();
             lentar = new ArrayList<entidad>();
-            lenma = gestionM.ListarEntidad(1, dtfecha.getDate());
-            lenmed = gestionM.ListarEntidad(2, dtfecha.getDate());
-            lentar = gestionM.ListarEntidad(3, dtfecha.getDate());
+            lenma = gestionM.ListarEntidad(1, dtfecha.getDate(),dep.getId());
+            lenmed = gestionM.ListarEntidad(2, dtfecha.getDate(),dep.getId());
+            lentar = gestionM.ListarEntidad(3, dtfecha.getDate(),dep.getId());
             lbx1.setModel(datas(lenma));
             lbx2.setModel(datas(lenmed));
             lbx3.setModel(datas(lentar));
+            if (lenma.size()!=0) {
+                bttactualizar.setEnabled(false);
+            }
 
         } catch (SQLException ex) {
-            JOptionPane.showConfirmDialog(null, ex.getSQLState());
+            JOptionPane.showMessageDialog(null, ex.getSQLState());
         }
     }
 

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import lib_clases.entidad;
 import lib_clases.usuario;
 import lib_gestion.gestion;
@@ -19,20 +20,25 @@ import lib_gestion.gestion_usuario;
  *
  * @author juliovicente
  */
-public class frm_usuario extends javax.swing.JFrame {
+public class frm_usuario extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form frm_usuario
      */
     gestion_usuario gestionU;
-    usuario Usuario; 
+    usuario Usuario;
     ArrayList<usuario> Usuarios;
-    public frm_usuario() throws SQLException {
+
+    public frm_usuario() {
         initComponents();
         gestionU = new gestion_usuario();
         Usuario = new usuario();
         Usuarios = new ArrayList<usuario>();
-        CargarUsuario();
+        try {
+            CargarUsuario();
+        } catch (SQLException ex) {
+            Logger.getLogger(frm_usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
         Nuevo();
     }
 
@@ -47,15 +53,18 @@ public class frm_usuario extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        txt_Login = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        txt_Password = new javax.swing.JTextField();
         Guardar_boton = new javax.swing.JButton();
         Eliminar_boton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Lista_Usuario = new javax.swing.JList();
         Eliminar_boton1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        txt_Login = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txt_Password = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,16 +73,6 @@ public class frm_usuario extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel3.setText("Control de Dietas");
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel4.setText("Login:");
-
-        txt_Login.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel5.setText("Contraseña:");
-
-        txt_Password.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         Guardar_boton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         Guardar_boton.setText("Guardar");
@@ -104,103 +103,158 @@ public class frm_usuario extends javax.swing.JFrame {
         Eliminar_boton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         Eliminar_boton1.setText("Nuevo");
         Eliminar_boton1.setActionCommand("bttIngresar");
+        Eliminar_boton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Eliminar_boton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel4.setText("Login:");
+
+        txt_Login.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel5.setText("Contraseña:");
+
+        txt_Password.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_Login)
+                    .addComponent(txt_Password))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txt_Login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txt_Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(63, Short.MAX_VALUE))
+        );
+
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel1.setText("Lista de Usuarios");
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/login.jpg"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel4)
-                    .addComponent(txt_Login)
-                    .addComponent(jLabel5)
-                    .addComponent(txt_Password)
-                    .addComponent(Guardar_boton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Eliminar_boton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Eliminar_boton, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel7)
+                                .addGap(28, 28, 28))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Guardar_boton, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Eliminar_boton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Eliminar_boton, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                                .addGap(14, 14, 14))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(146, 146, 146)
+                .addGap(220, 220, 220)
                 .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addGap(3, 3, 3)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(26, 26, 26)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txt_Login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5)
-                        .addGap(8, 8, 8)
-                        .addComponent(txt_Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Guardar_boton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Eliminar_boton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Eliminar_boton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Guardar_boton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Eliminar_boton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Eliminar_boton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Interfaz()
-    {
+    private void Interfaz() {
         Usuario.setLogin(txt_Login.getText());
         Usuario.setPassword(txt_Password.getText());
     }
-    private void Gestion()
-    {
+
+    private void Gestion() {
         txt_Password.setText(Usuario.getPassword());
         txt_Login.setText(Usuario.getLogin());
     }
+    private boolean validar()
+    {
+        if (Usuario.getLogin()=="" || Usuario.getPassword()=="") {
+            return false;
+        }else {return true;}
+    }
     private void Guardar_botonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Guardar_botonMouseClicked
-        
-        
-        if (Usuario.getId() == 0) {
-            try {
-                Interfaz();
+
+        try {
+            Interfaz();
+            if(validar()){
+            if (Usuario.getId() == 0) {
                 gestionU.Insertar(Usuario);
-                Limpiar();
-                Nuevo();
-                try {
+            } else {
+                gestionU.Actualizar(Usuario);
+            }
+            Nuevo();
+            Gestion();
             CargarUsuario();
+            }
+            else{JOptionPane.showMessageDialog(null, "Ingrese datos correctos!!");}
         } catch (SQLException ex) {
             Logger.getLogger(frm_usuario.class.getName()).log(Level.SEVERE, null, ex);
         }
-            } catch (SQLException ex) {
-                Logger.getLogger(frm_usuario.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        else{ try {
-            gestionU.Actualizar(Usuario);
-            } catch (SQLException ex) {
-                Logger.getLogger(frm_usuario.class.getName()).log(Level.SEVERE, null, ex);
-            }
-}
+
     }//GEN-LAST:event_Guardar_botonMouseClicked
 
     private void Lista_UsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Lista_UsuarioMouseClicked
         String Login = Lista_Usuario.getSelectedValue().toString();
         try {
-            for(usuario user: gestionU.Listar())
-            {
+            for (usuario user : gestionU.Listar()) {
                 if (Login == null ? user.getLogin() == null : Login.equals(user.getLogin())) {
                     Usuario.setId(user.getId());
                     Usuario.setLogin(user.getLogin());
@@ -211,7 +265,7 @@ public class frm_usuario extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(frm_usuario.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_Lista_UsuarioMouseClicked
 
     private void Eliminar_botonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Eliminar_botonMouseClicked
@@ -229,6 +283,12 @@ public class frm_usuario extends javax.swing.JFrame {
             Logger.getLogger(frm_usuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_Eliminar_botonMouseClicked
+
+    private void Eliminar_boton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Eliminar_boton1ActionPerformed
+        // TODO add your handling code here:
+        Nuevo();
+        Gestion();
+    }//GEN-LAST:event_Eliminar_boton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -260,11 +320,7 @@ public class frm_usuario extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new frm_usuario().setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(frm_usuario.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                new frm_usuario().setVisible(true);
             }
         });
     }
@@ -274,13 +330,14 @@ public class frm_usuario extends javax.swing.JFrame {
     private javax.swing.JButton Eliminar_boton1;
     private javax.swing.JButton Guardar_boton;
     private javax.swing.JList Lista_Usuario;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JList lbx1;
     private javax.swing.JTextField txt_Login;
     private javax.swing.JTextField txt_Password;
     // End of variables declaration//GEN-END:variables
@@ -288,25 +345,26 @@ public class frm_usuario extends javax.swing.JFrame {
     private void CargarUsuario() throws SQLException {
         Lista_Usuario.setModel(extraer(gestionU.Listar()));
     }
+
     private DefaultListModel<String> extraer(ArrayList<usuario> Usuarios) {
         DefaultListModel<String> model = new DefaultListModel<>();
-        Usuarios.stream().forEach((user) -> {
-            model.addElement(user.getLogin());
-        });
+//        Usuarios.stream().forEach((user) -> {
+//            model.addElement(user.getLogin());
+//        });
         return model;
     }
-    private void Nuevo()
-    {
+
+    private void Nuevo() {
         Usuario.setId(0);
         Usuario.setLogin("");
         Usuario.setPassword("");
         Usuario.setIdestado(0);
-        
-        
+
     }
 
     private void Limpiar() {
-       txt_Login.setText("");
-    txt_Password.setText("");}
+        txt_Login.setText("");
+        txt_Password.setText("");
+    }
 
 }
