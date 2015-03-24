@@ -57,7 +57,8 @@ public class Form_reporte_concentrado extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
@@ -167,7 +168,7 @@ public class Form_reporte_concentrado extends javax.swing.JInternalFrame {
     NpgSqlConnection conn = new NpgSqlConnection();
     private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
         try {
-            String dir = System.getProperty("user.dir") + "/src/lib_reporte/report_concentrado.jrxml";
+            String dir = System.getProperty("user.dir") + "/reporte/report_concentrado.jrxml";
             JasperReport reporteJasper = JasperCompileManager.compileReport(dir);
             Map parametro = new HashMap();
             parametro.put("FechaDesde","'"+new SimpleDateFormat("yyyy-MM-dd").format(this.jCalendarFechaDesde.getDate())+"'");

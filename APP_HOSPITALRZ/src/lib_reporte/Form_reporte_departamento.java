@@ -6,6 +6,8 @@
 package lib_reporte;
 
 import java.awt.Component;
+import java.io.BufferedInputStream;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -16,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.ListCellRenderer;
 import lib_clases.departamento;
 import lib_datos.BaseDatos_principal;
@@ -87,7 +90,8 @@ public class Form_reporte_departamento extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
@@ -212,7 +216,11 @@ public class Form_reporte_departamento extends javax.swing.JInternalFrame {
     NpgSqlConnection conn = new NpgSqlConnection();
     private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
         try {
-            String dir = System.getProperty("user.dir") + "/src/lib_reporte/report_departamento.jrxml";
+            //String dir = System.getProperty("user.dir") + "/src/lib_reporte/report_departamento.jrxml";
+            String dir = System.getProperty("user.dir") + "/reporte/report_departamento.jrxml";
+            //String dir = System.getProperties().getProperty("java.class.path").split(";")[System.getProperties().getProperty("java.class.path").split(";").length - 2]+"\\reporte\\report_departamento.jrxml";
+            //InputStream reporteJasper =  new BufferedInputStream(this.getClass().getClassLoader().getResourceAsStream("report_departamento.jrxml"));
+            //JasperReport reporteJasper = JasperCompileManager.compileReport("lib_reporte/report_departamento.jrxml");
             JasperReport reporteJasper = JasperCompileManager.compileReport(dir);
             Map parametro = new HashMap();
             parametro.put("FechaDesde","'"+new SimpleDateFormat("yyyy-MM-dd").format(this.jCalendarFechaDesde.getDate())+"'");

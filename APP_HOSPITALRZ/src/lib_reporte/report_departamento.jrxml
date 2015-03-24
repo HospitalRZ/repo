@@ -252,7 +252,7 @@
 				<textField>
 					<reportElement x="3" y="0" width="170" height="15" uuid="b5e4a4b2-074b-4447-80b4-8d1aff9f9e36"/>
 					<textElement>
-						<font isBold="true"/>
+						<font fontName="Arial" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA["Horario: "+( $F{horario} == null ? ' ' : $F{horario} )]]></textFieldExpression>
 				</textField>
@@ -269,7 +269,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="true"/>
+						<font fontName="Arial" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $V{SumLiAmplia} == null ? ' ' : $V{SumLiAmplia} )]]></textFieldExpression>
 				</textField>
@@ -282,7 +282,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="true"/>
+						<font fontName="Arial" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $V{SumHipercalorica} == null ? ' ' : $V{SumHipercalorica} )]]></textFieldExpression>
 				</textField>
@@ -295,7 +295,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="true"/>
+						<font fontName="Arial" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $V{SumIleFase3} == null ? ' ' : $V{SumIleFase3} )]]></textFieldExpression>
 				</textField>
@@ -308,7 +308,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="true"/>
+						<font fontName="Arial" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $V{SumBlaIntestinal} == null ? ' ' : $V{SumBlaIntestinal} )]]></textFieldExpression>
 				</textField>
@@ -321,7 +321,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center">
-						<font fontName="Calibri" size="8" isBold="true"/>
+						<font fontName="Arial" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $V{SumAcomp} == null ? ' ' : $V{SumAcomp} )]]></textFieldExpression>
 				</textField>
@@ -334,7 +334,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="true"/>
+						<font fontName="Arial" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $V{SumTurmix} == null ? ' ' : $V{SumTurmix} )]]></textFieldExpression>
 				</textField>
@@ -347,7 +347,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="true"/>
+						<font fontName="Arial" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $V{SumBlaMecanic} == null ? ' ' : $V{SumBlaMecanic} )]]></textFieldExpression>
 				</textField>
@@ -360,7 +360,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="true"/>
+						<font fontName="Arial" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $V{SumHipoProEstr} == null ? ' ' : $V{SumHipoProEstr} )]]></textFieldExpression>
 				</textField>
@@ -373,7 +373,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="true"/>
+						<font fontName="Arial" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $V{SumIleFase1} == null ? ' ' : $V{SumIleFase1} )]]></textFieldExpression>
 				</textField>
@@ -386,7 +386,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="true"/>
+						<font fontName="Arial" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $V{SumHipercalorica} == null ? ' ' : $V{SumHipercalorica} )]]></textFieldExpression>
 				</textField>
@@ -399,7 +399,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="true"/>
+						<font fontName="Arial" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $V{SumHiperProCalo} == null ? ' ' : $V{SumHiperProCalo} )]]></textFieldExpression>
 				</textField>
@@ -412,7 +412,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="true"/>
+						<font fontName="Arial" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $V{SumHiposodica} == null ? ' ' : $V{SumHiposodica} )]]></textFieldExpression>
 				</textField>
@@ -425,7 +425,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="true"/>
+						<font fontName="Arial" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $V{SumHipoHidroCarboHipotreica} == null ? ' ' : $V{SumHipoHidroCarboHipotreica} )]]></textFieldExpression>
 				</textField>
@@ -438,7 +438,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="true"/>
+						<font fontName="Arial" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $V{SumPediatria5a9} == null ? ' ' : $V{SumPediatria5a9} )]]></textFieldExpression>
 				</textField>
@@ -451,7 +451,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="true"/>
+						<font fontName="Arial" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $V{SumHipoHidroCarboHipertreica} == null ? ' ' : $V{SumHipoHidroCarboHipertreica} )]]></textFieldExpression>
 				</textField>
@@ -464,7 +464,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="true"/>
+						<font fontName="Arial" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $V{SumHipoHidroCarbo} == null ? ' ' : $V{SumHipoHidroCarbo} )]]></textFieldExpression>
 				</textField>
@@ -477,7 +477,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="true"/>
+						<font fontName="Arial" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $V{SumPedriatria6} == null ? ' ' : $V{SumPedriatria6} )]]></textFieldExpression>
 				</textField>
@@ -490,7 +490,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="true"/>
+						<font fontName="Arial" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $V{SumLiAca} == null ? ' ' : $V{SumLiAca} )]]></textFieldExpression>
 				</textField>
@@ -503,7 +503,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="true"/>
+						<font fontName="Arial" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $V{SumSinGluten} == null ? ' ' : $V{SumSinGluten} )]]></textFieldExpression>
 				</textField>
@@ -516,7 +516,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="true"/>
+						<font fontName="Arial" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $V{SumLiEstricta} ==  null ? ' ' : $V{SumLiEstricta} )]]></textFieldExpression>
 				</textField>
@@ -529,7 +529,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="true"/>
+						<font fontName="Arial" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $V{SumHipoproteica} == null ? ' ' : $V{SumHipoproteica} )]]></textFieldExpression>
 				</textField>
@@ -542,7 +542,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="true"/>
+						<font fontName="Arial" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $V{SumPediatria12} == null ? ' ' : $V{SumPediatria12} )]]></textFieldExpression>
 				</textField>
@@ -555,7 +555,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center">
-						<font fontName="Calibri" size="8" isBold="true" isItalic="false" isUnderline="false"/>
+						<font fontName="Arial" size="8" isBold="true" isItalic="false" isUnderline="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $V{SumLac} == null ? ' ' : $V{SumLac} )]]></textFieldExpression>
 				</textField>
@@ -568,7 +568,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center">
-						<font fontName="Calibri" size="8" isBold="true"/>
+						<font fontName="Arial" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $V{SumNpo} == null ? ' ' : $V{SumNpo} )]]></textFieldExpression>
 				</textField>
@@ -581,7 +581,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="true"/>
+						<font fontName="Arial" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $V{SumBlaGas} == null ? ' ' : $V{SumBlaGas} )]]></textFieldExpression>
 				</textField>
@@ -594,7 +594,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="true"/>
+						<font fontName="Arial" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $V{SumHiperproteica} == null ? ' ' : $V{SumHiperproteica} )]]></textFieldExpression>
 				</textField>
@@ -607,7 +607,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="true"/>
+						<font fontName="Arial" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $V{SumHipograsa} == null ? ' ' : $V{SumHipograsa} )]]></textFieldExpression>
 				</textField>
@@ -620,14 +620,14 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="true"/>
+						<font fontName="Arial" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $V{SumIleFase2} == null ? ' ' : $V{SumIleFase2} )]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="144" y="1" width="75" height="9" uuid="8c181e58-b639-4b98-baa7-ec2b958979d5"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font size="6" isBold="true" isItalic="true"/>
+						<font fontName="Arial" size="6" isBold="true" isItalic="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA["TOTAL:"]]></textFieldExpression>
 				</textField>
@@ -645,14 +645,14 @@
 					<reportElement style="Title" x="252" y="0" width="310" height="20" forecolor="#000000" uuid="13a3eab4-f81a-4e38-9c99-1d244eeaad1c"/>
 					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Times New Roman" size="10" isBold="true"/>
+						<font fontName="Arial" size="10" isBold="true"/>
 					</textElement>
 					<text><![CDATA[HOSPITAL DR. RAFAEL RODRIGUEZ ZAMBRANO]]></text>
 				</staticText>
 				<staticText>
 					<reportElement style="SubTitle" x="639" y="0" width="143" height="15" forecolor="#000000" backcolor="#000000" uuid="4540347a-69ef-41df-aec1-1f92d192494f"/>
 					<textElement textAlignment="Right">
-						<font fontName="Calibri" size="10" isBold="true"/>
+						<font fontName="Arial" size="10" isBold="true"/>
 					</textElement>
 					<text><![CDATA[REPORTE DIARIO]]></text>
 				</staticText>
@@ -662,42 +662,42 @@
 				<staticText>
 					<reportElement x="26" y="0" width="74" height="17" uuid="4d660b0d-10d2-43f0-839a-06a5c637d412"/>
 					<textElement verticalAlignment="Top">
-						<font fontName="Calibri" size="10" isBold="true" isUnderline="true"/>
+						<font fontName="Arial" size="10" isBold="true" isUnderline="true"/>
 					</textElement>
 					<text><![CDATA[DEPARTAMENTO:]]></text>
 				</staticText>
 				<textField pattern="EEEEE dd MMMMM yyyy">
 					<reportElement x="478" y="0" width="100" height="14" uuid="d9a9b4f5-9bc3-4f26-a17b-c91425de92eb"/>
 					<textElement>
-						<font fontName="Calibri"/>
+						<font fontName="Arial"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$P{FechaDesde}]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement x="405" y="0" width="66" height="14" uuid="c57a5b3a-caa7-4d9a-8fb8-39a51c22bc9e"/>
 					<textElement>
-						<font fontName="Calibri" isBold="true" isUnderline="true"/>
+						<font fontName="Arial" isBold="true" isUnderline="true"/>
 					</textElement>
 					<text><![CDATA[FECHA DESDE:]]></text>
 				</staticText>
 				<staticText>
 					<reportElement x="613" y="0" width="66" height="14" uuid="cc308718-7d14-423a-b78e-43bf7f5093aa"/>
 					<textElement>
-						<font fontName="Calibri" isBold="true" isUnderline="true"/>
+						<font fontName="Arial" isBold="true" isUnderline="true"/>
 					</textElement>
 					<text><![CDATA[FECHA HASTA:]]></text>
 				</staticText>
 				<textField pattern="EEEEE dd MMMMM yyyy">
 					<reportElement x="689" y="0" width="100" height="14" uuid="960daa5a-0fd8-4302-bf92-336307f3ece2"/>
 					<textElement>
-						<font fontName="Calibri"/>
+						<font fontName="Arial"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$P{FechaHasta}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="103" y="0" width="186" height="17" uuid="8b579758-03f6-4fed-b094-cc7bfb185d10"/>
 					<textElement verticalAlignment="Top">
-						<font fontName="Calibri"/>
+						<font fontName="Arial"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $P{departamento} == null ? ' ' : $P{departamento} )]]></textFieldExpression>
 				</textField>
@@ -718,7 +718,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle" rotation="None">
-					<font size="10" isBold="true"/>
+					<font fontName="Arial" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[PACIENTE]]></text>
 			</staticText>
@@ -731,7 +731,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
-					<font size="10" isBold="true"/>
+					<font fontName="Arial" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[EDAD]]></text>
 			</staticText>
@@ -744,7 +744,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
-					<font fontName="Calibri" size="11" isBold="true"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[ACOMPAÑANTE]]></text>
 			</staticText>
@@ -757,7 +757,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
-					<font fontName="Calibri" size="9" isBold="true"/>
+					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[HIPOHIDROCARBONADA]]></text>
 			</staticText>
@@ -770,7 +770,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
-					<font fontName="Calibri" size="9" isBold="true"/>
+					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[PEDIATRÍA 5 A 9 AÑOS]]></text>
 			</staticText>
@@ -783,7 +783,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
-					<font fontName="Calibri" size="11" isBold="true"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[HIPO CALORÍCA]]></text>
 			</staticText>
@@ -796,7 +796,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
-					<font fontName="Calibri" size="11" isBold="true"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[ILEOSTOMÍA FASE 3]]></text>
 			</staticText>
@@ -809,7 +809,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
-					<font fontName="Calibri" size="11" isBold="true"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[LÍQUIDA ESTRICTA]]></text>
 			</staticText>
@@ -822,7 +822,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
-					<font fontName="Calibri" size="11" isBold="true"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[ILEOSTOMÍA FASE 1]]></text>
 			</staticText>
@@ -835,7 +835,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
-					<font fontName="Calibri" size="11" isBold="true"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[NPO]]></text>
 			</staticText>
@@ -848,7 +848,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
-					<font fontName="Calibri" size="9" isBold="true"/>
+					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[HIPO PROTEICA ESTRICTA]]></text>
 			</staticText>
@@ -861,7 +861,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
-					<font fontName="Calibri" size="9" isBold="true"/>
+					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[TURMIX: SNG Y GASTROTOMÍA]]></text>
 			</staticText>
@@ -874,7 +874,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
-					<font fontName="Calibri" size="11" isBold="true"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[HIPERPROTEICA]]></text>
 			</staticText>
@@ -887,7 +887,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
-					<font fontName="Calibri" size="11" isBold="true"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[BLANDA INTESTINAL]]></text>
 			</staticText>
@@ -900,7 +900,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
-					<font fontName="Calibri" size="9" isBold="true"/>
+					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[LACTANCIA MATERNA]]></text>
 			</staticText>
@@ -913,7 +913,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
-					<font fontName="Calibri" size="11" isBold="true"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[HIPOPROTEICA]]></text>
 			</staticText>
@@ -926,7 +926,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
-					<font fontName="Calibri" size="11" isBold="true"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[HIPOGRASA]]></text>
 			</staticText>
@@ -939,7 +939,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
-					<font fontName="Calibri" size="11" isBold="true"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[HIPOSODICA]]></text>
 			</staticText>
@@ -952,7 +952,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
-					<font fontName="Calibri" size="9" isBold="true"/>
+					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[HIPOHIDROCARBONADA HIPERPROTEICA]]></text>
 			</staticText>
@@ -965,7 +965,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
-					<font fontName="Calibri" size="9" isBold="true"/>
+					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[PEDIATRÍA 6 A 11 MESES]]></text>
 			</staticText>
@@ -978,7 +978,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
-					<font fontName="Calibri" size="9" isBold="true"/>
+					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[PEDIATRÍA 12 A 59 MESES]]></text>
 			</staticText>
@@ -991,7 +991,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
-					<font fontName="Calibri" size="11" isBold="true"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[BLANDA MECÁNICA GERIÁTRICA]]></text>
 			</staticText>
@@ -1004,7 +1004,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
-					<font fontName="Calibri" size="9" isBold="true"/>
+					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[HIPERCALORICA-HIPERPROTEICA]]></text>
 			</staticText>
@@ -1017,7 +1017,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
-					<font fontName="Calibri" size="11" isBold="true"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[LÍQUIDA AMPLIA]]></text>
 			</staticText>
@@ -1030,7 +1030,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
-					<font fontName="Calibri" size="11" isBold="true"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[LÍQUIDA ACALÓRICA]]></text>
 			</staticText>
@@ -1043,7 +1043,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
-					<font fontName="Calibri" size="9" isBold="true"/>
+					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[HIPOHIDROCARBONADA HIPOPROTEICA]]></text>
 			</staticText>
@@ -1056,7 +1056,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
-					<font fontName="Calibri" size="11" isBold="true"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[ILEOSTOMÍA FASE 2]]></text>
 			</staticText>
@@ -1069,7 +1069,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
-					<font fontName="Calibri" size="11" isBold="true"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[HIPERCALORICA]]></text>
 			</staticText>
@@ -1082,7 +1082,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
-					<font fontName="Calibri" size="11" isBold="true"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[BLANDA GÁSTRICA]]></text>
 			</staticText>
@@ -1095,7 +1095,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
-					<font fontName="Calibri" size="11" isBold="true"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[SIN GLUTEN]]></text>
 			</staticText>
@@ -1108,7 +1108,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
-					<font size="10" isBold="true"/>
+					<font fontName="Arial" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[N° CAMA]]></text>
 			</staticText>
@@ -1121,7 +1121,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
-					<font fontName="Calibri" size="11" isBold="true"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[TOTAL]]></text>
 			</staticText>
@@ -1140,7 +1140,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="10" isBold="false"/>
+						<font fontName="Arial" size="10" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $F{ncama} == null ? ' ' : $F{ncama} )]]></textFieldExpression>
 				</textField>
@@ -1153,7 +1153,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement verticalAlignment="Top">
-						<font fontName="Calibri" size="10" isBold="false"/>
+						<font fontName="Arial" size="10" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{entidad}]]></textFieldExpression>
 				</textField>
@@ -1166,7 +1166,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="10" isBold="false"/>
+						<font fontName="Arial" size="10" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $F{edad} == null ? ' ' : $F{edad} )]]></textFieldExpression>
 				</textField>
@@ -1179,7 +1179,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="false"/>
+						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $F{HIPO PROTEICA ESTRICTA} == null ? ' ' : $F{HIPO PROTEICA ESTRICTA} )]]></textFieldExpression>
 				</textField>
@@ -1192,7 +1192,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="false"/>
+						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $F{ILEOSTOMÍA FASE 3} == null ? ' ' : $F{ILEOSTOMÍA FASE 3} )]]></textFieldExpression>
 				</textField>
@@ -1205,7 +1205,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="false"/>
+						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $F{HIPERPROTEICA} == null ? ' ' : $F{HIPERPROTEICA} )]]></textFieldExpression>
 				</textField>
@@ -1218,7 +1218,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="false"/>
+						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $F{PEDIATRÍA 5 a 9 AÑOS} == null ? ' ' : $F{PEDIATRÍA 5 a 9 AÑOS} )]]></textFieldExpression>
 				</textField>
@@ -1231,7 +1231,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="false"/>
+						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $F{BLANDA GÁSTRICA} == null ? ' ' : $F{BLANDA GÁSTRICA} )]]></textFieldExpression>
 				</textField>
@@ -1244,7 +1244,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="false"/>
+						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $F{HIPERCALORICA-HIPERPROTEICA} == null ? ' ' : $F{HIPERCALORICA-HIPERPROTEICA} )]]></textFieldExpression>
 				</textField>
@@ -1257,7 +1257,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="false"/>
+						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $F{ACOMPAÑANTE} == null ? ' ' : $F{ACOMPAÑANTE} )]]></textFieldExpression>
 				</textField>
@@ -1270,7 +1270,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="false"/>
+						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $F{BLANDA INTESTINAL} == null ? ' ' : $F{BLANDA INTESTINAL} )]]></textFieldExpression>
 				</textField>
@@ -1283,7 +1283,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="false"/>
+						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $F{NPO} == null ? ' ' : $F{NPO} )]]></textFieldExpression>
 				</textField>
@@ -1296,7 +1296,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="false"/>
+						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $F{LÍQUIDA ESTRICTA} == null ? ' ' : $F{LÍQUIDA ESTRICTA} )]]></textFieldExpression>
 				</textField>
@@ -1309,7 +1309,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="false"/>
+						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $F{ILEOSTOMÍA FASE 2} == null ? ' ' : $F{ILEOSTOMÍA FASE 2} )]]></textFieldExpression>
 				</textField>
@@ -1322,7 +1322,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="false"/>
+						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $F{HIPERCALORICA} == null ? ' ' : $F{HIPERCALORICA} )]]></textFieldExpression>
 				</textField>
@@ -1335,7 +1335,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="false"/>
+						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $F{HIPOSODICA} == null ? ' ' : $F{HIPOSODICA} )]]></textFieldExpression>
 				</textField>
@@ -1348,7 +1348,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="false"/>
+						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $F{LÍQUIDA ACALÓRICA} == null ? ' ' : $F{LÍQUIDA ACALÓRICA} )]]></textFieldExpression>
 				</textField>
@@ -1361,7 +1361,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="false"/>
+						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $F{ILEOSTOMÍA FASE 1} == null ? ' ' : $F{ILEOSTOMÍA FASE 1} )]]></textFieldExpression>
 				</textField>
@@ -1374,7 +1374,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="false"/>
+						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $F{HIPOHIDROCARBONADA} == null ? ' ' : $F{HIPOHIDROCARBONADA} )]]></textFieldExpression>
 				</textField>
@@ -1387,7 +1387,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="false"/>
+						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $F{TURMIX: SNG Y GASTROTOMÍA} == null ? ' ' : $F{TURMIX: SNG Y GASTROTOMÍA} )]]></textFieldExpression>
 				</textField>
@@ -1400,7 +1400,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="false"/>
+						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $F{HIPOHIDROCARBONADA HIPERPROTEICA} == null ? ' ' : $F{HIPOHIDROCARBONADA HIPERPROTEICA} )]]></textFieldExpression>
 				</textField>
@@ -1413,7 +1413,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="false"/>
+						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $F{HIPOPROTEICA} == null ? ' ' : $F{HIPOPROTEICA} )]]></textFieldExpression>
 				</textField>
@@ -1426,7 +1426,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="false"/>
+						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $F{HIPOHIDROCARBONADA HIPOPROTEICA} == null ? ' ' : $F{HIPOHIDROCARBONADA HIPOPROTEICA} )]]></textFieldExpression>
 				</textField>
@@ -1439,7 +1439,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="false"/>
+						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $F{PEDIATRÍA 12 A 59 MESES} == null ? ' ' : $F{PEDIATRÍA 12 A 59 MESES} )]]></textFieldExpression>
 				</textField>
@@ -1452,7 +1452,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="false"/>
+						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $F{HIPOGRASA} == null ? ' ' : $F{HIPOGRASA} )]]></textFieldExpression>
 				</textField>
@@ -1465,7 +1465,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="false"/>
+						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $F{BLANDA MECÁNICA GERIÁTRICA} == null ? ' ' : $F{BLANDA MECÁNICA GERIÁTRICA} )]]></textFieldExpression>
 				</textField>
@@ -1478,7 +1478,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="false"/>
+						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $F{HIPO CALORÍCA} == null ? ' ' : $F{HIPO CALORÍCA} )]]></textFieldExpression>
 				</textField>
@@ -1491,7 +1491,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="false"/>
+						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $F{LÍQUIDA AMPLIA} == null ? ' ' : $F{LÍQUIDA AMPLIA} )]]></textFieldExpression>
 				</textField>
@@ -1504,7 +1504,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="false"/>
+						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $F{PEDIATRÍA 6 A 11 MESES} == null ? ' ' : $F{PEDIATRÍA 6 A 11 MESES} )]]></textFieldExpression>
 				</textField>
@@ -1517,7 +1517,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="false"/>
+						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $F{SIN GLUTEN} == null ? ' ' : $F{SIN GLUTEN} )]]></textFieldExpression>
 				</textField>
@@ -1530,7 +1530,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center">
-						<font fontName="Calibri" size="8"/>
+						<font fontName="Arial" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $F{LACTANCIA MATERNA} == null ? 0 : $F{LACTANCIA MATERNA})+ ( $F{NPO} == null ? 0 : $F{NPO}) + ( $F{ACOMPAÑANTE} == null ? 0 : $F{ACOMPAÑANTE}) + ( $F{HIPOSODICA} == null ? 0 : $F{HIPOSODICA}) + ( $F{HIPOGRASA} == null ? 0 : $F{HIPOGRASA}) + ( $F{PEDIATRÍA 6 A 11 MESES} == null ? 0 : $F{PEDIATRÍA 6 A 11 MESES}) + ( $F{PEDIATRÍA 12 A 59 MESES} == null ? 0 : $F{PEDIATRÍA 12 A 59 MESES}) + ( $F{PEDIATRÍA 5 a 9 AÑOS} == null ? 0 : $F{PEDIATRÍA 5 a 9 AÑOS}) + ( $F{LÍQUIDA ACALÓRICA} == null ? 0 : $F{LÍQUIDA ACALÓRICA}) + ( $F{LÍQUIDA ESTRICTA} == null ? 0 : $F{LÍQUIDA ESTRICTA}) + ( $F{LÍQUIDA AMPLIA} == null ? 0 : $F{LÍQUIDA AMPLIA}) + ( $F{BLANDA GÁSTRICA} == null ? 0 : $F{BLANDA GÁSTRICA}) + ( $F{BLANDA INTESTINAL} == null ? 0 : $F{BLANDA INTESTINAL}) + ( $F{BLANDA MECÁNICA GERIÁTRICA} == null ? 0 : $F{BLANDA MECÁNICA GERIÁTRICA}) + ( $F{TURMIX: SNG Y GASTROTOMÍA} == null ? 0 : $F{TURMIX: SNG Y GASTROTOMÍA}) + ( $F{ILEOSTOMÍA FASE 1} == null ? 0 : $F{ILEOSTOMÍA FASE 1}) + ( $F{ILEOSTOMÍA FASE 2} == null ? 0 :$F{ILEOSTOMÍA FASE 2} ) + ( $F{ILEOSTOMÍA FASE 3} == null? 0 : $F{ILEOSTOMÍA FASE 3}) + ( $F{HIPO CALORÍCA} == null ? 0 : $F{HIPO CALORÍCA}) + ( $F{HIPO PROTEICA ESTRICTA} == null ? 0 : $F{HIPO PROTEICA ESTRICTA}) + ( $F{HIPOPROTEICA} == null ? 0 : $F{HIPOPROTEICA}) + ( $F{HIPERCALORICA} == null ? 0 : $F{HIPERCALORICA}) + ( $F{HIPERCALORICA-HIPERPROTEICA} == null ? 0 : $F{HIPERCALORICA-HIPERPROTEICA}) + ( $F{HIPERPROTEICA} == null ? 0 : $F{HIPERPROTEICA}) + ( $F{HIPOHIDROCARBONADA} == null ? 0 : $F{HIPOHIDROCARBONADA}) + ( $F{HIPOHIDROCARBONADA HIPOPROTEICA} == null ? 0 : $F{HIPOHIDROCARBONADA HIPOPROTEICA}) + ( $F{HIPOHIDROCARBONADA HIPERPROTEICA} == null ? 0 : $F{HIPOHIDROCARBONADA HIPERPROTEICA}) + ( $F{SIN GLUTEN} == null ? 0 : $F{SIN GLUTEN})]]></textFieldExpression>
 				</textField>
@@ -1543,7 +1543,7 @@
 						<rightPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font fontName="Calibri" size="8" isBold="false"/>
+						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[( $F{LACTANCIA MATERNA} == null ? ' ' : $F{LACTANCIA MATERNA} )]]></textFieldExpression>
 				</textField>
@@ -1567,7 +1567,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Calibri" size="10" isBold="true"/>
+					<font fontName="Arial" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[( $V{Total_SumIleFase3} == null ? ' ' : $V{Total_SumIleFase3} )]]></textFieldExpression>
 			</textField>
@@ -1580,7 +1580,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Calibri" size="10" isBold="true"/>
+					<font fontName="Arial" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[( $V{Total_SumHipoproteica} == null ? ' ' : $V{Total_SumHipoproteica} )]]></textFieldExpression>
 			</textField>
@@ -1593,7 +1593,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Calibri" size="10" isBold="true"/>
+					<font fontName="Arial" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[( $V{Total_SumSinGluten} == null ? ' ' : $V{Total_SumSinGluten} )]]></textFieldExpression>
 			</textField>
@@ -1606,7 +1606,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center">
-					<font fontName="Calibri" size="10" isBold="true"/>
+					<font fontName="Arial" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[( $V{Total_SumNpo} == null ? ' ' : $V{Total_SumNpo} )]]></textFieldExpression>
 			</textField>
@@ -1619,7 +1619,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Calibri" size="10" isBold="true"/>
+					<font fontName="Arial" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[( $V{Total_SumHipercalorica} == null ? ' ' : $V{Total_SumHipercalorica} )]]></textFieldExpression>
 			</textField>
@@ -1632,7 +1632,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Calibri" size="10" isBold="true"/>
+					<font fontName="Arial" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[( $V{Total_SumLiAmplia} == null ? ' ' : $V{Total_SumLiAmplia} )]]></textFieldExpression>
 			</textField>
@@ -1645,7 +1645,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Calibri" size="10" isBold="true"/>
+					<font fontName="Arial" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[( $V{Total_SumPediatria5a9} == null ? ' ' : $V{Total_SumPediatria5a9} )]]></textFieldExpression>
 			</textField>
@@ -1658,7 +1658,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Calibri" size="10" isBold="true"/>
+					<font fontName="Arial" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[( $V{Total_SumPedriatria6} == null ? ' ' : $V{Total_SumPedriatria6} )]]></textFieldExpression>
 			</textField>
@@ -1671,7 +1671,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Calibri" size="10" isBold="true"/>
+					<font fontName="Arial" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[( $V{Total_SumBlaGas} == null ? ' ' : $V{Total_SumBlaGas} )]]></textFieldExpression>
 			</textField>
@@ -1684,7 +1684,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Calibri" size="10" isBold="true"/>
+					<font fontName="Arial" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[( $V{Total_SumHipercalorica} == null ? ' ' : $V{Total_SumHipercalorica} )]]></textFieldExpression>
 			</textField>
@@ -1697,7 +1697,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Calibri" size="10" isBold="true"/>
+					<font fontName="Arial" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[( $V{Total_SumHipoHidroCarboHipertreica} == null ? ' ' : $V{Total_SumHipoHidroCarboHipertreica} )]]></textFieldExpression>
 			</textField>
@@ -1710,7 +1710,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center">
-					<font fontName="Calibri" size="10" isBold="true"/>
+					<font fontName="Arial" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[( $V{Total_SumAcomp} == null ? ' ' : $V{Total_SumAcomp} )]]></textFieldExpression>
 			</textField>
@@ -1723,7 +1723,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Calibri" size="10" isBold="true"/>
+					<font fontName="Arial" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[( $V{Total_SumHiposodica} == null ? ' ' : $V{Total_SumHiposodica} )]]></textFieldExpression>
 			</textField>
@@ -1736,14 +1736,14 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Calibri" size="10" isBold="true"/>
+					<font fontName="Arial" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[( $V{Total_SumLiEstricta} ==  null ? ' ' : $V{Total_SumLiEstricta} )]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="3" y="4" width="141" height="14" uuid="04ce39b1-f990-451f-8907-7b3b5af751a3"/>
 				<textElement verticalAlignment="Middle">
-					<font isBold="true" isItalic="true"/>
+					<font fontName="Arial" isBold="true" isItalic="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["TOTAL:"]]></textFieldExpression>
 			</textField>
@@ -1756,7 +1756,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Calibri" size="10" isBold="true"/>
+					<font fontName="Arial" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[( $V{Total_SumIleFase2} == null ? ' ' : $V{Total_SumIleFase2} )]]></textFieldExpression>
 			</textField>
@@ -1769,7 +1769,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Calibri" size="10" isBold="true"/>
+					<font fontName="Arial" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[( $V{Total_SumHipoHidroCarbo} == null ? ' ' : $V{Total_SumHipoHidroCarbo} )]]></textFieldExpression>
 			</textField>
@@ -1782,7 +1782,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Calibri" size="10" isBold="true"/>
+					<font fontName="Arial" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[( $V{Total_SumBlaIntestinal} == null ? ' ' : $V{Total_SumBlaIntestinal} )]]></textFieldExpression>
 			</textField>
@@ -1795,7 +1795,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Calibri" size="10" isBold="true"/>
+					<font fontName="Arial" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[( $V{Total_SumPediatria12} == null ? ' ' : $V{Total_SumPediatria12} )]]></textFieldExpression>
 			</textField>
@@ -1808,7 +1808,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Calibri" size="10" isBold="true"/>
+					<font fontName="Arial" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[( $V{Total_SumHipograsa} == null ? ' ' : $V{Total_SumHipograsa} )]]></textFieldExpression>
 			</textField>
@@ -1821,7 +1821,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Calibri" size="10" isBold="true"/>
+					<font fontName="Arial" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[( $V{Total_SumIleFase1} == null ? ' ' : $V{Total_SumIleFase1} )]]></textFieldExpression>
 			</textField>
@@ -1834,7 +1834,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Calibri" size="10" isBold="true"/>
+					<font fontName="Arial" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[( $V{Total_SumTurmix} == null ? ' ' : $V{Total_SumTurmix} )]]></textFieldExpression>
 			</textField>
@@ -1847,7 +1847,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Calibri" size="10" isBold="true"/>
+					<font fontName="Arial" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[( $V{Total_SumLiAca} == null ? ' ' : $V{Total_SumLiAca} )]]></textFieldExpression>
 			</textField>
@@ -1860,7 +1860,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Calibri" size="10" isBold="true"/>
+					<font fontName="Arial" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[( $V{Total_SumBlaMecanic} == null ? ' ' : $V{Total_SumBlaMecanic} )]]></textFieldExpression>
 			</textField>
@@ -1873,7 +1873,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Calibri" size="10" isBold="true"/>
+					<font fontName="Arial" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[( $V{Total_SumHiperproteica} == null ? ' ' : $V{Total_SumHiperproteica} )]]></textFieldExpression>
 			</textField>
@@ -1886,7 +1886,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Calibri" size="10" isBold="true"/>
+					<font fontName="Arial" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[( $V{Total_SumHiperProCalo} == null ? ' ' : $V{Total_SumHiperProCalo} )]]></textFieldExpression>
 			</textField>
@@ -1899,7 +1899,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Calibri" size="10" isBold="true"/>
+					<font fontName="Arial" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[( $V{Total_SumHipoHidroCarboHipotreica} == null ? ' ' : $V{Total_SumHipoHidroCarboHipotreica} )]]></textFieldExpression>
 			</textField>
@@ -1912,7 +1912,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center">
-					<font fontName="Calibri" size="10" isBold="true" isItalic="false" isUnderline="false"/>
+					<font fontName="Arial" size="10" isBold="true" isItalic="false" isUnderline="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[( $V{Total_SumLac} == null ? ' ' : $V{Total_SumLac} )]]></textFieldExpression>
 			</textField>
@@ -1925,7 +1925,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Calibri" size="10" isBold="true"/>
+					<font fontName="Arial" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[( $V{Total_SumHipoProEstr} == null ? ' ' : $V{Total_SumHipoProEstr} )]]></textFieldExpression>
 			</textField>
@@ -1938,7 +1938,7 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center">
-					<font fontName="Calibri" size="10" isBold="true"/>
+					<font fontName="Arial" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{Total_total}]]></textFieldExpression>
 			</textField>
@@ -1951,28 +1951,28 @@
 				<textField evaluationTime="Report">
 					<reportElement style="Column header" x="736" y="0" width="40" height="17" forecolor="#FFFFFF" uuid="88597b8d-63c1-40a8-81a1-c3d74380a064"/>
 					<textElement verticalAlignment="Top">
-						<font size="10" isBold="false"/>
+						<font fontName="Arial" size="10" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement style="Column header" x="656" y="0" width="80" height="17" forecolor="#FFFFFF" uuid="805d5aab-6536-4e2a-9929-6e200b63e81f"/>
 					<textElement textAlignment="Right" verticalAlignment="Top">
-						<font size="10" isBold="false"/>
+						<font fontName="Arial" size="10" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
 				</textField>
 				<textField pattern="dd/MM/yy">
 					<reportElement style="Column header" x="2" y="0" width="95" height="17" forecolor="#FFFFFF" uuid="832e994a-4c43-4672-86ce-95ed3b868295"/>
 					<textElement verticalAlignment="Top">
-						<font fontName="Calibri" size="12" isBold="true"/>
+						<font fontName="Arial" size="12" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA["Fecha Impresión: "]]></textFieldExpression>
 				</textField>
 				<textField pattern="dd/MM/yy">
 					<reportElement style="Column header" x="97" y="0" width="227" height="17" forecolor="#FFFFFF" uuid="36c79cbf-07c9-41f1-a823-a57ea82f2463"/>
 					<textElement verticalAlignment="Top">
-						<font fontName="Calibri" size="12" isBold="true"/>
+						<font fontName="Arial" size="12" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 				</textField>

@@ -173,6 +173,11 @@ public class frm_principal extends javax.swing.JFrame {
         jMenu4.add(jSeparator1);
 
         jMenuItemSALIR.setText("SALIR");
+        jMenuItemSALIR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSALIRActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItemSALIR);
 
         jMenuBar1.add(jMenu4);
@@ -458,6 +463,10 @@ public class frm_principal extends javax.swing.JFrame {
         jDesktopPane1.add(info);
         info.setVisible(true);
     }//GEN-LAST:event_jMenuItemACERCADEActionPerformed
+
+    private void jMenuItemSALIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSALIRActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItemSALIRActionPerformed
 
     /**
      * @param args the command line arguments

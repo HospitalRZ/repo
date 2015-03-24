@@ -902,7 +902,7 @@ public class frm_proceso extends javax.swing.JInternalFrame {
     NpgSqlConnection conn = new NpgSqlConnection();
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         try {
-            String dir = System.getProperty("user.dir") + "/src/lib_reporte/report_departamento.jrxml";
+            String dir = System.getProperty("user.dir") + "/reporte/report_departamento.jrxml";
             JasperReport reporteJasper = JasperCompileManager.compileReport(dir);
             Map parametro = new HashMap();
             parametro.put("FechaDesde","'"+new SimpleDateFormat("yyyy-MM-dd").format(this.dtfecha.getDate())+"'");
