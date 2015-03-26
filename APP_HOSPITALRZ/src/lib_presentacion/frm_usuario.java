@@ -66,7 +66,8 @@ public class frm_usuario extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 22)); // NOI18N
         jLabel2.setText("Hospital Rafeal Rodriguez Zambrano");

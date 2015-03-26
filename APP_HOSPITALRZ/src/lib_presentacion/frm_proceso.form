@@ -597,7 +597,7 @@
                                               <Component id="cbxAcompaniante" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="cbxHiposodica" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace pref="40" max="32767" attributes="0"/>
+                                          <EmptySpace pref="52" max="32767" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="cbxPedi1259" min="-2" max="-2" attributes="0"/>
                                               <Component id="cbxPedi611" min="-2" max="-2" attributes="0"/>
@@ -655,7 +655,7 @@
                         </Component>
                         <Component class="javax.swing.JCheckBox" name="cbxAcompaniante">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Acompa&#xf1;ante"/>
+                            <Property name="text" type="java.lang.String" value="General"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JCheckBox" name="cbxHiposodica">

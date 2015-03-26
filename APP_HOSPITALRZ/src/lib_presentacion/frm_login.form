@@ -23,15 +23,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jSplitPane1" pref="438" max="32767" attributes="0"/>
+          <Component id="jSplitPane1" pref="446" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="jSplitPane1" min="-2" pref="214" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
+          <Component id="jSplitPane1" min="-2" pref="214" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -91,19 +88,19 @@
                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" pref="12" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="txtlogin" pref="168" max="32767" attributes="0"/>
                               <Component id="txtpasswd" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="24" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                           <Component id="jButton2" min="-2" pref="94" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="jButton1" min="-2" pref="94" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -139,7 +136,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel3">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Calibri" size="14" style="1"/>
+                      <Font name="Arial" size="14" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Usuario:"/>
                   </Properties>
@@ -147,7 +144,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel4">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Calibri" size="14" style="1"/>
+                      <Font name="Arial" size="14" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Contrase&#xf1;a:"/>
                   </Properties>
@@ -163,7 +160,7 @@
                       <Color blue="ff" green="66" red="66" type="rgb"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Calibri" size="14" style="1"/>
+                      <Font name="Arial" size="14" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Ingresar"/>
                     <Property name="actionCommand" type="java.lang.String" value="bttIngresar"/>
@@ -178,7 +175,7 @@
                       <Color blue="ff" green="66" red="66" type="rgb"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Calibri" size="14" style="1"/>
+                      <Font name="Arial" size="14" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Cancelar"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -218,12 +215,15 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="jLabel2" pref="426" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="0" pref="131" max="32767" attributes="0"/>
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="142" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="jLabel2" alignment="0" max="32767" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -231,9 +231,9 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jLabel2" min="-2" pref="38" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel2" min="-2" pref="38" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   </Group>
@@ -244,7 +244,7 @@
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Calibri" size="28" style="1"/>
+                  <Font name="Arial" size="24" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Hospital Rafeal Rodriguez Zambrano"/>
               </Properties>
@@ -252,7 +252,7 @@
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Calibri" size="18" style="1"/>
+                  <Font name="Arial" size="18" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Control de Dietas"/>
               </Properties>

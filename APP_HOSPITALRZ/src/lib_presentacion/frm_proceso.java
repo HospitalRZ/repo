@@ -446,7 +446,7 @@ public class frm_proceso extends javax.swing.JInternalFrame {
 
         cbxNPO.setText("NPO");
 
-        cbxAcompaniante.setText("Acompañante");
+        cbxAcompaniante.setText("General");
 
         cbxHiposodica.setText("Hiposodica");
 
@@ -475,7 +475,7 @@ public class frm_proceso extends javax.swing.JInternalFrame {
                             .addComponent(cbxNPO)
                             .addComponent(cbxAcompaniante)
                             .addComponent(cbxHiposodica))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cbxPedi1259)
                             .addComponent(cbxPedi611)
@@ -773,7 +773,7 @@ public class frm_proceso extends javax.swing.JInternalFrame {
                 contador++;
             }
         }
-        if (contador==0 || contador>1) {
+        if (contador==0 || contador>2) {
             return false;
         }else { return true;}
     }
@@ -910,7 +910,7 @@ public class frm_proceso extends javax.swing.JInternalFrame {
             parametro.put("iddepartamento", gprincipal.getIddertamento().getId());
             parametro.put("departamento", gprincipal.getIddertamento().getDescripcion());
             JasperPrint mostrarReporte = JasperFillManager.fillReport(reporteJasper, parametro, conn.getConection());
-            JasperViewer.viewReport(mostrarReporte);
+            JasperViewer.viewReport(mostrarReporte, false);
         } catch (SQLException ex) {
             Logger.getLogger(Form_reporte_departamento.class.getName()).log(Level.SEVERE, null, ex);
         } catch (JRException ex) {
