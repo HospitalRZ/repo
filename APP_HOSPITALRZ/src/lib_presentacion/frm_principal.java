@@ -348,63 +348,63 @@ public class frm_principal extends javax.swing.JFrame {
     }
     private void jMenuItemEMERGENCIAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEMERGENCIAActionPerformed
         buscarDepartamento(evt.getActionCommand().toString());
-        frm_proceso proceso = new frm_proceso(iddepartamento);
+        frm_proceso proceso = new frm_proceso(iddepartamento,"EMERGENCIA");
         jDesktopPane1.add(proceso);
         proceso.setVisible(true); 
     }//GEN-LAST:event_jMenuItemEMERGENCIAActionPerformed
 
     private void jMenuItemCIRUGIAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCIRUGIAActionPerformed
         buscarDepartamento(evt.getActionCommand().toString());
-        frm_proceso proceso = new frm_proceso(iddepartamento);           
+        frm_proceso proceso = new frm_proceso(iddepartamento,"CIRUGIA");           
         jDesktopPane1.add(proceso);
         proceso.setVisible(true); 
     }//GEN-LAST:event_jMenuItemCIRUGIAActionPerformed
 
     private void jMenuItemGINECOBSTETRICIAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemGINECOBSTETRICIAActionPerformed
         buscarDepartamento(evt.getActionCommand().toString());
-        frm_proceso proceso = new frm_proceso(iddepartamento);           
+        frm_proceso proceso = new frm_proceso(iddepartamento,"GINECOBSTETRICIA");           
         jDesktopPane1.add(proceso);
         proceso.setVisible(true); 
     }//GEN-LAST:event_jMenuItemGINECOBSTETRICIAActionPerformed
 
     private void jMenuItemTRAUMATOLOGIAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTRAUMATOLOGIAActionPerformed
         buscarDepartamento(evt.getActionCommand().toString());
-        frm_proceso proceso = new frm_proceso(iddepartamento);           
+        frm_proceso proceso = new frm_proceso(iddepartamento,"TRAUMATOLOGIA");           
         jDesktopPane1.add(proceso);
         proceso.setVisible(true); 
     }//GEN-LAST:event_jMenuItemTRAUMATOLOGIAActionPerformed
 
     private void jMenuItemMEDICINAINTERNAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMEDICINAINTERNAActionPerformed
         buscarDepartamento(evt.getActionCommand().toString());
-        frm_proceso proceso = new frm_proceso(iddepartamento);           
+        frm_proceso proceso = new frm_proceso(iddepartamento,"MEDICINA INTERNA");           
         jDesktopPane1.add(proceso);
         proceso.setVisible(true); 
     }//GEN-LAST:event_jMenuItemMEDICINAINTERNAActionPerformed
 
     private void jMenuItemPEDIATRIAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPEDIATRIAActionPerformed
         buscarDepartamento(evt.getActionCommand().toString());
-        frm_proceso proceso = new frm_proceso(iddepartamento);           
+        frm_proceso proceso = new frm_proceso(iddepartamento,"PEDIATRIA");           
         jDesktopPane1.add(proceso);
         proceso.setVisible(true); 
     }//GEN-LAST:event_jMenuItemPEDIATRIAActionPerformed
 
     private void jMenuItemUCIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUCIActionPerformed
         buscarDepartamento(evt.getActionCommand().toString());
-        frm_proceso proceso = new frm_proceso(iddepartamento);           
+        frm_proceso proceso = new frm_proceso(iddepartamento,"UCI");           
         jDesktopPane1.add(proceso);
         proceso.setVisible(true); 
     }//GEN-LAST:event_jMenuItemUCIActionPerformed
 
     private void jMenuItemINFECTOLOGIAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemINFECTOLOGIAActionPerformed
         buscarDepartamento(evt.getActionCommand().toString());
-        frm_proceso proceso = new frm_proceso(iddepartamento);           
+        frm_proceso proceso = new frm_proceso(iddepartamento,"NFECTOLOGIA");           
         jDesktopPane1.add(proceso);
         proceso.setVisible(true); 
     }//GEN-LAST:event_jMenuItemINFECTOLOGIAActionPerformed
 
     private void jMenuItemUNIDADQUEMADOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUNIDADQUEMADOSActionPerformed
         buscarDepartamento(evt.getActionCommand().toString());
-        frm_proceso proceso = new frm_proceso(iddepartamento);           
+        frm_proceso proceso = new frm_proceso(iddepartamento,"UNIDAD QUEMADOS");           
         jDesktopPane1.add(proceso);
         proceso.setVisible(true); 
     }//GEN-LAST:event_jMenuItemUNIDADQUEMADOSActionPerformed

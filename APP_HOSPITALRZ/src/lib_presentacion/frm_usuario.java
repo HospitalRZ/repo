@@ -349,9 +349,13 @@ public class frm_usuario extends javax.swing.JInternalFrame {
 
     private DefaultListModel<String> extraer(ArrayList<usuario> Usuarios) {
         DefaultListModel<String> model = new DefaultListModel<>();
-//        Usuarios.stream().forEach((user) -> {
-//            model.addElement(user.getLogin());
-//        });
+        for (usuario enti : Usuarios) {
+            usuario eg = new usuario();
+            eg = enti;
+            String data = eg.getLogin();
+            model.addElement(data);
+           
+        }
         return model;
     }
 
