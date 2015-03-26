@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Reporte concentrado" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a7169bcc-5030-4309-aa68-6facb39e2167">
 	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="444"/>
+	<property name="ireport.x" value="204"/>
 	<property name="ireport.y" value="55"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
@@ -262,9 +262,9 @@
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle" rotation="Left">
-					<font fontName="Arial" size="11" isBold="true"/>
+					<font fontName="Arial" size="7" isBold="true"/>
 				</textElement>
-				<text><![CDATA[GENERAL]]></text>
+				<text><![CDATA[GENERAL (ACOMPAÑANTE)]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="267" y="0" width="18" height="100" forecolor="#000000" uuid="178a7120-9967-47fc-9802-1d1859dde5cb"/>
@@ -1476,7 +1476,7 @@
 	<pageFooter>
 		<band height="25" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="0" y="0" width="802" height="25" forecolor="#D0B48E" backcolor="#000000" uuid="3d75af61-1a6b-43a3-bb98-01fc1a983d7d"/>
+				<reportElement mode="Opaque" x="-46" y="0" width="802" height="25" forecolor="#D0B48E" backcolor="#000000" uuid="3d75af61-1a6b-43a3-bb98-01fc1a983d7d"/>
 				<textField evaluationTime="Report">
 					<reportElement style="Column header" x="757" y="3" width="40" height="20" forecolor="#FFFFFF" uuid="54553046-828e-423e-8175-f4bbac5cfa5f"/>
 					<textElement verticalAlignment="Middle">
