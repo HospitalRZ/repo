@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -302,7 +303,7 @@ public class frm_proceso extends javax.swing.JInternalFrame {
                 .addGap(263, 263, 263))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lbldepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -363,12 +364,18 @@ public class frm_proceso extends javax.swing.JInternalFrame {
             }
         });
 
+        dtFechanaci.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                dtFechanaciPropertyChange(evt);
+            }
+        });
+
         txtidentificacion.setName("txtcedula"); // NOI18N
         txtidentificacion.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 txtidentificacionInputMethodTextChanged(evt);
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         txtidentificacion.addActionListener(new java.awt.event.ActionListener() {
@@ -948,6 +955,48 @@ public class frm_proceso extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_cbxLatanciaMaternaActionPerformed
+
+    private void dtFechanaciPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_dtFechanaciPropertyChange
+        // TODO add your handling code here:
+
+            Calendar birth = new GregorianCalendar();
+            Calendar today = new GregorianCalendar();
+            int age = 0;
+            int factor = 0;
+            Date birthDate = dtFechanaci.getDate();
+            Date currentDate = new Date(); //current date
+            birth.setTime(birthDate);
+            today.setTime(currentDate);
+//            if (today.get(Calendar.MONTH) <= birth.get(Calendar.MONTH)) {
+//                if (today.get(Calendar.MONTH) == birth.get(Calendar.MONTH)) {
+//                    if (today.get(Calendar.DATE) > birth.get(Calendar.DATE)) {
+//                        factor = -1; //Aun no celebra su cumpleaÃ±os
+//                    }
+//                } else {
+//                    factor = -1; //Aun no celebra su cumpleaÃ±os
+//                }
+//            }
+            age = (today.get(Calendar.YEAR) - birth.get(Calendar.YEAR));
+        if (age<1) {
+            cbxPedi611.setSelected(true);
+        }else
+        {
+            if (age<5) {
+                cbxPedi1259.setSelected(true);
+            }
+            else
+            {
+                if (age<9) {
+                    cbxPedi59.setSelected(true);
+                }else{
+                    cbxPedi611.setSelected(false);
+                    cbxPedi1259.setSelected(false);
+                    cbxPedi59.setSelected(false);
+                }
+                
+            }
+        }
+    }//GEN-LAST:event_dtFechanaciPropertyChange
     private void Cargar() {
         try {
             gprincipal = gestionM.Listar_principal(gprincipal.getId());

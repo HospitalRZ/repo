@@ -273,7 +273,7 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jButton4" max="32767" attributes="0"/>
+                                  <Component id="jButton4" pref="107" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="lbldepartamento" min="-2" pref="99" max="-2" attributes="0"/>
@@ -551,6 +551,9 @@
                           </Events>
                         </Component>
                         <Component class="com.toedter.calendar.JDateChooser" name="dtFechanaci">
+                          <Events>
+                            <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="dtFechanaciPropertyChange"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtidentificacion">
                           <Properties>
